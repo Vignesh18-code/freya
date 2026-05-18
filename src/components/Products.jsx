@@ -12,6 +12,11 @@ const products = [
   { id: 6, category: 'Necklaces', icon: 'fa-gem', tag: 'BESTSELLER', purity: '22K Gold', name: 'Noor Cascade Pendant', description: 'Layered texture reflecting artisan handwork.', price: '$3,640' },
 ]
 
+const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+const fromLeft = { initial: { opacity: 0, x: -80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition }
+const fromRight = { initial: { opacity: 0, x: 80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition }
+const fromBottom = { initial: { opacity: 0, y: 60 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition }
+
 function Products({ showFilters = true, defaultFilter = 'All' }) {
   const [active, setActive] = useState(defaultFilter)
 
@@ -24,10 +29,7 @@ function Products({ showFilters = true, defaultFilter = 'All' }) {
     <section id="collections" style={{ backgroundColor: '#101F48', padding: '6rem 1.5rem', color: '#fff' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          {...fromBottom}
           style={{ textAlign: 'center', marginBottom: '2rem' }}
         >
           <h2 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.4rem, 4vw, 3.7rem)', fontWeight: 500 }}>
@@ -36,7 +38,7 @@ function Products({ showFilters = true, defaultFilter = 'All' }) {
         </motion.div>
 
         {showFilters && (
-          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.7rem', marginBottom: '2rem' }}>
+          <motion.div {...fromLeft} style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.7rem', marginBottom: '2rem' }}>
             {tabs.map((tab) => {
               const activeTab = tab === active
               return (
@@ -57,19 +59,16 @@ function Products({ showFilters = true, defaultFilter = 'All' }) {
                 >
                   {tab}
                 </button>
-              )
-            })}
-          </div>
+                )
+              })}
+          </motion.div>
         )}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((item, index) => (
             <motion.article
               key={item.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.06 }}
+              {...(index % 2 === 0 ? fromLeft : fromRight)}
               whileHover={{ y: -8, boxShadow: '0 22px 40px -24px rgba(201,168,76,0.45)', borderColor: 'rgba(201,168,76,0.55)' }}
               style={{
                 border: '1px solid rgba(201,168,76,0.24)',

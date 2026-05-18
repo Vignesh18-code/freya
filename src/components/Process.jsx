@@ -7,15 +7,15 @@ const steps = [
   { title: 'Delivery or Vault', text: 'Choose armored delivery or secure vault allocation.' },
 ]
 
+const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+const fromBottom = { initial: { opacity: 0, y: 60 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition }
+
 function Process() {
   return (
     <section id="process" style={{ backgroundColor: '#101F48', color: '#fff', padding: '6rem 1.5rem' }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          {...fromBottom}
           style={{ textAlign: 'center', marginBottom: '2rem' }}
         >
           <h2 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.2rem, 4vw, 3.4rem)', fontWeight: 500 }}>
@@ -38,10 +38,8 @@ function Process() {
           {steps.map((step, index) => (
             <motion.div
               key={step.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
+              {...fromBottom}
+              transition={{ ...transition, delay: index * 0.15 }}
               style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}
             >
               <motion.div

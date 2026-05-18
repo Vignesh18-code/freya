@@ -14,18 +14,18 @@ const stats = [
   { value: '10,000+ Designs', label: 'Crafted' },
 ]
 
+const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+const fromLeft = { initial: { opacity: 0, x: -80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition }
+const fromRight = { initial: { opacity: 0, x: 80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition }
+const fromBottom = { initial: { opacity: 0, y: 60 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition }
+
 function AboutSection() {
   return (
     <section id="about" style={{ backgroundColor: '#070C1A', padding: '6rem 1.5rem', color: '#fff' }}>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        style={{ maxWidth: '1200px', margin: '0 auto' }}
-      >
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <div className="grid md:grid-cols-2 gap-10 items-stretch">
-          <div
+          <motion.div
+            {...fromLeft}
             style={{
               position: 'relative',
               border: '1px solid rgba(201,168,76,0.35)',
@@ -51,9 +51,9 @@ function AboutSection() {
                 Est. 2007
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div {...fromRight}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1rem' }}>
               <span style={{ width: '44px', height: '1px', backgroundColor: '#C9A84C' }} />
               <span style={{ fontFamily: "'Montserrat', sans-serif", color: '#C9A84C', fontSize: '0.75rem', letterSpacing: '0.22em', textTransform: 'uppercase' }}>
@@ -76,10 +76,7 @@ function AboutSection() {
               {featureCards.map((feature, index) => (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.08 * index }}
+                  {...(index < 2 ? fromLeft : fromRight)}
                   style={{
                     border: '1px solid rgba(201,168,76,0.2)',
                     backgroundColor: 'rgba(16,31,72,0.35)',
@@ -92,17 +89,15 @@ function AboutSection() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4" style={{ marginTop: '2.2rem' }}>
           {stats.map((stat, index) => (
             <motion.div
               key={stat.value}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: 0.07 * index }}
+              {...fromBottom}
+              transition={{ ...transition, delay: index * 0.1 }}
               style={{
                 border: '1px solid rgba(201,168,76,0.2)',
                 backgroundColor: 'rgba(16,31,72,0.35)',
@@ -115,7 +110,7 @@ function AboutSection() {
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

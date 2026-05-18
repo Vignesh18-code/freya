@@ -11,15 +11,17 @@ const reasons = [
   { title: 'Buy-Back Guarantee', icon: 'fa-arrow-rotate-left', text: 'Structured buy-back options for eligible products.' },
 ]
 
+const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+const fromLeft = { initial: { opacity: 0, x: -80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition }
+const fromRight = { initial: { opacity: 0, x: 80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition }
+const fromBottom = { initial: { opacity: 0, y: 60 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition }
+
 function WhyUs() {
   return (
     <section id="why" style={{ backgroundColor: '#070C1A', color: '#fff', padding: '6rem 1.5rem' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          {...fromBottom}
           style={{ textAlign: 'center', marginBottom: '2rem' }}
         >
           <h2 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.2rem, 4vw, 3.6rem)', fontWeight: 500 }}>
@@ -31,10 +33,7 @@ function WhyUs() {
           {reasons.map((item, index) => (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.05 }}
+              {...(index % 2 === 0 ? fromLeft : fromRight)}
               whileHover={{ y: -7, boxShadow: '0 18px 36px -24px rgba(201,168,76,0.5)' }}
               style={{
                 border: '1px solid rgba(201,168,76,0.2)',

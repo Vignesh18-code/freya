@@ -9,6 +9,10 @@ const testimonials = [
   { name: 'Raj Nair', role: 'Owner, Nair Fine Jewellery, Mumbai', text: 'Excellent wholesale partner with strong product quality and dependable timelines.', initials: 'RN' },
 ]
 
+const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+const fromLeft = { initial: { opacity: 0, x: -80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition }
+const fromBottom = { initial: { opacity: 0, y: 60 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition }
+
 function Testimonials() {
   const [start, setStart] = useState(0)
   const [cardsPerView, setCardsPerView] = useState(typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 3)
@@ -39,10 +43,7 @@ function Testimonials() {
     <section id="testimonials" style={{ backgroundColor: '#070C1A', color: '#fff', padding: '6rem 1.5rem' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          {...fromBottom}
           style={{ textAlign: 'center', marginBottom: '2rem' }}
         >
           <h2 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.2rem, 4vw, 3.5rem)', fontWeight: 500 }}>
@@ -63,9 +64,7 @@ function Testimonials() {
           {visibleItems.map((item) => (
             <motion.article
               key={`${item.name}-${start}`}
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45 }}
+              {...fromLeft}
               style={{
                 border: '1px solid rgba(201,168,76,0.2)',
                 backgroundColor: 'rgba(16,31,72,0.45)',

@@ -18,15 +18,16 @@ const inputStyle = {
   outlineColor: '#C9A84C',
 }
 
+const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+const fromLeft = { initial: { opacity: 0, x: -80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition }
+const fromRight = { initial: { opacity: 0, x: 80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true }, transition }
+
 function ContactSection() {
   return (
     <section id="contact" style={{ backgroundColor: '#101F48', color: '#fff', padding: '6rem 1.5rem' }}>
       <div className="grid md:grid-cols-2 gap-8" style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          {...fromLeft}
         >
           <h2 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.2rem, 4vw, 3.4rem)', fontWeight: 500 }}>
             Let&apos;s Talk Jewellery
@@ -51,10 +52,7 @@ function ContactSection() {
         </motion.div>
 
         <motion.form
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.1 }}
+          {...fromRight}
           style={{
             border: '1px solid rgba(201,168,76,0.25)',
             background: 'linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01))',
