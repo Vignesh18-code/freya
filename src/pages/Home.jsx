@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import Loader from '../components/Loader'
 import Hero from '../components/Hero'
 import Ticker from '../components/Ticker'
 import AboutSection from '../components/AboutSection'
@@ -11,25 +9,18 @@ import CTABand from '../components/CTABand'
 import ContactSection from '../components/ContactSection'
 
 function Home() {
-  const [isLoading, setIsLoading] = useState(true)
-
   return (
-    <>
-      {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
-      {!isLoading && (
-        <main>
-          <Hero />
-          <Ticker />
-          <AboutSection />
-          <Products />
-          <WhyUs />
-          <Process />
-          <Testimonials />
-          <CTABand />
-          <ContactSection />
-        </main>
-      )}
-    </>
+    <main>
+      <Hero />
+      <Ticker />
+      <AboutSection />
+      <Products />
+      <WhyUs />
+      <Process />
+      <Testimonials />
+      <CTABand />
+      <ContactSection />
+    </main>
   )
 }
 
