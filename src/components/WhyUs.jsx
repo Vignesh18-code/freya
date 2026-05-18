@@ -1,53 +1,199 @@
 import { motion } from 'framer-motion'
 
 const reasons = [
-  { title: 'Wholesale Pricing', icon: 'fa-tags', text: 'Direct manufacturer rates without hidden margins.' },
-  { title: 'Insured Shipping', icon: 'fa-shield-halved', text: 'Global shipments protected from dispatch to delivery.' },
-  { title: 'Independent Assay', icon: 'fa-microscope', text: 'Purity verified through independent assay protocols.' },
-  { title: '48-Hour Delivery', icon: 'fa-clock', text: 'Fast dispatch for ready inventory and repeat orders.' },
-  { title: 'Full Provenance', icon: 'fa-file-contract', text: 'Transparent traceability documentation with each order.' },
-  { title: 'Dedicated Advisor', icon: 'fa-headset', text: 'One relationship manager for every client account.' },
-  { title: 'Regulatory Compliance', icon: 'fa-building-columns', text: 'Aligned with UAE compliance and export regulations.' },
-  { title: 'Buy-Back Guarantee', icon: 'fa-arrow-rotate-left', text: 'Structured buy-back options for eligible products.' },
+  { title: 'Wholesale Pricing', icon: 'fa-tags', text: 'Direct manufacturer rates without hidden margins or middlemen.', num: '01' },
+  { title: 'Insured Shipping', icon: 'fa-shield-halved', text: 'Global shipments fully protected from dispatch to delivery.', num: '02' },
+  { title: 'Independent Assay', icon: 'fa-microscope', text: 'Purity verified through independent certified assay protocols.', num: '03' },
+  { title: '48-Hour Delivery', icon: 'fa-clock', text: 'Fast dispatch for ready inventory and repeat client orders.', num: '04' },
+  { title: 'Full Provenance', icon: 'fa-file-contract', text: 'Transparent traceability documentation included with every order.', num: '05' },
+  { title: 'Dedicated Advisor', icon: 'fa-headset', text: 'One personal relationship manager assigned to every client.', num: '06' },
+  { title: 'Regulatory Compliance', icon: 'fa-building-columns', text: 'Fully aligned with UAE compliance and global export regulations.', num: '07' },
+  { title: 'Buy-Back Guarantee', icon: 'fa-arrow-rotate-left', text: 'Structured buy-back options available for all eligible products.', num: '08' },
 ]
+
+const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
 
 function WhyUs() {
   return (
-    <section id="why" style={{ backgroundColor: '#070C1A', color: '#fff', padding: '6rem 1.5rem' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <section
+      id="why"
+      style={{
+        backgroundColor: '#070C1A',
+        color: '#fff',
+        padding: '7rem 1.5rem',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Background glow blobs */}
+      <div style={{
+        position: 'absolute', top: '10%', left: '-10%',
+        width: '500px', height: '500px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)',
+        filter: 'blur(60px)', pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', bottom: '10%', right: '-10%',
+        width: '500px', height: '500px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)',
+        filter: 'blur(60px)', pointerEvents: 'none',
+      }} />
+
+      <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+
+        {/* Section heading */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          style={{ textAlign: 'center', marginBottom: '2rem' }}
+          transition={transition}
+          style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
-          <h2 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.2rem, 4vw, 3.6rem)', fontWeight: 500 }}>
-            Why Choose Freya
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
+            marginBottom: '1rem',
+          }}>
+            <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+            <span style={{
+              fontFamily: "'Montserrat', sans-serif", color: '#C9A84C',
+              fontSize: '0.7rem', letterSpacing: '0.28em', textTransform: 'uppercase',
+            }}>
+              Our Advantages
+            </span>
+            <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+          </div>
+          <h2 style={{
+            margin: 0,
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
+            fontWeight: 400, lineHeight: 1.15,
+          }}>
+            Why Choose{' '}
+            <span style={{
+              fontStyle: 'italic', color: '#C9A84C',
+            }}>
+              Freya
+            </span>
           </h2>
+          <p style={{
+            margin: '1rem auto 0', maxWidth: '520px',
+            color: 'rgba(255,255,255,0.55)',
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: '0.9rem', lineHeight: 1.8,
+          }}>
+            Eight reasons why the world's leading jewellery buyers trust Freya for every transaction.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Cards grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+          gap: '1.25rem',
+        }}>
           {reasons.map((item, index) => (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -80 : 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.05 }}
-              whileHover={{ y: -7, boxShadow: '0 18px 36px -24px rgba(201,168,76,0.5)' }}
+              transition={{ ...transition, delay: index * 0.07 }}
+              whileHover={{
+                y: -10,
+                boxShadow: '0 30px 60px -20px rgba(201,168,76,0.25)',
+              }}
               style={{
-                border: '1px solid rgba(201,168,76,0.2)',
-                borderTop: '2px solid transparent',
-                backgroundColor: 'rgba(16,31,72,0.45)',
-                padding: '1rem',
+                position: 'relative',
+                background: 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
+                border: '1px solid rgba(201,168,76,0.15)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                borderRadius: '2px',
+                padding: '2rem 1.5rem',
+                overflow: 'hidden',
+                transition: 'box-shadow 0.4s ease, transform 0.4s ease',
+                cursor: 'default',
               }}
             >
-              <div style={{ width: '42px', height: '42px', border: '1px solid rgba(201,168,76,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#C9A84C' }}>
+              {/* Large background number */}
+              <div style={{
+                position: 'absolute', top: '-0.5rem', right: '1rem',
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '5.5rem', fontWeight: 700,
+                color: 'rgba(201,168,76,0.06)',
+                lineHeight: 1, pointerEvents: 'none',
+                userSelect: 'none',
+              }}>
+                {item.num}
+              </div>
+
+              {/* Top gold line on hover via pseudo — use motion border instead */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.07 + 0.3 }}
+                style={{
+                  position: 'absolute', top: 0, left: 0, right: 0,
+                  height: '1.5px',
+                  background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+                  transformOrigin: 'left',
+                }}
+              />
+
+              {/* Icon */}
+              <div style={{
+                width: '52px', height: '52px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, rgba(201,168,76,0.18), rgba(201,168,76,0.05))',
+                border: '1px solid rgba(201,168,76,0.3)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '1.2rem', color: '#C9A84C',
+                marginBottom: '1.4rem',
+                boxShadow: '0 4px 20px rgba(201,168,76,0.1)',
+              }}>
                 <i className={`fas ${item.icon}`} />
               </div>
-              <h3 style={{ margin: '0.75rem 0 0.4rem', fontFamily: "'Cormorant Garamond', serif", fontSize: '1.4rem', fontWeight: 600 }}>{item.title}</h3>
-              <p style={{ margin: 0, color: 'rgba(255,255,255,0.7)', fontFamily: "'Montserrat', sans-serif", fontSize: '0.84rem', lineHeight: 1.7 }}>{item.text}</p>
+
+              {/* Small number label */}
+              <div style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '0.65rem', letterSpacing: '0.2em',
+                color: 'rgba(201,168,76,0.6)', marginBottom: '0.5rem',
+                textTransform: 'uppercase',
+              }}>
+                {item.num}
+              </div>
+
+              <h3 style={{
+                margin: '0 0 0.6rem',
+                fontFamily: "'Cormorant Garamond', serif",
+                fontSize: '1.5rem', fontWeight: 600,
+                color: '#fff', lineHeight: 1.2,
+              }}>
+                {item.title}
+              </h3>
+
+              <p style={{
+                margin: 0,
+                color: 'rgba(255,255,255,0.55)',
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: '0.82rem', lineHeight: 1.75,
+              }}>
+                {item.text}
+              </p>
+
+              {/* Bottom right arrow indicator */}
+              <div style={{
+                position: 'absolute', bottom: '1.2rem', right: '1.2rem',
+                width: '28px', height: '28px',
+                border: '1px solid rgba(201,168,76,0.2)',
+                borderRadius: '50%',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'rgba(201,168,76,0.4)', fontSize: '0.65rem',
+              }}>
+                <i className="fas fa-arrow-up-right" />
+              </div>
             </motion.article>
           ))}
         </div>
