@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion'
 
 const reasons = [
-  { title: 'Wholesale Pricing', icon: 'fa-tags', text: 'Direct manufacturer rates without hidden margins or middlemen.', num: '01' },
-  { title: 'Insured Shipping', icon: 'fa-shield-halved', text: 'Global shipments fully protected from dispatch to delivery.', num: '02' },
-  { title: 'Independent Assay', icon: 'fa-microscope', text: 'Purity verified through independent certified assay protocols.', num: '03' },
-  { title: '48-Hour Delivery', icon: 'fa-clock', text: 'Fast dispatch for ready inventory and repeat client orders.', num: '04' },
-  { title: 'Full Provenance', icon: 'fa-file-contract', text: 'Transparent traceability documentation included with every order.', num: '05' },
-  { title: 'Dedicated Advisor', icon: 'fa-headset', text: 'One personal relationship manager assigned to every client.', num: '06' },
-  { title: 'Regulatory Compliance', icon: 'fa-building-columns', text: 'Fully aligned with UAE compliance and global export regulations.', num: '07' },
-  { title: 'Buy-Back Guarantee', icon: 'fa-arrow-rotate-left', text: 'Structured buy-back options available for all eligible products.', num: '08' },
+  { title: 'Wholesale Pricing',     icon: 'fa-tags',             text: 'Direct manufacturer rates without hidden margins or middlemen.',        num: '01' },
+  { title: 'Insured Shipping',      icon: 'fa-shield-halved',    text: 'Global shipments fully protected from dispatch to delivery.',            num: '02' },
+  { title: 'Independent Assay',     icon: 'fa-microscope',       text: 'Purity verified through independent certified assay protocols.',         num: '03' },
+  { title: '48-Hour Delivery',      icon: 'fa-clock',            text: 'Fast dispatch for ready inventory and repeat client orders.',            num: '04' },
+  { title: 'Full Provenance',       icon: 'fa-file-contract',    text: 'Transparent traceability documentation included with every order.',      num: '05' },
+  { title: 'Dedicated Advisor',     icon: 'fa-headset',          text: 'One personal relationship manager assigned to every client.',           num: '06' },
+  { title: 'Regulatory Compliance', icon: 'fa-building-columns', text: 'Fully aligned with UAE compliance and global export regulations.',       num: '07' },
+  { title: 'Buy-Back Guarantee',    icon: 'fa-arrow-rotate-left',text: 'Structured buy-back options available for all eligible products.',      num: '08' },
 ]
 
-const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+const EASE = [0.22, 1, 0.36, 1]
 
 function WhyUs() {
   return (
@@ -22,7 +22,7 @@ function WhyUs() {
         color: '#fff',
         padding: '7rem 1.5rem',
         position: 'relative',
-        overflow: 'hidden',
+        /* NO overflow:hidden — it clips sliding cards */
       }}
     >
       {/* Background glow blobs */}
@@ -30,23 +30,23 @@ function WhyUs() {
         position: 'absolute', top: '10%', left: '-10%',
         width: '500px', height: '500px', borderRadius: '50%',
         background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)',
-        filter: 'blur(60px)', pointerEvents: 'none',
+        filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0,
       }} />
       <div style={{
         position: 'absolute', bottom: '10%', right: '-10%',
         width: '500px', height: '500px', borderRadius: '50%',
         background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)',
-        filter: 'blur(60px)', pointerEvents: 'none',
+        filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0,
       }} />
 
       <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-        {/* Section heading */}
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={transition}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.9, ease: EASE }}
           style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
           <div style={{
@@ -69,11 +69,7 @@ function WhyUs() {
             fontWeight: 400, lineHeight: 1.15,
           }}>
             Why Choose{' '}
-            <span style={{
-              fontStyle: 'italic', color: '#C9A84C',
-            }}>
-              Freya
-            </span>
+            <span style={{ fontStyle: 'italic', color: '#C9A84C' }}>Freya</span>
           </h2>
           <p style={{
             margin: '1rem auto 0', maxWidth: '520px',
@@ -94,45 +90,38 @@ function WhyUs() {
           {reasons.map((item, index) => (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -80 : 80 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...transition, delay: index * 0.07 }}
-              whileHover={{
-                y: -10,
-                boxShadow: '0 30px 60px -20px rgba(201,168,76,0.25)',
-              }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.85, ease: EASE, delay: index * 0.06 }}
+              whileHover={{ y: -8, boxShadow: '0 30px 60px -20px rgba(201,168,76,0.22)' }}
               style={{
                 position: 'relative',
                 background: 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
                 border: '1px solid rgba(201,168,76,0.15)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
                 borderRadius: '2px',
                 padding: '2rem 1.5rem',
-                overflow: 'hidden',
-                transition: 'box-shadow 0.4s ease, transform 0.4s ease',
+                willChange: 'transform, opacity',
                 cursor: 'default',
               }}
             >
-              {/* Large background number */}
+              {/* Ghost number watermark */}
               <div style={{
                 position: 'absolute', top: '-0.5rem', right: '1rem',
                 fontFamily: "'Cormorant Garamond', serif",
                 fontSize: '5.5rem', fontWeight: 700,
                 color: 'rgba(201,168,76,0.06)',
-                lineHeight: 1, pointerEvents: 'none',
-                userSelect: 'none',
+                lineHeight: 1, pointerEvents: 'none', userSelect: 'none',
               }}>
                 {item.num}
               </div>
 
-              {/* Top gold line on hover via pseudo — use motion border instead */}
+              {/* Animated top shimmer line */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.07 + 0.3 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.7, ease: EASE, delay: index * 0.06 + 0.25 }}
                 style={{
                   position: 'absolute', top: 0, left: 0, right: 0,
                   height: '1.5px',
@@ -141,7 +130,7 @@ function WhyUs() {
                 }}
               />
 
-              {/* Icon */}
+              {/* Icon box */}
               <div style={{
                 width: '52px', height: '52px',
                 borderRadius: '12px',
@@ -155,7 +144,7 @@ function WhyUs() {
                 <i className={`fas ${item.icon}`} />
               </div>
 
-              {/* Small number label */}
+              {/* Number label */}
               <div style={{
                 fontFamily: "'Montserrat', sans-serif",
                 fontSize: '0.65rem', letterSpacing: '0.2em',
@@ -183,7 +172,7 @@ function WhyUs() {
                 {item.text}
               </p>
 
-              {/* Bottom right arrow indicator */}
+              {/* Arrow indicator */}
               <div style={{
                 position: 'absolute', bottom: '1.2rem', right: '1.2rem',
                 width: '28px', height: '28px',
