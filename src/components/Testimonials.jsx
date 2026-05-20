@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
+import { colors, fonts, ease } from '../theme'
 
 const BASE = [
   {
@@ -34,7 +35,7 @@ const BASE = [
   },
 ]
 
-const EASE = [0.22, 1, 0.36, 1]
+const EASE = ease.smooth
 const GAP = 20
 
 export default function Testimonials() {
@@ -143,7 +144,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       style={{
-        backgroundColor: '#070C1A',
+        backgroundColor: colors.bg,
         color: '#fff',
         padding: '0 1.5rem 6rem',
         position: 'relative',
@@ -166,7 +167,7 @@ export default function Testimonials() {
           height: '500px',
           borderRadius: '50%',
           background:
-            'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)',
+            'radial-gradient(circle, rgba(209,165,80,0.05) 0%, transparent 70%)',
           filter: 'blur(80px)',
           pointerEvents: 'none',
         }}
@@ -181,7 +182,7 @@ export default function Testimonials() {
           height: '400px',
           borderRadius: '50%',
           background:
-            'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)',
+            'radial-gradient(circle, rgba(209,165,80,0.04) 0%, transparent 70%)',
           filter: 'blur(80px)',
           pointerEvents: 'none',
         }}
@@ -206,7 +207,7 @@ export default function Testimonials() {
           <h2
             style={{
               margin: 0,
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: fonts.serif,
               fontSize: 'clamp(2.2rem, 4vw, 3.5rem)',
               fontWeight: 500,
             }}
@@ -231,9 +232,9 @@ export default function Testimonials() {
               width: '36px',
               height: '36px',
               borderRadius: '999px',
-              border: '1px solid rgba(201,168,76,0.45)',
+              border: '1px solid rgba(209,165,80,0.45)',
               background: 'transparent',
-              color: '#C9A84C',
+              color: colors.gold,
               cursor: 'pointer',
               fontSize: '1.2rem',
               lineHeight: 1,
@@ -249,9 +250,9 @@ export default function Testimonials() {
               width: '36px',
               height: '36px',
               borderRadius: '999px',
-              border: '1px solid rgba(201,168,76,0.45)',
+              border: '1px solid rgba(209,165,80,0.45)',
               background: 'transparent',
-              color: '#C9A84C',
+              color: colors.gold,
               cursor: 'pointer',
               fontSize: '1.2rem',
               lineHeight: 1,
@@ -298,8 +299,8 @@ export default function Testimonials() {
                   <article
                     style={{
                       border: isActive
-                        ? '1px solid rgba(201,168,76,0.55)'
-                        : '1px solid rgba(201,168,76,0.2)',
+                        ? '1px solid rgba(209,165,80,0.55)'
+                        : '1px solid rgba(209,165,80,0.2)',
                       backgroundColor: isActive
                         ? 'rgba(16,31,72,0.72)'
                         : 'rgba(16,31,72,0.45)',
@@ -315,7 +316,7 @@ export default function Testimonials() {
                     <p
                       style={{
                         margin: 0,
-                        color: '#C9A84C',
+                        color: colors.gold,
                         letterSpacing: '0.08em',
                       }}
                     >
@@ -325,7 +326,7 @@ export default function Testimonials() {
                     <p
                       style={{
                         margin: '0.9rem 0 1rem',
-                        fontFamily: "'Montserrat', sans-serif",
+                        fontFamily: fonts.sans,
                         color: 'rgba(255,255,255,0.72)',
                         lineHeight: 1.8,
                         fontStyle: 'italic',
@@ -347,12 +348,12 @@ export default function Testimonials() {
                           width: '40px',
                           height: '40px',
                           borderRadius: '999px',
-                          border: '1px solid rgba(201,168,76,0.45)',
+                          border: '1px solid rgba(209,165,80,0.45)',
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          color: '#E8D5A3',
-                          fontFamily: "'Montserrat', sans-serif",
+                          color: colors.goldLight,
+                          fontFamily: fonts.sans,
                           fontSize: '0.72rem',
                           letterSpacing: '0.08em',
                           flexShrink: 0,
@@ -365,7 +366,7 @@ export default function Testimonials() {
                         <p
                           style={{
                             margin: 0,
-                            fontFamily: "'Cormorant Garamond', serif",
+                            fontFamily: fonts.serif,
                             fontSize: '1.3rem',
                           }}
                         >
@@ -376,7 +377,7 @@ export default function Testimonials() {
                           style={{
                             margin: 0,
                             color: 'rgba(255,255,255,0.65)',
-                            fontFamily: "'Montserrat', sans-serif",
+                            fontFamily: fonts.sans,
                             fontSize: '0.75rem',
                           }}
                         >
@@ -412,8 +413,8 @@ export default function Testimonials() {
                 border: 'none',
                 backgroundColor:
                   i === activeRealIndex
-                    ? '#C9A84C'
-                    : 'rgba(201,168,76,0.35)',
+                    ? colors.gold
+                    : 'rgba(209,165,80,0.35)',
                 cursor: 'pointer',
                 padding: 0,
                 transition: 'width 0.4s ease, background-color 0.3s ease',

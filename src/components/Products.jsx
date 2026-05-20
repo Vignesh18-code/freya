@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { colors, fonts, ease } from '../theme'
 
 const products = [
   {
@@ -30,15 +31,14 @@ const products = [
   },
 ]
 
-const EASE = [0.22, 1, 0.36, 1]
-const transition = { duration: 0.9, ease: EASE }
+const transition = ease.transition
 
 function Products() {
   return (
     <section
       id="collections"
       style={{
-        backgroundColor: '#070C1A',
+        backgroundColor: colors.bg,
         padding: '8rem 1.5rem',
         color: '#fff',
         position: 'relative',
@@ -49,13 +49,13 @@ function Products() {
       <div style={{
         position: 'absolute', top: '-10%', right: '-10%',
         width: '600px', height: '600px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(209,165,80,0.05) 0%, transparent 70%)',
         filter: 'blur(80px)', pointerEvents: 'none',
       }} />
       <div style={{
         position: 'absolute', bottom: '0%', left: '-10%',
         width: '500px', height: '500px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(209,165,80,0.04) 0%, transparent 70%)',
         filter: 'blur(80px)', pointerEvents: 'none',
       }} />
 
@@ -74,31 +74,31 @@ function Products() {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             gap: '1rem', marginBottom: '1.2rem',
           }}>
-            <span style={{ width: '44px', height: '1px', backgroundColor: '#C9A84C' }} />
+            <span style={{ width: '44px', height: '1px', backgroundColor: colors.gold }} />
             <span style={{
-              fontFamily: "'Montserrat', sans-serif", color: '#C9A84C',
+              fontFamily: fonts.sans, color: colors.gold,
               fontSize: '0.7rem', letterSpacing: '0.28em', textTransform: 'uppercase',
             }}>
               Our Catalogue
             </span>
-            <span style={{ width: '44px', height: '1px', backgroundColor: '#C9A84C' }} />
+            <span style={{ width: '44px', height: '1px', backgroundColor: colors.gold }} />
           </div>
 
           <h2 style={{
             margin: 0,
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: fonts.serif,
             fontSize: 'clamp(2.4rem, 4vw, 3.7rem)',
             fontWeight: 400, color: '#fff', lineHeight: 1.1,
           }}>
             Premium{' '}
-            <span style={{ fontStyle: 'italic', color: '#C9A84C' }}>
+            <span style={{ fontStyle: 'italic', color: colors.gold }}>
               Wholesale Products
             </span>
           </h2>
 
           <p style={{
             marginTop: '1rem',
-            fontFamily: "'Montserrat', sans-serif",
+            fontFamily: fonts.sans,
             fontSize: '0.9rem', color: 'rgba(255,255,255,0.55)',
             lineHeight: 1.8, maxWidth: '520px', margin: '1rem auto 0',
           }}>
@@ -120,10 +120,10 @@ function Products() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ ...transition, delay: index * 0.12 }}
-              whileHover={{ y: -8, boxShadow: '0 30px 60px -20px rgba(201,168,76,0.2)' }}
+              whileHover={{ y: -8, boxShadow: '0 30px 60px -20px rgba(209,165,80,0.2)' }}
               style={{
                 position: 'relative',
-                border: '1px solid rgba(201,168,76,0.18)',
+                border: '1px solid rgba(209,165,80,0.18)',
                 background: 'linear-gradient(160deg, rgba(16,31,72,0.7) 0%, rgba(7,12,26,0.9) 100%)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -140,7 +140,7 @@ function Products() {
                 transition={{ duration: 0.8, delay: index * 0.12 + 0.3 }}
                 style={{
                   position: 'absolute', top: 0, left: 0, right: 0, height: '2px',
-                  background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+                  background: 'linear-gradient(90deg, transparent, #D1A550, transparent)',
                   transformOrigin: 'left',
                 }}
               />
@@ -154,7 +154,7 @@ function Products() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                borderBottom: '1px solid rgba(201,168,76,0.12)',
+                borderBottom: '1px solid rgba(209,165,80,0.12)',
                 overflow: 'hidden',
               }}>
                 {/* Diagonal pattern */}
@@ -162,8 +162,8 @@ function Products() {
                   position: 'absolute', inset: 0,
                   backgroundImage: `repeating-linear-gradient(
                     45deg,
-                    rgba(201,168,76,0.03) 0px,
-                    rgba(201,168,76,0.03) 1px,
+                    rgba(209,165,80,0.03) 0px,
+                    rgba(209,165,80,0.03) 1px,
                     transparent 1px,
                     transparent 36px
                   )`,
@@ -173,21 +173,21 @@ function Products() {
                 <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
                   <div style={{
                     width: '64px', height: '64px', borderRadius: '50%',
-                    border: '1px solid rgba(201,168,76,0.25)',
+                    border: '1px solid rgba(209,165,80,0.25)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     margin: '0 auto 0.8rem',
-                    background: 'rgba(201,168,76,0.05)',
+                    background: 'rgba(209,165,80,0.05)',
                   }}>
                     <div style={{
                       width: '24px', height: '24px', borderRadius: '50%',
-                      border: '1px solid rgba(201,168,76,0.4)',
-                      background: 'rgba(201,168,76,0.1)',
+                      border: '1px solid rgba(209,165,80,0.4)',
+                      background: 'rgba(209,165,80,0.1)',
                     }} />
                   </div>
                   <p style={{
-                    margin: 0, fontFamily: "'Montserrat', sans-serif",
+                    margin: 0, fontFamily: fonts.sans,
                     fontSize: '0.58rem', letterSpacing: '0.22em',
-                    color: 'rgba(201,168,76,0.4)', textTransform: 'uppercase',
+                    color: 'rgba(209,165,80,0.4)', textTransform: 'uppercase',
                   }}>
                     Image Coming Soon
                   </p>
@@ -196,15 +196,15 @@ function Products() {
                 {/* Tag badge */}
                 <div style={{
                   position: 'absolute', top: '1rem', left: '1rem',
-                  border: '1px solid rgba(201,168,76,0.4)',
+                  border: '1px solid rgba(209,165,80,0.4)',
                   background: 'rgba(7,12,26,0.85)',
                   padding: '0.3rem 0.7rem',
                   backdropFilter: 'blur(6px)',
                 }}>
                   <span style={{
-                    fontFamily: "'Montserrat', sans-serif",
+                    fontFamily: fonts.sans,
                     fontSize: '0.6rem', letterSpacing: '0.18em',
-                    color: '#E8D5A3', textTransform: 'uppercase',
+                    color: colors.goldLight, textTransform: 'uppercase',
                   }}>
                     {item.tag}
                   </span>
@@ -216,9 +216,9 @@ function Products() {
                 {/* Purity */}
                 <p style={{
                   margin: '0 0 0.6rem',
-                  fontFamily: "'Montserrat', sans-serif",
+                  fontFamily: fonts.sans,
                   fontSize: '0.65rem', letterSpacing: '0.2em',
-                  color: '#C9A84C', textTransform: 'uppercase',
+                  color: colors.gold, textTransform: 'uppercase',
                 }}>
                   {item.purity}
                 </p>
@@ -226,7 +226,7 @@ function Products() {
                 {/* Title */}
                 <h3 style={{
                   margin: '0 0 0.7rem',
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: fonts.serif,
                   fontSize: '1.75rem', fontWeight: 500,
                   color: '#fff', lineHeight: 1.15,
                 }}>
@@ -236,7 +236,7 @@ function Products() {
                 {/* Divider */}
                 <div style={{
                   width: '40px', height: '1px',
-                  background: 'linear-gradient(90deg, #C9A84C, transparent)',
+                  background: 'linear-gradient(90deg, #D1A550, transparent)',
                   marginBottom: '0.9rem',
                 }} />
 
@@ -244,7 +244,7 @@ function Products() {
                 <p style={{
                   margin: '0 0 1.5rem',
                   color: 'rgba(255,255,255,0.52)',
-                  fontFamily: "'Montserrat', sans-serif",
+                  fontFamily: fonts.sans,
                   fontSize: '0.82rem', lineHeight: 1.8,
                   flex: 1,
                 }}>
@@ -255,12 +255,12 @@ function Products() {
                 <div style={{
                   display: 'flex', alignItems: 'center',
                   justifyContent: 'space-between', gap: '1rem',
-                  borderTop: '1px solid rgba(201,168,76,0.12)',
+                  borderTop: '1px solid rgba(209,165,80,0.12)',
                   paddingTop: '1.2rem',
                 }}>
                   <div>
                     <p style={{
-                      margin: 0, fontFamily: "'Montserrat', sans-serif",
+                      margin: 0, fontFamily: fonts.sans,
                       fontSize: '0.55rem', letterSpacing: '0.18em',
                       color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase',
                       marginBottom: '0.2rem',
@@ -269,8 +269,8 @@ function Products() {
                     </p>
                     <p style={{
                       margin: 0,
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontSize: '1.6rem', color: '#E8D5A3', lineHeight: 1,
+                      fontFamily: fonts.serif,
+                      fontSize: '1.6rem', color: colors.goldLight, lineHeight: 1,
                     }}>
                       {item.price}
                     </p>
@@ -278,15 +278,15 @@ function Products() {
 
                   <motion.button
                     whileHover={{
-                      backgroundColor: '#E8D5A3',
-                      boxShadow: '0 8px 24px -8px rgba(201,168,76,0.5)',
+                      backgroundColor: colors.goldLight,
+                      boxShadow: '0 8px 24px -8px rgba(209,165,80,0.5)',
                     }}
                     whileTap={{ scale: 0.97 }}
                     style={{
-                      backgroundColor: '#C9A84C',
+                      backgroundColor: colors.gold,
                       border: 'none',
-                      color: '#070C1A',
-                      fontFamily: "'Montserrat', sans-serif",
+                      color: colors.bg,
+                      fontFamily: fonts.sans,
                       fontWeight: 700,
                       letterSpacing: '0.16em',
                       textTransform: 'uppercase',
@@ -314,17 +314,17 @@ function Products() {
           style={{
             marginTop: '3.5rem', textAlign: 'center',
             padding: '2rem',
-            border: '1px solid rgba(201,168,76,0.12)',
-            background: 'rgba(201,168,76,0.03)',
+            border: '1px solid rgba(209,165,80,0.12)',
+            background: 'rgba(209,165,80,0.03)',
           }}
         >
           <p style={{
-            margin: 0, fontFamily: "'Montserrat', sans-serif",
+            margin: 0, fontFamily: fonts.sans,
             fontSize: '0.8rem', color: 'rgba(255,255,255,0.45)',
             letterSpacing: '0.08em', lineHeight: 1.8,
           }}>
             All prices are indicative and subject to live market rates.{' '}
-            <span style={{ color: '#C9A84C' }}>Contact us for verified B2B pricing.</span>
+            <span style={{ color: colors.gold }}>Contact us for verified B2B pricing.</span>
           </p>
         </motion.div>
 
