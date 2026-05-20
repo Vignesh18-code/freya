@@ -156,7 +156,7 @@ function Particles() {
 
 // ─── 3D Gold Bar ─────────────────────────────────────────────────────────────
 function GoldBar({ mouse }) {
-  const { scene } = useGLTF('/src/assets/models/goldbar.glb')
+  const { scene } = useGLTF('/models/goldbar.glb')
   const ref = useRef()
 
   useMemo(() => {
