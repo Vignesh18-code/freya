@@ -1,26 +1,28 @@
 import { useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { colors, fonts, ease } from '../theme'
 
 // ── Paste your Web3Forms key here (web3forms.com → enter email → get key) ──
 const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY'
 // ────────────────────────────────────────────────────────────────────────────
 
 const contactItems = [
-  { icon: 'fa-phone',        label: 'Phone',   value: '+971 50 XXX XXXX' },
-  { icon: 'fa-envelope',     label: 'Email',   value: 'advisory@freyajewels.com' },
-  { icon: 'fa-location-dot', label: 'Address', value: 'DMCC, Jumeirah Lakes Towers, Dubai, UAE' },
-  { icon: 'fa-clock',        label: 'Hours',   value: 'Mon – Sat · 09:00 to 19:00 GST' },
+  { icon: 'fa-phone',        label: 'Sales',    value: '+852 6375 1595' },
+  { icon: 'fa-phone',        label: 'Director', value: '+852 6427 8999' },
+  { icon: 'fa-envelope',     label: 'Email',    value: 'sales@freyatrading.com' },
+  { icon: 'fa-location-dot', label: 'Address',  value: 'Freya Trading (HK) Ltd., Hong Kong' },
+  { icon: 'fa-clock',        label: 'Hours',    value: 'Mon – Sat · 09:00 to 19:00 HKT' },
 ]
 
-const EASE = [0.22, 1, 0.36, 1]
-const T    = { duration: 0.9, ease: EASE }
+const EASE = ease.smooth
+const T    = ease.transition
 
 const inputBase = {
   width: '100%',
   backgroundColor: 'rgba(7,12,26,0.9)',
-  border: '1px solid rgba(201,168,76,0.2)',
+  border: '1px solid rgba(209,165,80,0.2)',
   color: '#fff',
-  fontFamily: "'Montserrat', sans-serif",
+  fontFamily: fonts.sans,
   fontSize: '0.83rem',
   padding: '0.85rem 1rem',
   outline: 'none',
@@ -94,15 +96,15 @@ export default function ContactSection() {
 
   const borderColor = (name) => {
     if (errors[name])   return 'rgba(220,80,80,0.7)'
-    if (focused===name) return 'rgba(201,168,76,0.7)'
-    return 'rgba(201,168,76,0.2)'
+    if (focused===name) return 'rgba(209,165,80,0.7)'
+    return 'rgba(209,165,80,0.2)'
   }
 
   return (
     <section
       id="contact"
       style={{
-        backgroundColor: '#070C1A',
+        backgroundColor: colors.bg,
         color: '#fff',
         padding: '8rem 1.5rem',
         position: 'relative',
@@ -110,8 +112,8 @@ export default function ContactSection() {
       }}
     >
       {/* glow blobs */}
-      <div style={{ position:'absolute', top:'10%', left:'-10%', width:'500px', height:'500px', borderRadius:'50%', background:'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)', filter:'blur(80px)', pointerEvents:'none' }} />
-      <div style={{ position:'absolute', bottom:'5%', right:'-10%', width:'400px', height:'400px', borderRadius:'50%', background:'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)', filter:'blur(80px)', pointerEvents:'none' }} />
+      <div style={{ position:'absolute', top:'10%', left:'-10%', width:'500px', height:'500px', borderRadius:'50%', background:'radial-gradient(circle, rgba(209,165,80,0.05) 0%, transparent 70%)', filter:'blur(80px)', pointerEvents:'none' }} />
+      <div style={{ position:'absolute', bottom:'5%', right:'-10%', width:'400px', height:'400px', borderRadius:'50%', background:'radial-gradient(circle, rgba(209,165,80,0.04) 0%, transparent 70%)', filter:'blur(80px)', pointerEvents:'none' }} />
 
       <div style={{ maxWidth:'1280px', margin:'0 auto', position:'relative', zIndex:1 }}>
 
@@ -124,17 +126,17 @@ export default function ContactSection() {
           style={{ textAlign:'center', marginBottom:'4rem' }}
         >
           <div style={{ display:'inline-flex', alignItems:'center', gap:'0.75rem', marginBottom:'1.2rem' }}>
-            <span style={{ width:'40px', height:'1px', backgroundColor:'#C9A84C' }} />
-            <span style={{ fontFamily:"'Montserrat', sans-serif", color:'#C9A84C', fontSize:'0.7rem', letterSpacing:'0.28em', textTransform:'uppercase' }}>
+            <span style={{ width:'40px', height:'1px', backgroundColor:colors.gold }} />
+            <span style={{ fontFamily:fonts.sans, color:colors.gold, fontSize:'0.7rem', letterSpacing:'0.28em', textTransform:'uppercase' }}>
               Contact Us
             </span>
-            <span style={{ width:'40px', height:'1px', backgroundColor:'#C9A84C' }} />
+            <span style={{ width:'40px', height:'1px', backgroundColor:colors.gold }} />
           </div>
-          <h2 style={{ margin:0, fontFamily:"'Cormorant Garamond', serif", fontSize:'clamp(2.2rem, 4vw, 3.6rem)', fontWeight:400, lineHeight:1.15 }}>
+          <h2 style={{ margin:0, fontFamily:fonts.serif, fontSize:'clamp(2.2rem, 4vw, 3.6rem)', fontWeight:400, lineHeight:1.15 }}>
             Let&apos;s Talk{' '}
-            <span style={{ fontStyle:'italic', color:'#C9A84C' }}>Business</span>
+            <span style={{ fontStyle:'italic', color:colors.gold }}>Business</span>
           </h2>
-          <p style={{ margin:'1rem auto 0', maxWidth:'500px', color:'rgba(255,255,255,0.5)', fontFamily:"'Montserrat', sans-serif", fontSize:'0.88rem', lineHeight:1.8 }}>
+          <p style={{ margin:'1rem auto 0', maxWidth:'500px', color:'rgba(255,255,255,0.5)', fontFamily:fonts.sans, fontSize:'0.88rem', lineHeight:1.8 }}>
             Whether you are sourcing wholesale bullion, certified jewellery, or require a custom volume allocation — our B2B desk is ready.
           </p>
         </motion.div>
@@ -154,10 +156,10 @@ export default function ContactSection() {
             viewport={{ once:true, margin:'-60px' }}
             transition={T}
           >
-            <h3 style={{ margin:'0 0 0.6rem', fontFamily:"'Cormorant Garamond', serif", fontSize:'2rem', fontWeight:400 }}>
+            <h3 style={{ margin:'0 0 0.6rem', fontFamily:fonts.serif, fontSize:'2rem', fontWeight:400 }}>
               Get In Touch
             </h3>
-            <p style={{ margin:'0 0 2rem', color:'rgba(255,255,255,0.5)', fontFamily:"'Montserrat', sans-serif", fontSize:'0.83rem', lineHeight:1.85 }}>
+            <p style={{ margin:'0 0 2rem', color:'rgba(255,255,255,0.5)', fontFamily:fonts.sans, fontSize:'0.83rem', lineHeight:1.85 }}>
               Reach out via the form or contact us directly. Our advisory team responds within 4 business hours.
             </p>
 
@@ -171,27 +173,27 @@ export default function ContactSection() {
                   transition={{ ...T, delay: i * 0.08 }}
                   style={{
                     display:'flex', gap:'1rem', alignItems:'flex-start',
-                    border:'1px solid rgba(201,168,76,0.15)',
+                    border:'1px solid rgba(209,165,80,0.15)',
                     background:'linear-gradient(135deg, rgba(255,255,255,0.03), rgba(7,12,26,0.8))',
                     padding:'1rem 1.1rem',
                     position:'relative', overflow:'hidden',
                   }}
                 >
-                  <div style={{ position:'absolute', left:0, top:0, bottom:0, width:'2px', background:'linear-gradient(180deg, transparent, #C9A84C, transparent)' }} />
+                  <div style={{ position:'absolute', left:0, top:0, bottom:0, width:'2px', background:'linear-gradient(180deg, transparent, #D1A550, transparent)' }} />
                   <div style={{
                     width:'42px', height:'42px', flexShrink:0,
-                    border:'1px solid rgba(201,168,76,0.3)',
-                    background:'linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.03))',
+                    border:'1px solid rgba(209,165,80,0.3)',
+                    background:'linear-gradient(135deg, rgba(209,165,80,0.15), rgba(209,165,80,0.03))',
                     display:'flex', alignItems:'center', justifyContent:'center',
-                    color:'#C9A84C', fontSize:'0.9rem',
+                    color:colors.gold, fontSize:'0.9rem',
                   }}>
                     <i className={`fas ${item.icon}`} />
                   </div>
                   <div>
-                    <p style={{ margin:0, fontFamily:"'Montserrat', sans-serif", letterSpacing:'0.16em', textTransform:'uppercase', fontSize:'0.6rem', color:'rgba(201,168,76,0.7)', marginBottom:'0.25rem' }}>
+                    <p style={{ margin:0, fontFamily:fonts.sans, letterSpacing:'0.16em', textTransform:'uppercase', fontSize:'0.6rem', color:'rgba(209,165,80,0.7)', marginBottom:'0.25rem' }}>
                       {item.label}
                     </p>
-                    <p style={{ margin:0, color:'rgba(255,255,255,0.8)', fontFamily:"'Montserrat', sans-serif", fontSize:'0.82rem', lineHeight:1.6 }}>
+                    <p style={{ margin:0, color:'rgba(255,255,255,0.8)', fontFamily:fonts.sans, fontSize:'0.82rem', lineHeight:1.6 }}>
                       {item.value}
                     </p>
                   </div>
@@ -208,14 +210,14 @@ export default function ContactSection() {
             transition={{ ...T, delay:0.15 }}
             style={{
               position:'relative',
-              border:'1px solid rgba(201,168,76,0.18)',
+              border:'1px solid rgba(209,165,80,0.18)',
               background:'linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(7,12,26,0.7) 100%)',
               padding:'2.2rem',
               overflow:'hidden',
             }}
           >
             {/* shimmer top */}
-            <div style={{ position:'absolute', top:0, left:0, right:0, height:'2px', background:'linear-gradient(90deg, transparent, #C9A84C, transparent)' }} />
+            <div style={{ position:'absolute', top:0, left:0, right:0, height:'2px', background:'linear-gradient(90deg, transparent, #D1A550, transparent)' }} />
 
             <AnimatePresence mode="wait">
 
@@ -231,24 +233,24 @@ export default function ContactSection() {
                 >
                   <div style={{
                     width:'64px', height:'64px', borderRadius:'50%',
-                    border:'1px solid rgba(201,168,76,0.5)',
-                    background:'rgba(201,168,76,0.1)',
+                    border:'1px solid rgba(209,165,80,0.5)',
+                    background:'rgba(209,165,80,0.1)',
                     display:'flex', alignItems:'center', justifyContent:'center',
-                    margin:'0 auto 1.5rem', fontSize:'1.4rem', color:'#C9A84C',
+                    margin:'0 auto 1.5rem', fontSize:'1.4rem', color:colors.gold,
                   }}>
                     <i className="fas fa-check" />
                   </div>
-                  <h3 style={{ margin:'0 0 0.6rem', fontFamily:"'Cormorant Garamond', serif", fontSize:'1.9rem', fontWeight:400 }}>
+                  <h3 style={{ margin:'0 0 0.6rem', fontFamily:fonts.serif, fontSize:'1.9rem', fontWeight:400 }}>
                     Enquiry Sent
                   </h3>
-                  <p style={{ margin:'0 0 2rem', color:'rgba(255,255,255,0.5)', fontFamily:"'Montserrat', sans-serif", fontSize:'0.82rem', lineHeight:1.8 }}>
+                  <p style={{ margin:'0 0 2rem', color:'rgba(255,255,255,0.5)', fontFamily:fonts.sans, fontSize:'0.82rem', lineHeight:1.8 }}>
                     Thank you for reaching out. Our advisory team will respond within 4 business hours.
                   </p>
                   <button
                     onClick={() => setStatus('idle')}
                     style={{
-                      border:'1px solid rgba(201,168,76,0.4)', background:'transparent',
-                      color:'#C9A84C', fontFamily:"'Montserrat', sans-serif",
+                      border:'1px solid rgba(209,165,80,0.4)', background:'transparent',
+                      color:colors.gold, fontFamily:fonts.sans,
                       fontSize:'0.68rem', letterSpacing:'0.16em', textTransform:'uppercase',
                       padding:'0.7rem 1.8rem', cursor:'pointer',
                     }}
@@ -283,7 +285,7 @@ export default function ContactSection() {
 
                   {/* Subject */}
                   <div>
-                    <label style={{ display:'block', fontFamily:"'Montserrat', sans-serif", fontSize:'0.65rem', letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(201,168,76,0.8)', marginBottom:'0.4rem' }}>
+                    <label style={{ display:'block', fontFamily:fonts.sans, fontSize:'0.65rem', letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(209,165,80,0.8)', marginBottom:'0.4rem' }}>
                       Subject *
                     </label>
                     <select
@@ -315,7 +317,7 @@ export default function ContactSection() {
 
                   {/* Message */}
                   <div>
-                    <label style={{ display:'block', fontFamily:"'Montserrat', sans-serif", fontSize:'0.65rem', letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(201,168,76,0.8)', marginBottom:'0.4rem' }}>
+                    <label style={{ display:'block', fontFamily:fonts.sans, fontSize:'0.65rem', letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(209,165,80,0.8)', marginBottom:'0.4rem' }}>
                       Message *
                     </label>
                     <textarea
@@ -333,7 +335,7 @@ export default function ContactSection() {
 
                   {/* Error banner */}
                   {status === 'error' && (
-                    <div style={{ border:'1px solid rgba(220,80,80,0.4)', background:'rgba(220,80,80,0.08)', padding:'0.75rem 1rem', fontFamily:"'Montserrat', sans-serif", fontSize:'0.75rem', color:'rgba(255,120,120,0.9)', display:'flex', alignItems:'center', gap:'0.5rem' }}>
+                    <div style={{ border:'1px solid rgba(220,80,80,0.4)', background:'rgba(220,80,80,0.08)', padding:'0.75rem 1rem', fontFamily:fonts.sans, fontSize:'0.75rem', color:'rgba(255,120,120,0.9)', display:'flex', alignItems:'center', gap:'0.5rem' }}>
                       <i className="fas fa-circle-exclamation" />
                       Something went wrong. Please try again or email us directly.
                     </div>
@@ -343,12 +345,12 @@ export default function ContactSection() {
                   <motion.button
                     type="submit"
                     disabled={status === 'sending'}
-                    whileHover={status !== 'sending' ? { backgroundColor:'#E8D5A3', boxShadow:'0 12px 32px -10px rgba(201,168,76,0.5)' } : {}}
+                    whileHover={status !== 'sending' ? { backgroundColor:colors.goldLight, boxShadow:'0 12px 32px -10px rgba(209,165,80,0.5)' } : {}}
                     whileTap={status !== 'sending' ? { scale:0.98 } : {}}
                     style={{
-                      backgroundColor: status === 'sending' ? 'rgba(201,168,76,0.5)' : '#C9A84C',
-                      color:'#070C1A', border:'none',
-                      fontFamily:"'Montserrat', sans-serif",
+                      backgroundColor: status === 'sending' ? 'rgba(209,165,80,0.5)' : colors.gold,
+                      color:colors.bg, border:'none',
+                      fontFamily:fonts.sans,
                       fontWeight:700, letterSpacing:'0.16em',
                       textTransform:'uppercase', fontSize:'0.72rem',
                       padding:'1rem', cursor: status==='sending' ? 'not-allowed' : 'pointer',
@@ -363,7 +365,7 @@ export default function ContactSection() {
                     )}
                   </motion.button>
 
-                  <p style={{ margin:0, textAlign:'center', fontFamily:"'Montserrat', sans-serif", fontSize:'0.62rem', color:'rgba(255,255,255,0.28)', letterSpacing:'0.08em' }}>
+                  <p style={{ margin:0, textAlign:'center', fontFamily:fonts.sans, fontSize:'0.62rem', color:'rgba(255,255,255,0.28)', letterSpacing:'0.08em' }}>
                     Your information is encrypted and never shared with third parties.
                   </p>
                 </motion.form>
@@ -379,7 +381,7 @@ export default function ContactSection() {
 function Field({ label, name, type, placeholder, value, error, onChange, onFocus, onBlur, borderColor }) {
   return (
     <div>
-      <label style={{ display:'block', fontFamily:"'Montserrat', sans-serif", fontSize:'0.65rem', letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(201,168,76,0.8)', marginBottom:'0.4rem' }}>
+      <label style={{ display:'block', fontFamily:fonts.sans, fontSize:'0.65rem', letterSpacing:'0.16em', textTransform:'uppercase', color:'rgba(209,165,80,0.8)', marginBottom:'0.4rem' }}>
         {label}
       </label>
       <input type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} onFocus={onFocus} onBlur={onBlur} style={{ ...inputBase, borderColor }} autoComplete="off" />
@@ -390,7 +392,7 @@ function Field({ label, name, type, placeholder, value, error, onChange, onFocus
 
 function ErrorMsg({ msg }) {
   return (
-    <p style={{ margin:'0.3rem 0 0', fontFamily:"'Montserrat', sans-serif", fontSize:'0.65rem', color:'rgba(220,100,100,0.9)', letterSpacing:'0.04em' }}>
+    <p style={{ margin:'0.3rem 0 0', fontFamily:fonts.sans, fontSize:'0.65rem', color:'rgba(220,100,100,0.9)', letterSpacing:'0.04em' }}>
       <i className="fas fa-triangle-exclamation" style={{ marginRight:'0.3rem' }} />
       {msg}
     </p>

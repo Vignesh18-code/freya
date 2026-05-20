@@ -2,6 +2,7 @@ import { useRef, Suspense, useEffect, useState, useMemo } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Environment } from '@react-three/drei'
+import { colors, fonts, ease } from '../theme'
 
 // ─── Content — edit here only ───────────────────────────────────────────────
 const HERO_TAG = 'DIRECT REFINERY SUPPLY | UAE • INDIA • SINGAPORE • HK • BAHRAIN'
@@ -27,7 +28,7 @@ function lerp(a, b, t) {
   return a + (b - a) * t
 }
 
-const EASE = [0.22, 1, 0.36, 1]
+const EASE = ease.smooth
 
 const containerVariants = {
   hidden: {},
@@ -85,7 +86,7 @@ function AmbientGlow() {
           right: '5%',
           width: '600px',
           height: '600px',
-          background: 'radial-gradient(circle, rgba(201,168,76,0.12) 0%, rgba(16,31,72,0) 70%)',
+          background: 'radial-gradient(circle, rgba(209,165,80,0.12) 0%, rgba(0,25,53,0) 70%)',
           borderRadius: '50%',
           filter: 'blur(60px)',
           pointerEvents: 'none',
@@ -99,7 +100,7 @@ function AmbientGlow() {
           left: '-10%',
           width: '500px',
           height: '500px',
-          background: 'radial-gradient(circle, rgba(201,168,76,0.08) 0%, rgba(16,31,72,0) 70%)',
+          background: 'radial-gradient(circle, rgba(209,165,80,0.08) 0%, rgba(0,25,53,0) 70%)',
           borderRadius: '50%',
           filter: 'blur(80px)',
           pointerEvents: 'none',
@@ -137,7 +138,7 @@ function Particles() {
             width: p.size,
             height: p.size,
             borderRadius: '50%',
-            backgroundColor: '#E8D5A3',
+            backgroundColor: colors.goldLight,
             opacity: p.opacity,
             boxShadow: `0 0 ${p.size * 2}px rgba(232, 213, 163, 0.8)`,
           }}
@@ -255,7 +256,7 @@ export default function Hero() {
       style={{
         position: 'relative',
         minHeight: '100vh',
-        backgroundColor: '#070C1A',
+        backgroundColor: colors.bg,
         display: 'flex',
         alignItems: 'center',
         paddingTop: isMobile ? '90px' : '0',
@@ -299,7 +300,7 @@ export default function Hero() {
             top: '0',
             bottom: '0',
             width: '1px',
-            backgroundColor: 'rgba(201,168,76,0.15)',
+            backgroundColor: 'rgba(209,165,80,0.15)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -313,10 +314,10 @@ export default function Hero() {
             style={{
               transform: 'rotate(-90deg)',
               whiteSpace: 'nowrap',
-              fontFamily: "'Montserrat', sans-serif",
+              fontFamily: fonts.sans,
               fontSize: '0.65rem',
               letterSpacing: '0.3em',
-              color: '#C9A84C',
+              color: colors.gold,
               textTransform: 'uppercase',
             }}
           >
@@ -368,11 +369,11 @@ export default function Hero() {
               justifyContent: isMobile ? 'center' : 'flex-start',
             }}
           >
-            <span style={{ display: 'block', width: '40px', height: '1px', backgroundColor: '#C9A84C', flexShrink: 0 }} />
+            <span style={{ display: 'block', width: '40px', height: '1px', backgroundColor: colors.gold, flexShrink: 0 }} />
             <span
               style={{
-                color: '#C9A84C',
-                fontFamily: "'Montserrat', sans-serif",
+                color: colors.gold,
+                fontFamily: fonts.sans,
                 fontSize: isMobile ? '0.58rem' : '0.7rem',
                 letterSpacing: '0.2em',
                 fontWeight: 500,
@@ -388,8 +389,8 @@ export default function Hero() {
           <motion.div variants={itemVariants} style={{ marginBottom: '1.2rem' }}>
             <h1
               style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                color: '#FFFFFF',
+                fontFamily: fonts.serif,
+                color: colors.white,
                 fontSize: headingSize,
                 lineHeight: 1.05,
                 margin: 0,
@@ -397,7 +398,7 @@ export default function Hero() {
               }}
             >
               {HERO_HEADING_LINE1}{' '}
-              <span style={{ fontStyle: 'italic', color: '#C9A84C', fontWeight: 300 }}>
+              <span style={{ fontStyle: 'italic', color: colors.gold, fontWeight: 300 }}>
                 {HERO_HEADING_LINE1_ITALIC}
               </span>
               <br />
@@ -410,7 +411,7 @@ export default function Hero() {
             variants={itemVariants}
             style={{
               color: 'rgba(255,255,255,0.7)',
-              fontFamily: "'Montserrat', sans-serif",
+              fontFamily: fonts.sans,
               fontWeight: 300,
               lineHeight: 1.8,
               fontSize: isMobile ? '0.88rem' : '1rem',
@@ -432,12 +433,12 @@ export default function Hero() {
             }}
           >
             <motion.button
-              whileHover={{ scale: 1.02, backgroundColor: '#E8D5A3', boxShadow: '0 10px 30px -10px rgba(201,168,76,0.5)' }}
+              whileHover={{ scale: 1.02, backgroundColor: colors.goldLight, boxShadow: '0 10px 30px -10px rgba(209,165,80,0.5)' }}
               whileTap={{ scale: 0.98 }}
               style={{
-                backgroundColor: '#C9A84C',
-                color: '#101F48',
-                fontFamily: "'Montserrat', sans-serif",
+                backgroundColor: colors.gold,
+                color: colors.bg,
+                fontFamily: fonts.sans,
                 fontWeight: 600,
                 fontSize: '0.78rem',
                 letterSpacing: '0.15em',
@@ -452,18 +453,18 @@ export default function Hero() {
             </motion.button>
 
             <motion.button
-              whileHover={{ backgroundColor: 'rgba(201,168,76,0.1)', color: '#E8D5A3' }}
+              whileHover={{ backgroundColor: 'rgba(209,165,80,0.1)', color: colors.goldLight }}
               whileTap={{ scale: 0.98 }}
               style={{
                 backgroundColor: 'transparent',
-                color: '#C9A84C',
-                fontFamily: "'Montserrat', sans-serif",
+                color: colors.gold,
+                fontFamily: fonts.sans,
                 fontWeight: 500,
                 fontSize: '0.78rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
                 padding: isMobile ? '0.85rem 2rem' : '1rem 2.5rem',
-                border: '1px solid rgba(201,168,76,0.4)',
+                border: '1px solid rgba(209,165,80,0.4)',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
               }}

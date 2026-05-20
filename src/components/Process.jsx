@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { colors, fonts, ease } from '../theme'
 
 const steps = [
   {
@@ -32,8 +33,8 @@ const steps = [
   },
 ]
 
-const EASE = [0.22, 1, 0.36, 1]
-const T = { duration: 0.9, ease: EASE }
+const EASE = ease.smooth
+const T = ease.transition
 
 /* ─── reusable shimmer bar ─────────────────────────────────── */
 function ShimmerLine({ delay = 0 }) {
@@ -45,7 +46,7 @@ function ShimmerLine({ delay = 0 }) {
       transition={{ duration: 0.8, ease: EASE, delay }}
       style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: '2px',
-        background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+        background: 'linear-gradient(90deg, transparent, #D1A550, transparent)',
         transformOrigin: 'left',
       }}
     />
@@ -69,7 +70,7 @@ export default function Process() {
     <section
       id="process"
       style={{
-        backgroundColor: '#070C1A',
+        backgroundColor: colors.bg,
         color: '#fff',
         padding: '8rem 1.5rem',
         position: 'relative',
@@ -80,13 +81,13 @@ export default function Process() {
       <div style={{
         position: 'absolute', top: '10%', left: '-10%',
         width: '600px', height: '600px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(209,165,80,0.05) 0%, transparent 70%)',
         filter: 'blur(80px)', pointerEvents: 'none',
       }} />
       <div style={{
         position: 'absolute', bottom: '5%', right: '-10%',
         width: '500px', height: '500px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(209,165,80,0.04) 0%, transparent 70%)',
         filter: 'blur(80px)', pointerEvents: 'none',
       }} />
 
@@ -104,20 +105,20 @@ export default function Process() {
             display: 'inline-flex', alignItems: 'center',
             gap: '0.75rem', marginBottom: '1.2rem',
           }}>
-            <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+            <span style={{ width: '40px', height: '1px', backgroundColor: colors.gold }} />
             <span style={{
-              fontFamily: "'Montserrat', sans-serif", color: '#C9A84C',
+              fontFamily: fonts.sans, color: colors.gold,
               fontSize: '0.7rem', letterSpacing: '0.28em', textTransform: 'uppercase',
             }}>
               How It Works
             </span>
-            <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+            <span style={{ width: '40px', height: '1px', backgroundColor: colors.gold }} />
           </div>
 
           <h2
   style={{
     margin: 0,
-    fontFamily: "'Cormorant Garamond', serif",
+    fontFamily: fonts.serif,
     fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
     fontWeight: 400,
     lineHeight: 1.08,
@@ -127,7 +128,7 @@ export default function Process() {
   Simple{' '}
   <span
     style={{
-      color: '#C9A84C',
+      color: colors.gold,
       display: 'inline-flex',
       alignItems: 'baseline',
       gap: '0.06em',
@@ -144,7 +145,7 @@ export default function Process() {
           <p style={{
             margin: '1rem auto 0', maxWidth: '500px',
             color: 'rgba(255,255,255,0.5)',
-            fontFamily: "'Montserrat', sans-serif",
+            fontFamily: fonts.sans,
             fontSize: '0.9rem', lineHeight: 1.8,
           }}>
             Streamlined B2B trading from initial corporate inquiry to secure global fulfilment.
@@ -170,7 +171,7 @@ export default function Process() {
                 left: '12.5%',
                 right: '12.5%',
                 height: '1px',
-                background: 'linear-gradient(90deg, rgba(201,168,76,0.2), #C9A84C 30%, #C9A84C 70%, rgba(201,168,76,0.2))',
+                background: 'linear-gradient(90deg, rgba(209,165,80,0.2), #D1A550 30%, #D1A550 70%, rgba(209,165,80,0.2))',
                 transformOrigin: 'left',
                 /* z-index LOWER than circles */
                 zIndex: 0,
@@ -203,7 +204,7 @@ export default function Process() {
                   <motion.div
                     whileHover={{
                       scale: 1.08,
-                      boxShadow: '0 0 0 10px rgba(201,168,76,0.07), 0 0 40px rgba(201,168,76,0.28)',
+                      boxShadow: '0 0 0 10px rgba(209,165,80,0.07), 0 0 40px rgba(209,165,80,0.28)',
                     }}
                     initial={{ scale: 0.5, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
@@ -214,13 +215,13 @@ export default function Process() {
                       width: `${D}px`,
                       height: `${D}px`,
                       borderRadius: '50%',
-                      border: '1px solid rgba(201,168,76,0.55)',
+                      border: '1px solid rgba(209,165,80,0.55)',
                       /*
                        * KEY FIX: solid #070C1A base + subtle radial highlight.
                        * No rgba() — fully opaque so the line behind is 100% hidden.
                        */
-                      backgroundColor: '#070C1A',
-                      backgroundImage: 'radial-gradient(circle at center, rgba(201,168,76,0.16) 0%, transparent 65%)',
+                      backgroundColor: colors.bg,
+                      backgroundImage: 'radial-gradient(circle at center, rgba(209,165,80,0.16) 0%, transparent 65%)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -229,7 +230,7 @@ export default function Process() {
                       cursor: 'default',
                       transition: 'box-shadow 0.4s ease',
                       /* no box-shadow blur that could show line bleed */
-                      boxShadow: '0 0 0 5px #070C1A',
+                      boxShadow: `0 0 0 5px ${colors.bg}`,
                     }}
                   >
                     {/* pulse ring */}
@@ -243,7 +244,7 @@ export default function Process() {
                         position: 'absolute',
                         inset: '-12px',
                         borderRadius: '50%',
-                        border: '1px solid rgba(201,168,76,0.18)',
+                        border: '1px solid rgba(209,165,80,0.18)',
                         pointerEvents: 'none',
                         /* also needs opaque bg gap so it doesn't reveal line */
                         backgroundColor: 'transparent',
@@ -251,9 +252,9 @@ export default function Process() {
                     />
 
                     <span style={{
-                      fontFamily: "'Montserrat', sans-serif",
+                      fontFamily: fonts.sans,
                       fontSize: '1rem', fontWeight: 500,
-                      color: '#E8D5A3', letterSpacing: '0.16em',
+                      color: colors.goldLight, letterSpacing: '0.16em',
                       lineHeight: 1,
                     }}>
                       {step.num}
@@ -285,15 +286,15 @@ export default function Process() {
                   flexShrink: 0,
                   width: '52px', height: '52px',
                   borderRadius: '50%',
-                  border: '1px solid rgba(201,168,76,0.5)',
-                  backgroundColor: '#070C1A',
-                  backgroundImage: 'radial-gradient(circle at center, rgba(201,168,76,0.16) 0%, transparent 65%)',
+                  border: '1px solid rgba(209,165,80,0.5)',
+                  backgroundColor: colors.bg,
+                  backgroundImage: 'radial-gradient(circle at center, rgba(209,165,80,0.16) 0%, transparent 65%)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   <span style={{
-                    fontFamily: "'Montserrat', sans-serif",
+                    fontFamily: fonts.sans,
                     fontSize: '0.82rem', fontWeight: 500,
-                    color: '#E8D5A3', letterSpacing: '0.12em',
+                    color: colors.goldLight, letterSpacing: '0.12em',
                   }}>
                     {step.num}
                   </span>
@@ -303,7 +304,7 @@ export default function Process() {
                 <div style={{
                   flex: 1,
                   position: 'relative',
-                  border: '1px solid rgba(201,168,76,0.15)',
+                  border: '1px solid rgba(209,165,80,0.15)',
                   background: 'linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(7,12,26,0.7) 100%)',
                   padding: '1.4rem 1.2rem 1.6rem',
                   overflow: 'hidden',
@@ -324,8 +325,8 @@ export default function Process() {
           transition={{ ...T, delay: 0.4 }}
           style={{
             marginTop: '4rem',
-            border: '1px solid rgba(201,168,76,0.12)',
-            background: 'rgba(201,168,76,0.03)',
+            border: '1px solid rgba(209,165,80,0.12)',
+            background: 'rgba(209,165,80,0.03)',
             padding: isMobile ? '1.5rem' : '2rem 2.5rem',
             display: 'flex',
             alignItems: 'center',
@@ -337,15 +338,15 @@ export default function Process() {
           <div>
             <p style={{
               margin: 0,
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: fonts.serif,
               fontSize: isMobile ? '1.3rem' : '1.6rem',
-              color: '#E8D5A3', fontWeight: 400,
+              color: colors.goldLight, fontWeight: 400,
             }}>
               Ready to start your first trade?
             </p>
             <p style={{
               margin: '0.3rem 0 0',
-              fontFamily: "'Montserrat', sans-serif",
+              fontFamily: fonts.sans,
               fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)',
               letterSpacing: '0.05em',
             }}>
@@ -355,15 +356,15 @@ export default function Process() {
 
           <motion.button
             whileHover={{
-              backgroundColor: '#E8D5A3',
-              boxShadow: '0 10px 30px -10px rgba(201,168,76,0.5)',
+              backgroundColor: colors.goldLight,
+              boxShadow: '0 10px 30px -10px rgba(209,165,80,0.5)',
             }}
             whileTap={{ scale: 0.97 }}
             style={{
-              backgroundColor: '#C9A84C',
+              backgroundColor: colors.gold,
               border: 'none',
-              color: '#070C1A',
-              fontFamily: "'Montserrat', sans-serif",
+              color: colors.bg,
+              fontFamily: fonts.sans,
               fontWeight: 700,
               fontSize: '0.72rem',
               letterSpacing: '0.18em',
@@ -393,9 +394,9 @@ export default function Process() {
           {['KYC Compliant', 'Bank-Grade Security', 'Fully Insured', 'DMCC Regulated'].map((badge) => (
             <span key={badge} style={{
               padding: '0.35rem 0.9rem',
-              border: '1px solid rgba(201,168,76,0.18)',
+              border: '1px solid rgba(209,165,80,0.18)',
               borderRadius: '50px',
-              fontFamily: "'Montserrat', sans-serif",
+              fontFamily: fonts.sans,
               fontSize: '0.65rem', letterSpacing: '0.14em',
               color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase',
             }}>
@@ -411,18 +412,17 @@ export default function Process() {
 
 /* ── Desktop card below circle ────────────────────────────── */
 function DesktopCard({ step, index }) {
-  const EASE = [0.22, 1, 0.36, 1]
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.7, ease: EASE, delay: index * 0.15 + 0.35 }}
-      whileHover={{ y: -6, boxShadow: '0 24px 50px -16px rgba(201,168,76,0.18)' }}
+      whileHover={{ y: -6, boxShadow: '0 24px 50px -16px rgba(209,165,80,0.18)' }}
       style={{
         position: 'relative',
         width: '100%',
-        border: '1px solid rgba(201,168,76,0.15)',
+        border: '1px solid rgba(209,165,80,0.15)',
         background: 'linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(7,12,26,0.6) 100%)',
         padding: '1.8rem 1.4rem 2rem',
         overflow: 'hidden',
@@ -435,9 +435,9 @@ function DesktopCard({ step, index }) {
       {/* ghost watermark */}
       <div style={{
         position: 'absolute', bottom: '-1rem', right: '0.4rem',
-        fontFamily: "'Cormorant Garamond', serif",
+        fontFamily: fonts.serif,
         fontSize: '5rem', fontWeight: 700,
-        color: 'rgba(201,168,76,0.05)',
+        color: 'rgba(209,165,80,0.05)',
         lineHeight: 1, pointerEvents: 'none', userSelect: 'none',
       }}>
         {step.num}
@@ -446,20 +446,20 @@ function DesktopCard({ step, index }) {
       {/* icon */}
       <div style={{
         width: '44px', height: '44px', borderRadius: '10px',
-        background: 'linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05))',
-        border: '1px solid rgba(201,168,76,0.3)',
+        background: 'linear-gradient(135deg, rgba(209,165,80,0.2), rgba(209,165,80,0.05))',
+        border: '1px solid rgba(209,165,80,0.3)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: '1rem', color: '#C9A84C',
+        fontSize: '1rem', color: colors.gold,
         margin: '0 auto 1.2rem',
-        boxShadow: '0 4px 16px rgba(201,168,76,0.1)',
+        boxShadow: '0 4px 16px rgba(209,165,80,0.1)',
       }}>
         <i className={`fas ${step.icon}`}
-          style={{ filter: 'drop-shadow(0 0 4px rgba(201,168,76,0.35))' }} />
+          style={{ filter: 'drop-shadow(0 0 4px rgba(209,165,80,0.35))' }} />
       </div>
 
       <h3 style={{
         margin: '0 0 0.6rem',
-        fontFamily: "'Cormorant Garamond', serif",
+        fontFamily: fonts.serif,
         fontSize: '1.5rem', fontWeight: 600,
         color: '#fff', lineHeight: 1.2,
       }}>
@@ -468,14 +468,14 @@ function DesktopCard({ step, index }) {
 
       <div style={{
         width: '28px', height: '1px',
-        background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+        background: 'linear-gradient(90deg, transparent, #D1A550, transparent)',
         margin: '0 auto 0.8rem',
       }} />
 
       <p style={{
         margin: 0,
         color: 'rgba(255,255,255,0.52)',
-        fontFamily: "'Montserrat', sans-serif",
+        fontFamily: fonts.sans,
         fontSize: '0.81rem', lineHeight: 1.8,
       }}>
         {step.text}
@@ -490,15 +490,15 @@ function MobileCardContent({ step }) {
     <>
       <p style={{
         margin: '0 0 0.4rem',
-        fontFamily: "'Montserrat', sans-serif",
+        fontFamily: fonts.sans,
         fontSize: '0.6rem', letterSpacing: '0.2em',
-        color: 'rgba(201,168,76,0.7)', textTransform: 'uppercase',
+        color: 'rgba(209,165,80,0.7)', textTransform: 'uppercase',
       }}>
         {step.tag}
       </p>
       <h3 style={{
         margin: '0 0 0.5rem',
-        fontFamily: "'Cormorant Garamond', serif",
+        fontFamily: fonts.serif,
         fontSize: '1.45rem', fontWeight: 600,
         color: '#fff', lineHeight: 1.2,
       }}>
@@ -507,7 +507,7 @@ function MobileCardContent({ step }) {
       <p style={{
         margin: 0,
         color: 'rgba(255,255,255,0.52)',
-        fontFamily: "'Montserrat', sans-serif",
+        fontFamily: fonts.sans,
         fontSize: '0.81rem', lineHeight: 1.8,
       }}>
         {step.text}

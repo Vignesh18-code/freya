@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { colors, fonts, ease } from '../theme'
 
 const reasons = [
   {
@@ -51,14 +52,14 @@ const reasons = [
   },
 ]
 
-const EASE = [0.22, 1, 0.36, 1]
+const EASE = ease.smooth
 
 function WhyUs() {
   return (
     <section
       id="why"
       style={{
-        backgroundColor: '#070C1A',
+        backgroundColor: colors.bg,
         color: '#fff',
         padding: '7rem 1.5rem',
         position: 'relative',
@@ -68,13 +69,13 @@ function WhyUs() {
       <div style={{
         position: 'absolute', top: '10%', left: '-10%',
         width: '500px', height: '500px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(209,165,80,0.06) 0%, transparent 70%)',
         filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0,
       }} />
       <div style={{
         position: 'absolute', bottom: '10%', right: '-10%',
         width: '500px', height: '500px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(209,165,80,0.05) 0%, transparent 70%)',
         filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0,
       }} />
 
@@ -92,28 +93,28 @@ function WhyUs() {
             display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
             marginBottom: '1rem',
           }}>
-            <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+            <span style={{ width: '40px', height: '1px', backgroundColor: colors.gold }} />
             <span style={{
-              fontFamily: "'Montserrat', sans-serif", color: '#C9A84C',
+              fontFamily: fonts.sans, color: colors.gold,
               fontSize: '0.7rem', letterSpacing: '0.28em', textTransform: 'uppercase',
             }}>
               Why Us
             </span>
-            <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+            <span style={{ width: '40px', height: '1px', backgroundColor: colors.gold }} />
           </div>
           <h2 style={{
             margin: 0,
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: fonts.serif,
             fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
             fontWeight: 400, lineHeight: 1.15,
           }}>
             Built on{' '}
-            <span style={{ fontStyle: 'italic', color: '#C9A84C' }}>Trust & Quality</span>
+            <span style={{ fontStyle: 'italic', color: colors.gold }}>Trust & Quality</span>
           </h2>
           <p style={{
             margin: '1rem auto 0', maxWidth: '560px',
             color: 'rgba(255,255,255,0.55)',
-            fontFamily: "'Montserrat', sans-serif",
+            fontFamily: fonts.sans,
             fontSize: '0.9rem', lineHeight: 1.8,
           }}>
             Every feature of our service is engineered around one principle — your physical
@@ -134,11 +135,11 @@ function WhyUs() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.85, ease: EASE, delay: index * 0.06 }}
-              whileHover={{ y: -8, boxShadow: '0 30px 60px -20px rgba(201,168,76,0.22)' }}
+              whileHover={{ y: -8, boxShadow: '0 30px 60px -20px rgba(209,165,80,0.22)' }}
               style={{
                 position: 'relative',
                 background: 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
-                border: '1px solid rgba(201,168,76,0.15)',
+                border: '1px solid rgba(209,165,80,0.15)',
                 borderRadius: '2px',
                 padding: '2rem 1.5rem',
                 willChange: 'transform, opacity',
@@ -148,9 +149,9 @@ function WhyUs() {
               {/* Ghost number watermark */}
               <div style={{
                 position: 'absolute', top: '-0.5rem', right: '1rem',
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: fonts.serif,
                 fontSize: '5.5rem', fontWeight: 700,
-                color: 'rgba(201,168,76,0.06)',
+                color: 'rgba(209,165,80,0.06)',
                 lineHeight: 1, pointerEvents: 'none', userSelect: 'none',
               }}>
                 {item.num}
@@ -165,7 +166,7 @@ function WhyUs() {
                 style={{
                   position: 'absolute', top: 0, left: 0, right: 0,
                   height: '1.5px',
-                  background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+                  background: 'linear-gradient(90deg, transparent, #D1A550, transparent)',
                   transformOrigin: 'left',
                 }}
               />
@@ -174,21 +175,21 @@ function WhyUs() {
               <div style={{
                 width: '52px', height: '52px',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, rgba(201,168,76,0.18), rgba(201,168,76,0.05))',
-                border: '1px solid rgba(201,168,76,0.3)',
+                background: 'linear-gradient(135deg, rgba(209,165,80,0.18), rgba(209,165,80,0.05))',
+                border: '1px solid rgba(209,165,80,0.3)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '1.2rem', color: '#C9A84C',
+                fontSize: '1.2rem', color: colors.gold,
                 marginBottom: '1.4rem',
-                boxShadow: '0 4px 20px rgba(201,168,76,0.1)',
+                boxShadow: '0 4px 20px rgba(209,165,80,0.1)',
               }}>
                 <i className={`fas ${item.icon}`} />
               </div>
 
               {/* Number label */}
               <div style={{
-                fontFamily: "'Montserrat', sans-serif",
+                fontFamily: fonts.sans,
                 fontSize: '0.65rem', letterSpacing: '0.2em',
-                color: 'rgba(201,168,76,0.6)', marginBottom: '0.5rem',
+                color: 'rgba(209,165,80,0.6)', marginBottom: '0.5rem',
                 textTransform: 'uppercase',
               }}>
                 {item.num}
@@ -196,7 +197,7 @@ function WhyUs() {
 
               <h3 style={{
                 margin: '0 0 0.6rem',
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: fonts.serif,
                 fontSize: '1.5rem', fontWeight: 600,
                 color: '#fff', lineHeight: 1.2,
               }}>
@@ -206,7 +207,7 @@ function WhyUs() {
               <p style={{
                 margin: 0,
                 color: 'rgba(255,255,255,0.55)',
-                fontFamily: "'Montserrat', sans-serif",
+                fontFamily: fonts.sans,
                 fontSize: '0.82rem', lineHeight: 1.75,
               }}>
                 {item.text}
@@ -216,10 +217,10 @@ function WhyUs() {
               <div style={{
                 position: 'absolute', bottom: '1.2rem', right: '1.2rem',
                 width: '28px', height: '28px',
-                border: '1px solid rgba(201,168,76,0.2)',
+                border: '1px solid rgba(209,165,80,0.2)',
                 borderRadius: '50%',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'rgba(201,168,76,0.4)', fontSize: '0.65rem',
+                color: 'rgba(209,165,80,0.4)', fontSize: '0.65rem',
               }}>
                 <i className="fas fa-arrow-up-right" />
               </div>

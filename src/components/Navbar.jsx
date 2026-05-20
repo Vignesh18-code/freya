@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import logo from '../assets/logo.png'
+import { colors, fonts } from '../theme'
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
@@ -11,8 +12,8 @@ const NAV_LINKS = [
 ]
 
 const linkStyles = ({ isActive }) => ({
-  color: isActive ? '#E8D5A3' : '#C9A84C',
-  fontFamily: "'Cormorant Garamond', serif",
+  color: isActive ? colors.goldLight : colors.gold,
+  fontFamily: fonts.serif,
   fontSize: '1.2rem',
   letterSpacing: '0.12em',
   textDecoration: 'none',
@@ -25,7 +26,7 @@ function DesktopLink({ label, to }) {
       {label}
       <span
         className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full transition-all duration-300 ease-in-out"
-        style={{ backgroundColor: '#C9A84C' }}
+        style={{ backgroundColor: colors.gold }}
       />
     </NavLink>
   )
@@ -67,8 +68,8 @@ export default function Navbar() {
     right: 0,
     zIndex: 50,
     transition: 'background-color 0.3s ease, border-color 0.3s ease',
-    backgroundColor: scrolled ? '#101F48' : 'transparent',
-    borderBottom: scrolled ? '1px solid #C9A84C' : '1px solid transparent',
+    backgroundColor: scrolled ? colors.bg : 'transparent',
+    borderBottom: scrolled ? `1px solid ${colors.gold}` : '1px solid transparent',
   }
 
   return (
@@ -102,17 +103,17 @@ export default function Navbar() {
             <motion.span
               animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
-              style={{ display: 'block', width: '26px', height: '2px', backgroundColor: '#C9A84C', transformOrigin: 'center' }}
+              style={{ display: 'block', width: '26px', height: '2px', backgroundColor: colors.gold, transformOrigin: 'center' }}
             />
             <motion.span
               animate={menuOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.2 }}
-              style={{ display: 'block', width: '26px', height: '2px', backgroundColor: '#C9A84C' }}
+              style={{ display: 'block', width: '26px', height: '2px', backgroundColor: colors.gold }}
             />
             <motion.span
               animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
-              style={{ display: 'block', width: '26px', height: '2px', backgroundColor: '#C9A84C', transformOrigin: 'center' }}
+              style={{ display: 'block', width: '26px', height: '2px', backgroundColor: colors.gold, transformOrigin: 'center' }}
             />
           </button>
         </div>
@@ -131,7 +132,7 @@ export default function Navbar() {
               position: 'fixed',
               inset: 0,
               zIndex: 40,
-              backgroundColor: '#0A1530',
+              backgroundColor: colors.bg,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',

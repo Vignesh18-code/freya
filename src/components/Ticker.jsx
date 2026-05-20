@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { colors, fonts } from '../theme'
 
 const TICKER_ITEMS = [
   '24K GOLD',
@@ -17,9 +18,9 @@ function Ticker() {
     <section
       aria-label="Market ticker"
       style={{
-        backgroundColor: 'rgba(201,168,76,0.1)',
-        borderTop: '1px solid rgba(201,168,76,0.2)',
-        borderBottom: '1px solid rgba(201,168,76,0.2)',
+        backgroundColor: 'rgba(209,165,80,0.1)',
+        borderTop: '1px solid rgba(209,165,80,0.2)',
+        borderBottom: '1px solid rgba(209,165,80,0.2)',
         overflow: 'hidden',
       }}
     >
@@ -39,16 +40,16 @@ function Ticker() {
               display: 'flex',
               alignItems: 'center',
               whiteSpace: 'nowrap',
-              fontFamily: "'Montserrat', sans-serif",
+              fontFamily: fonts.sans,
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#C9A84C',
+              color: colors.gold,
               paddingLeft: index === 0 ? '1.5rem' : '2.5rem',
             }}
           >
             <span>{item}</span>
-            <span style={{ marginLeft: '2.5rem', color: '#E8D5A3', opacity: 0.8 }}>◆</span>
+            <span style={{ marginLeft: '2.5rem', color: colors.goldLight, opacity: 0.8 }}>◆</span>
           </div>
         ))}
       </motion.div>

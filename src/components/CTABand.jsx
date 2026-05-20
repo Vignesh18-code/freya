@@ -1,15 +1,16 @@
 import { motion } from 'framer-motion'
+import { colors, fonts, ease } from '../theme'
 
 const badges = ['No Obligation', 'Rapid Response', 'Strictly Confidential']
-const EASE   = [0.22, 1, 0.36, 1]
+const EASE   = ease.smooth
 
 function CTABand() {
   return (
     <section
       style={{
-        backgroundColor: '#070C1A',
-        borderTop:    '1px solid rgba(201,168,76,0.18)',
-        borderBottom: '1px solid rgba(201,168,76,0.18)',
+        backgroundColor: colors.bg,
+        borderTop:    '1px solid rgba(209,165,80,0.18)',
+        borderBottom: '1px solid rgba(209,165,80,0.18)',
         padding: '5rem 1.5rem',
         position: 'relative',
         overflow: 'hidden',
@@ -20,12 +21,12 @@ function CTABand() {
         position: 'absolute', top: '-30%', left: '50%',
         transform: 'translateX(-50%)',
         width: '800px', height: '400px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(209,165,80,0.07) 0%, transparent 70%)',
         filter: 'blur(60px)', pointerEvents: 'none',
       }} />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(180deg, rgba(201,168,76,0.03) 0%, transparent 60%)',
+        background: 'linear-gradient(180deg, rgba(209,165,80,0.03) 0%, transparent 60%)',
         pointerEvents: 'none',
       }} />
 
@@ -44,33 +45,33 @@ function CTABand() {
           display: 'inline-flex', alignItems: 'center',
           gap: '0.75rem', marginBottom: '1.2rem',
         }}>
-          <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+          <span style={{ width: '40px', height: '1px', backgroundColor: colors.gold }} />
           <span style={{
-            fontFamily: "'Montserrat', sans-serif", color: '#C9A84C',
+            fontFamily: fonts.sans, color: colors.gold,
             fontSize: '0.7rem', letterSpacing: '0.28em', textTransform: 'uppercase',
           }}>
             Get In Touch
           </span>
-          <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+          <span style={{ width: '40px', height: '1px', backgroundColor: colors.gold }} />
         </div>
 
         {/* Heading */}
         <h2 style={{
           margin: 0,
-          fontFamily: "'Cormorant Garamond', serif",
+          fontFamily: fonts.serif,
           color: '#fff',
           fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
           fontWeight: 400, lineHeight: 1.15,
         }}>
           Ready to Secure{' '}
-          <span style={{ fontStyle: 'italic', color: '#C9A84C' }}>Your Supply?</span>
+          <span style={{ fontStyle: 'italic', color: colors.gold }}>Your Supply?</span>
         </h2>
 
         {/* Sub-headline */}
         <p style={{
           margin: '1.2rem auto 0', maxWidth: '580px',
           color: 'rgba(255,255,255,0.55)',
-          fontFamily: "'Montserrat', sans-serif",
+          fontFamily: fonts.sans,
           lineHeight: 1.85, fontSize: '0.88rem',
         }}>
           Request a free, no-obligation wholesale quotation today. Our global B2B
@@ -80,7 +81,7 @@ function CTABand() {
         {/* Divider */}
         <div style={{
           width: '48px', height: '1px',
-          background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+          background: 'linear-gradient(90deg, transparent, #D1A550, transparent)',
           margin: '2rem auto',
         }} />
 
@@ -91,15 +92,15 @@ function CTABand() {
         }}>
           <motion.button
             whileHover={{
-              backgroundColor: '#E8D5A3',
-              boxShadow: '0 12px 32px -10px rgba(201,168,76,0.55)',
+              backgroundColor: colors.goldLight,
+              boxShadow: '0 12px 32px -10px rgba(209,165,80,0.55)',
             }}
             whileTap={{ scale: 0.97 }}
             style={{
               border: 'none',
-              backgroundColor: '#C9A84C',
-              color: '#070C1A',
-              fontFamily: "'Montserrat', sans-serif",
+              backgroundColor: colors.gold,
+              color: colors.bg,
+              fontFamily: fonts.sans,
               fontWeight: 700,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
@@ -114,15 +115,15 @@ function CTABand() {
 
           <motion.button
             whileHover={{
-              backgroundColor: 'rgba(201,168,76,0.1)',
-              color: '#E8D5A3',
+              backgroundColor: 'rgba(209,165,80,0.1)',
+              color: colors.goldLight,
             }}
             whileTap={{ scale: 0.97 }}
             style={{
-              border: '1px solid rgba(201,168,76,0.45)',
+              border: '1px solid rgba(209,165,80,0.45)',
               background: 'transparent',
-              color: '#C9A84C',
-              fontFamily: "'Montserrat', sans-serif",
+              color: colors.gold,
+              fontFamily: fonts.sans,
               fontWeight: 600,
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
@@ -134,7 +135,7 @@ function CTABand() {
             }}
           >
             <i className="fas fa-phone" style={{ fontSize: '0.65rem' }} />
-            +971 50 XXX XXXX
+            +852 6375 1595
           </motion.button>
         </div>
 
@@ -153,10 +154,10 @@ function CTABand() {
               transition={{ duration: 0.6, ease: EASE, delay: i * 0.1 }}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.45rem',
-                border: '1px solid rgba(201,168,76,0.22)',
-                background: 'rgba(201,168,76,0.04)',
+                border: '1px solid rgba(209,165,80,0.22)',
+                background: 'rgba(209,165,80,0.04)',
                 color: 'rgba(255,255,255,0.55)',
-                fontFamily: "'Montserrat', sans-serif",
+                fontFamily: fonts.sans,
                 fontSize: '0.65rem',
                 letterSpacing: '0.16em',
                 textTransform: 'uppercase',
@@ -166,11 +167,11 @@ function CTABand() {
               {/* tick */}
               <span style={{
                 width: '14px', height: '14px', borderRadius: '50%',
-                border: '1px solid rgba(201,168,76,0.4)',
+                border: '1px solid rgba(209,165,80,0.4)',
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0,
               }}>
-                <i className="fas fa-check" style={{ fontSize: '0.45rem', color: '#C9A84C' }} />
+                <i className="fas fa-check" style={{ fontSize: '0.45rem', color: colors.gold }} />
               </span>
               {badge}
             </motion.span>
