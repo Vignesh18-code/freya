@@ -1,14 +1,54 @@
 import { motion } from 'framer-motion'
 
 const reasons = [
-  { title: 'Wholesale Pricing',     icon: 'fa-tags',             text: 'Direct manufacturer rates without hidden margins or middlemen.',        num: '01' },
-  { title: 'Insured Shipping',      icon: 'fa-shield-halved',    text: 'Global shipments fully protected from dispatch to delivery.',            num: '02' },
-  { title: 'Independent Assay',     icon: 'fa-microscope',       text: 'Purity verified through independent certified assay protocols.',         num: '03' },
-  { title: '48-Hour Delivery',      icon: 'fa-clock',            text: 'Fast dispatch for ready inventory and repeat client orders.',            num: '04' },
-  { title: 'Full Provenance',       icon: 'fa-file-contract',    text: 'Transparent traceability documentation included with every order.',      num: '05' },
-  { title: 'Dedicated Advisor',     icon: 'fa-headset',          text: 'One personal relationship manager assigned to every client.',           num: '06' },
-  { title: 'Regulatory Compliance', icon: 'fa-building-columns', text: 'Fully aligned with UAE compliance and global export regulations.',       num: '07' },
-  { title: 'Buy-Back Guarantee',    icon: 'fa-arrow-rotate-left',text: 'Structured buy-back options available for all eligible products.',      num: '08' },
+  {
+    num: '01',
+    icon: 'fa-tags',
+    title: 'Wholesale Market Pricing',
+    text: 'We trade at competitive wholesale market rates with a fixed, clear premium. No hidden markups and no inflated spreads.',
+  },
+  {
+    num: '02',
+    icon: 'fa-shield-halved',
+    title: 'Insured Global Shipping',
+    text: 'Every delivery is fully insured from refinery to vault. Safe, monitored logistics across our 5-country trading network.',
+  },
+  {
+    num: '03',
+    icon: 'fa-microscope',
+    title: 'Certified Purity',
+    text: 'All gold, silver, and diamonds are strictly verified. Official certification and clear grading reports accompany every single order.',
+  },
+  {
+    num: '04',
+    icon: 'fa-clock',
+    title: 'Efficient Settlement',
+    text: 'Industry-leading transaction speeds. Direct secure bank transfers processed swiftly to ensure timely allocation and dispatch.',
+  },
+  {
+    num: '05',
+    icon: 'fa-file-contract',
+    title: 'Strict Chain of Custody',
+    text: 'Source-to-buyer accountability. Conflict-free gold and ethically sourced diamond tracks with reliable provenance records.',
+  },
+  {
+    num: '06',
+    icon: 'fa-headset',
+    title: 'B2B Support Desk',
+    text: 'Every partner receives dedicated corporate account assistance. Expert corporate guidance tailored for major retail jewelry brands.',
+  },
+  {
+    num: '07',
+    icon: 'fa-building-columns',
+    title: 'Global Compliance',
+    text: 'Fully licensed and regulated across the UAE and key international hubs. Strictly compliant with local AML/KYC guidelines.',
+  },
+  {
+    num: '08',
+    icon: 'fa-arrow-rotate-left',
+    title: 'Liquid Buy-Back',
+    text: 'Guaranteed liquidity option to trade back assets at live spot market rates with zero friction when you need it.',
+  },
 ]
 
 const EASE = [0.22, 1, 0.36, 1]
@@ -22,7 +62,6 @@ function WhyUs() {
         color: '#fff',
         padding: '7rem 1.5rem',
         position: 'relative',
-        /* NO overflow:hidden — it clips sliding cards */
       }}
     >
       {/* Background glow blobs */}
@@ -58,7 +97,7 @@ function WhyUs() {
               fontFamily: "'Montserrat', sans-serif", color: '#C9A84C',
               fontSize: '0.7rem', letterSpacing: '0.28em', textTransform: 'uppercase',
             }}>
-              Our Advantages
+              Why Us
             </span>
             <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
           </div>
@@ -68,16 +107,17 @@ function WhyUs() {
             fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
             fontWeight: 400, lineHeight: 1.15,
           }}>
-            Why Choose{' '}
-            <span style={{ fontStyle: 'italic', color: '#C9A84C' }}>Freya</span>
+            Built on{' '}
+            <span style={{ fontStyle: 'italic', color: '#C9A84C' }}>Trust & Quality</span>
           </h2>
           <p style={{
-            margin: '1rem auto 0', maxWidth: '520px',
+            margin: '1rem auto 0', maxWidth: '560px',
             color: 'rgba(255,255,255,0.55)',
             fontFamily: "'Montserrat', sans-serif",
             fontSize: '0.9rem', lineHeight: 1.8,
           }}>
-            Eight reasons why the world's leading jewellery buyers trust Freya for every transaction.
+            Every feature of our service is engineered around one principle — your physical
+            asset trade should be as secure and seamless as possible.
           </p>
         </motion.div>
 

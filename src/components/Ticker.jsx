@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion'
 
 const TICKER_ITEMS = [
-  '24K GOLD · $2,847/oz',
-  'PLATINUM · $1,024/oz',
-  'SILVER · $32/oz',
-  'PALLADIUM · $1,203/oz',
+  '24K GOLD',
+  'PLATINUM',
+  'SILVER',
+  'PALLADIUM',
   'FREE INSURED SHIPPING WORLDWIDE',
   'LBMA CERTIFIED',
   'EST. 2007 · DUBAI',

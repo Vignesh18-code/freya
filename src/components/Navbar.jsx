@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import logo from '../assets/logo.jpg'
+import logo from '../assets/logo.png'
 
 const NAV_LINKS = [
   { label: 'Home', to: '/' },

@@ -1,58 +1,182 @@
 import { motion } from 'framer-motion'
 
-const badges = ['No obligation', 'Response within 4 hours', 'Fully confidential']
+const badges = ['No Obligation', 'Rapid Response', 'Strictly Confidential']
+const EASE   = [0.22, 1, 0.36, 1]
 
 function CTABand() {
   return (
     <section
       style={{
-        background: 'linear-gradient(90deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.05) 100%)',
-        borderTop: '1px solid rgba(201,168,76,0.35)',
-        borderBottom: '1px solid rgba(201,168,76,0.35)',
-        padding: '3.2rem 1.5rem',
+        backgroundColor: '#070C1A',
+        borderTop:    '1px solid rgba(201,168,76,0.18)',
+        borderBottom: '1px solid rgba(201,168,76,0.18)',
+        padding: '5rem 1.5rem',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
+      {/* glow blobs */}
+      <div style={{
+        position: 'absolute', top: '-30%', left: '50%',
+        transform: 'translateX(-50%)',
+        width: '800px', height: '400px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%)',
+        filter: 'blur(60px)', pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(180deg, rgba(201,168,76,0.03) 0%, transparent 60%)',
+        pointerEvents: 'none',
+      }} />
+
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.9, ease: EASE }}
+        style={{
+          maxWidth: '820px', margin: '0 auto',
+          textAlign: 'center', position: 'relative', zIndex: 1,
+        }}
       >
-        <h2 style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", color: '#fff', fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 500 }}>
-          Ready to Invest in Fine Jewellery?
+        {/* Label */}
+        <div style={{
+          display: 'inline-flex', alignItems: 'center',
+          gap: '0.75rem', marginBottom: '1.2rem',
+        }}>
+          <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+          <span style={{
+            fontFamily: "'Montserrat', sans-serif", color: '#C9A84C',
+            fontSize: '0.7rem', letterSpacing: '0.28em', textTransform: 'uppercase',
+          }}>
+            Get In Touch
+          </span>
+          <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
+        </div>
+
+        {/* Heading */}
+        <h2 style={{
+          margin: 0,
+          fontFamily: "'Cormorant Garamond', serif",
+          color: '#fff',
+          fontSize: 'clamp(2.2rem, 4.5vw, 3.6rem)',
+          fontWeight: 400, lineHeight: 1.15,
+        }}>
+          Ready to Secure{' '}
+          <span style={{ fontStyle: 'italic', color: '#C9A84C' }}>Your Supply?</span>
         </h2>
-        <p style={{ margin: '0.8rem auto 0', maxWidth: '720px', color: 'rgba(255,255,255,0.74)', fontFamily: "'Montserrat', sans-serif", lineHeight: 1.8, fontSize: '0.92rem' }}>
-          Request a free quote today. New clients receive 12 months of complimentary storage on first orders.
+
+        {/* Sub-headline */}
+        <p style={{
+          margin: '1.2rem auto 0', maxWidth: '580px',
+          color: 'rgba(255,255,255,0.55)',
+          fontFamily: "'Montserrat', sans-serif",
+          lineHeight: 1.85, fontSize: '0.88rem',
+        }}>
+          Request a free, no-obligation wholesale quotation today. Our global B2B
+          trading desk is standing by to assist with your custom volume requirements.
         </p>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.8rem', flexWrap: 'wrap', marginTop: '1.4rem' }}>
-          <button style={{ border: 'none', backgroundColor: '#C9A84C', color: '#101F48', fontFamily: "'Montserrat', sans-serif", fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.72rem', padding: '0.85rem 1.4rem', cursor: 'pointer' }}>
+        {/* Divider */}
+        <div style={{
+          width: '48px', height: '1px',
+          background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+          margin: '2rem auto',
+        }} />
+
+        {/* Buttons */}
+        <div style={{
+          display: 'flex', justifyContent: 'center',
+          gap: '1rem', flexWrap: 'wrap',
+        }}>
+          <motion.button
+            whileHover={{
+              backgroundColor: '#E8D5A3',
+              boxShadow: '0 12px 32px -10px rgba(201,168,76,0.55)',
+            }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              border: 'none',
+              backgroundColor: '#C9A84C',
+              color: '#070C1A',
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 700,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              fontSize: '0.72rem',
+              padding: '1rem 2.4rem',
+              cursor: 'pointer',
+              transition: 'background-color 0.3s ease',
+            }}
+          >
             Request a Quote
-          </button>
-          <button style={{ border: '1px solid rgba(201,168,76,0.5)', background: 'transparent', color: '#E8D5A3', fontFamily: "'Montserrat', sans-serif", fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.72rem', padding: '0.85rem 1.4rem', cursor: 'pointer' }}>
-            +971 4 555 0123
-          </button>
+          </motion.button>
+
+          <motion.button
+            whileHover={{
+              backgroundColor: 'rgba(201,168,76,0.1)',
+              color: '#E8D5A3',
+            }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              border: '1px solid rgba(201,168,76,0.45)',
+              background: 'transparent',
+              color: '#C9A84C',
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 600,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase',
+              fontSize: '0.72rem',
+              padding: '1rem 2.4rem',
+              cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: '0.6rem',
+              transition: 'background-color 0.3s ease, color 0.3s ease',
+            }}
+          >
+            <i className="fas fa-phone" style={{ fontSize: '0.65rem' }} />
+            +971 50 XXX XXXX
+          </motion.button>
         </div>
 
-        <div style={{ marginTop: '1.1rem', display: 'flex', justifyContent: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
-          {badges.map((badge) => (
-            <span
+        {/* Trust badges */}
+        <div style={{
+          marginTop: '2rem',
+          display: 'flex', justifyContent: 'center',
+          gap: '0.75rem', flexWrap: 'wrap',
+        }}>
+          {badges.map((badge, i) => (
+            <motion.span
               key={badge}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: EASE, delay: i * 0.1 }}
               style={{
-                border: '1px solid rgba(201,168,76,0.3)',
-                color: 'rgba(255,255,255,0.78)',
+                display: 'inline-flex', alignItems: 'center', gap: '0.45rem',
+                border: '1px solid rgba(201,168,76,0.22)',
+                background: 'rgba(201,168,76,0.04)',
+                color: 'rgba(255,255,255,0.55)',
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: '0.72rem',
-                letterSpacing: '0.1em',
+                fontSize: '0.65rem',
+                letterSpacing: '0.16em',
                 textTransform: 'uppercase',
-                padding: '0.45rem 0.65rem',
+                padding: '0.45rem 0.9rem',
               }}
             >
+              {/* tick */}
+              <span style={{
+                width: '14px', height: '14px', borderRadius: '50%',
+                border: '1px solid rgba(201,168,76,0.4)',
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                flexShrink: 0,
+              }}>
+                <i className="fas fa-check" style={{ fontSize: '0.45rem', color: '#C9A84C' }} />
+              </span>
               {badge}
-            </span>
+            </motion.span>
           ))}
         </div>
+
       </motion.div>
     </section>
   )

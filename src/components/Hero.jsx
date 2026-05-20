@@ -4,12 +4,12 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Environment } from '@react-three/drei'
 
 // ─── Content — edit here only ───────────────────────────────────────────────
-const HERO_TAG = 'Established 2007 · Freya Jewels DMCC · Dubai, UAE'
-const HERO_HEADING_LINE1 = 'Crafting'
-const HERO_HEADING_LINE1_ITALIC = 'Excellence'
-const HERO_HEADING_LINE2 = 'In Every Jewel'
+const HERO_TAG = 'DIRECT REFINERY SUPPLY | UAE • INDIA • SINGAPORE • HK • BAHRAIN'
+const HERO_HEADING_LINE1 = "The World's Most"
+const HERO_HEADING_LINE1_ITALIC = 'Trusted Gold, Silver &'
+const HERO_HEADING_LINE2 = 'Diamond Source'
 const HERO_SUBTEXT =
-  'One of the leading jewellery manufacturers in the UAE — built on quality, design, innovation and impeccable craftsmanship.'
+  'Direct wholesale access to physical gold, silver, and certified diamond Jewellery. Fully insured, globally compliant, and trusted by top retail brands since 1992'
 const HERO_BTN_PRIMARY = 'Explore Collections'
 const HERO_BTN_SECONDARY = 'Our Story'
 
@@ -203,12 +203,14 @@ function GoldBar({ mouse }) {
   )
 }
 
+// ─── FIX: resize scroll:false stops gold bar growing on scroll
 function Model3DScene({ mouse }) {
   return (
     <Canvas
       camera={{ position: [0, 1.2, 4.5], fov: 38 }}
       gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
       style={{ background: 'transparent', touchAction: 'none' }}
+      resize={{ scroll: false, debounce: { scroll: 0, resize: 200 } }}
     >
       <Suspense fallback={null}>
         <ambientLight intensity={1.5} />
@@ -222,7 +224,7 @@ function Model3DScene({ mouse }) {
   )
 }
 
-// ─── Hero ───────────────────────────────────────────────────────────────────
+// ─── Hero ────────────────────────────────────────────────────────────────────
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false)
   const mouse = useRef({ x: 0, y: 0 })
@@ -246,7 +248,7 @@ export default function Hero() {
     return () => window.removeEventListener('mousemove', onMove)
   }, [isMobile])
 
-  const headingSize = isMobile ? '3rem' : 'clamp(3.5rem, 5.5vw, 6.5rem)'
+  const headingSize = isMobile ? '2.6rem' : 'clamp(3.5rem, 5.5vw, 6.5rem)'
 
   return (
     <section
@@ -256,8 +258,8 @@ export default function Hero() {
         backgroundColor: '#070C1A',
         display: 'flex',
         alignItems: 'center',
-        paddingTop: isMobile ? '80px' : '0',
-        paddingBottom: isMobile ? '140px' : '0',
+        paddingTop: isMobile ? '90px' : '0',
+        paddingBottom: isMobile ? '60px' : '0',
         overflow: 'hidden',
         color: '#fff',
       }}
@@ -335,11 +337,11 @@ export default function Hero() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          flexDirection: isMobile ? 'column-reverse' : 'row',
-          gap: isMobile ? '2rem' : '0',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: '0',
         }}
       >
-        {/* LEFT: Content 55% */}
+        {/* TOP (mobile) / LEFT (desktop): Content */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -361,25 +363,21 @@ export default function Hero() {
               display: 'flex',
               alignItems: 'center',
               gap: '1rem',
-              marginBottom: '1.5rem',
+              marginBottom: '1.2rem',
+              flexWrap: 'wrap',
+              justifyContent: isMobile ? 'center' : 'flex-start',
             }}
           >
-            <span
-              style={{
-                display: 'block',
-                width: '50px',
-                height: '1px',
-                backgroundColor: '#C9A84C',
-              }}
-            />
+            <span style={{ display: 'block', width: '40px', height: '1px', backgroundColor: '#C9A84C', flexShrink: 0 }} />
             <span
               style={{
                 color: '#C9A84C',
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: '0.7rem',
-                letterSpacing: '0.25em',
+                fontSize: isMobile ? '0.58rem' : '0.7rem',
+                letterSpacing: '0.2em',
                 fontWeight: 500,
                 textTransform: 'uppercase',
+                lineHeight: 1.5,
               }}
             >
               {HERO_TAG}
@@ -387,7 +385,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Heading */}
-          <motion.div variants={itemVariants} style={{ marginBottom: '1.5rem' }}>
+          <motion.div variants={itemVariants} style={{ marginBottom: '1.2rem' }}>
             <h1
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
@@ -415,9 +413,9 @@ export default function Hero() {
               fontFamily: "'Montserrat', sans-serif",
               fontWeight: 300,
               lineHeight: 1.8,
-              fontSize: '1rem',
+              fontSize: isMobile ? '0.88rem' : '1rem',
               maxWidth: '500px',
-              marginBottom: '2.5rem',
+              marginBottom: '2rem',
             }}
           >
             {HERO_SUBTEXT}
@@ -428,27 +426,23 @@ export default function Hero() {
             variants={itemVariants}
             style={{
               display: 'flex',
-              gap: '1.5rem',
+              gap: '1rem',
               flexWrap: 'wrap',
               justifyContent: isMobile ? 'center' : 'flex-start',
             }}
           >
             <motion.button
-              whileHover={{
-                scale: 1.02,
-                backgroundColor: '#E8D5A3',
-                boxShadow: '0 10px 30px -10px rgba(201,168,76,0.5)',
-              }}
+              whileHover={{ scale: 1.02, backgroundColor: '#E8D5A3', boxShadow: '0 10px 30px -10px rgba(201,168,76,0.5)' }}
               whileTap={{ scale: 0.98 }}
               style={{
                 backgroundColor: '#C9A84C',
                 color: '#101F48',
                 fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 600,
-                fontSize: '0.8rem',
+                fontSize: '0.78rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                padding: '1rem 2.5rem',
+                padding: isMobile ? '0.85rem 2rem' : '1rem 2.5rem',
                 border: 'none',
                 cursor: 'pointer',
                 transition: 'background-color 0.3s ease',
@@ -458,20 +452,17 @@ export default function Hero() {
             </motion.button>
 
             <motion.button
-              whileHover={{
-                backgroundColor: 'rgba(201,168,76,0.1)',
-                color: '#E8D5A3',
-              }}
+              whileHover={{ backgroundColor: 'rgba(201,168,76,0.1)', color: '#E8D5A3' }}
               whileTap={{ scale: 0.98 }}
               style={{
                 backgroundColor: 'transparent',
                 color: '#C9A84C',
                 fontFamily: "'Montserrat', sans-serif",
                 fontWeight: 500,
-                fontSize: '0.8rem',
+                fontSize: '0.78rem',
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                padding: '1rem 2.5rem',
+                padding: isMobile ? '0.85rem 2rem' : '1rem 2.5rem',
                 border: '1px solid rgba(201,168,76,0.4)',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
@@ -482,31 +473,21 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT: 3D Canvas 45% */}
+        {/* BOTTOM (mobile) / RIGHT (desktop): 3D Canvas */}
         <motion.div
           variants={canvasVariants}
           initial="hidden"
           animate="visible"
           style={{
             width: isMobile ? '100%' : '45%',
-            position: 'relative',
             flexShrink: 0,
-            minHeight: isMobile ? '350px' : '650px',
-            marginTop: isMobile ? '4rem' : '0',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
             zIndex: 2,
+            height: isMobile ? '320px' : '650px',
+            marginTop: isMobile ? '2rem' : '0',
+            position: 'relative',
           }}
         >
-          <div
-            style={{
-              width: '100%',
-              height: isMobile ? '350px' : '100%',
-              position: 'absolute',
-              inset: 0,
-            }}
-          >
+          <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
             <Model3DScene mouse={isMobile ? null : mouse} />
           </div>
         </motion.div>

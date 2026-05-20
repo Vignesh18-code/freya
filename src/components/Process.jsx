@@ -1,77 +1,108 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 const steps = [
   {
     num: '01',
-    title: 'Enquire & Verify',
-    text: 'Share your requirement and complete KYC online in minutes.',
-    icon: 'fa-file-signature',
+    title: 'Connect & Verify',
+    text: 'Submit your business inquiry online. Our trade desk will contact you promptly to complete your account setup.',
+    icon: 'fa-handshake',
     tag: 'Getting Started',
   },
   {
     num: '02',
-    title: 'Agree Pricing',
-    text: 'Receive a live spot-linked quote with full pricing transparency.',
+    title: 'Lock Market Rates',
+    text: 'Receive a live market-linked price quotation tailored to your volume with complete invoice transparency.',
     icon: 'fa-chart-line',
     tag: 'Live Quote',
   },
   {
     num: '03',
-    title: 'Secure Payment',
-    text: 'Settle securely via bank wire or approved crypto payment rails.',
+    title: 'Secure Settlement',
+    text: 'Finalize your trade via secure bank wire or SWIFT transfer to instantly lock in your inventory allocation.',
     icon: 'fa-lock',
     tag: 'Safe & Fast',
   },
   {
     num: '04',
-    title: 'Delivery or Vault',
-    text: 'Choose armored door delivery or allocated secure vault storage.',
-    icon: 'fa-vault',
-    tag: 'Your Choice',
+    title: 'Insured Delivery',
+    text: 'Your certified precious metals or jewellery order is securely shipped and delivered directly to your facility.',
+    icon: 'fa-truck-fast',
+    tag: 'Final Step',
   },
 ]
 
-const transition = { duration: 0.9, ease: [0.22, 1, 0.36, 1] }
+const EASE = [0.22, 1, 0.36, 1]
+const T = { duration: 0.9, ease: EASE }
 
-function Process() {
+/* ─── reusable shimmer bar ─────────────────────────────────── */
+function ShimmerLine({ delay = 0 }) {
+  return (
+    <motion.div
+      initial={{ scaleX: 0 }}
+      whileInView={{ scaleX: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, ease: EASE, delay }}
+      style={{
+        position: 'absolute', top: 0, left: 0, right: 0, height: '2px',
+        background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+        transformOrigin: 'left',
+      }}
+    />
+  )
+}
+
+export default function Process() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  /* circle diameter */
+  const D = 88
+
   return (
     <section
       id="process"
       style={{
-        backgroundColor: '#0A1628',
+        backgroundColor: '#070C1A',
         color: '#fff',
-        padding: '7rem 1.5rem',
+        padding: '8rem 1.5rem',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Background decoration */}
+      {/* glow blobs */}
       <div style={{
-        position: 'absolute', inset: 0, pointerEvents: 'none',
-        background: 'radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.07) 0%, transparent 65%)',
+        position: 'absolute', top: '10%', left: '-10%',
+        width: '600px', height: '600px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%)',
+        filter: 'blur(80px)', pointerEvents: 'none',
       }} />
       <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px',
-        background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)',
-      }} />
-      <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
-        background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent)',
+        position: 'absolute', bottom: '5%', right: '-10%',
+        width: '500px', height: '500px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%)',
+        filter: 'blur(80px)', pointerEvents: 'none',
       }} />
 
       <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-        {/* Heading */}
+        {/* ── Header ── */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={transition}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={T}
           style={{ textAlign: 'center', marginBottom: '5rem' }}
         >
           <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
-            marginBottom: '1rem',
+            display: 'inline-flex', alignItems: 'center',
+            gap: '0.75rem', marginBottom: '1.2rem',
           }}>
             <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
             <span style={{
@@ -82,179 +113,291 @@ function Process() {
             </span>
             <span style={{ width: '40px', height: '1px', backgroundColor: '#C9A84C' }} />
           </div>
-          <h2 style={{
-            margin: 0,
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
-            fontWeight: 400, lineHeight: 1.15,
-          }}>
-            Four Steps to{' '}
-            <span style={{ fontStyle: 'italic', color: '#C9A84C' }}>
-              Ownership
-            </span>
-          </h2>
+
+          <h2
+  style={{
+    margin: 0,
+    fontFamily: "'Cormorant Garamond', serif",
+    fontSize: 'clamp(2.4rem, 4.5vw, 4rem)',
+    fontWeight: 400,
+    lineHeight: 1.08,
+    color: '#fff',
+  }}
+>
+  Simple{' '}
+  <span
+    style={{
+      color: '#C9A84C',
+      display: 'inline-flex',
+      alignItems: 'baseline',
+      gap: '0.06em',
+      whiteSpace: 'nowrap',
+    }}
+  >
+    <span>4</span>
+    <span style={{ transform: 'translateY(-0.03em)' }}>–</span>
+    <span style={{ fontStyle: 'italic' }}>Step</span>
+  </span>{' '}
+  Process
+</h2>
+
           <p style={{
             margin: '1rem auto 0', maxWidth: '500px',
             color: 'rgba(255,255,255,0.5)',
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: '0.88rem', lineHeight: 1.8,
+            fontSize: '0.9rem', lineHeight: 1.8,
           }}>
-            A seamless, fully guided journey from first enquiry to secure delivery or vault allocation.
+            Streamlined B2B trading from initial corporate inquiry to secure global fulfilment.
           </p>
         </motion.div>
 
-        {/* Steps */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-          gap: '1.5px',
-          background: 'rgba(201,168,76,0.1)',
-          border: '1px solid rgba(201,168,76,0.12)',
-        }}>
-          {steps.map((step, index) => (
+        {/* ── DESKTOP layout (≥768px) ── */}
+        {!isMobile && (
+          <div style={{ position: 'relative' }}>
+
+            {/* Connector line — drawn BEFORE circles so circles paint on top */}
             <motion.div
-              key={step.num}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...transition, delay: index * 0.12 }}
-              whileHover={{ backgroundColor: 'rgba(201,168,76,0.07)' }}
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 1.6, ease: EASE, delay: 0.2 }}
               style={{
-                background: 'rgba(10,22,40,0.95)',
-                padding: '2.5rem 2rem',
-                position: 'relative',
-                overflow: 'hidden',
-                transition: 'background 0.4s ease',
+                position: 'absolute',
+                /* top = exact vertical center of the circle = D/2 = 44px */
+                top: `${D / 2}px`,
+                /* start from center of col-1, end at center of col-4
+                   with 4 equal cols each is 25% wide, center = 12.5% + 0% = 12.5% */
+                left: '12.5%',
+                right: '12.5%',
+                height: '1px',
+                background: 'linear-gradient(90deg, rgba(201,168,76,0.2), #C9A84C 30%, #C9A84C 70%, rgba(201,168,76,0.2))',
+                transformOrigin: 'left',
+                /* z-index LOWER than circles */
+                zIndex: 0,
               }}
-            >
-              {/* Animated top border */}
+            />
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: '1.5rem',
+            }}>
+              {steps.map((step, index) => (
+                <motion.div
+                  key={step.num}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ ...T, delay: index * 0.15 }}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    /* z-index HIGHER than line */
+                    position: 'relative',
+                    zIndex: 1,
+                  }}
+                >
+                  {/* ── Circle ── */}
+                  <motion.div
+                    whileHover={{
+                      scale: 1.08,
+                      boxShadow: '0 0 0 10px rgba(201,168,76,0.07), 0 0 40px rgba(201,168,76,0.28)',
+                    }}
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, margin: '-40px' }}
+                    transition={{ duration: 0.7, ease: EASE, delay: index * 0.15 + 0.2 }}
+                    style={{
+                      position: 'relative',
+                      width: `${D}px`,
+                      height: `${D}px`,
+                      borderRadius: '50%',
+                      border: '1px solid rgba(201,168,76,0.55)',
+                      /*
+                       * KEY FIX: solid #070C1A base + subtle radial highlight.
+                       * No rgba() — fully opaque so the line behind is 100% hidden.
+                       */
+                      backgroundColor: '#070C1A',
+                      backgroundImage: 'radial-gradient(circle at center, rgba(201,168,76,0.16) 0%, transparent 65%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      marginBottom: '1.8rem',
+                      flexShrink: 0,
+                      cursor: 'default',
+                      transition: 'box-shadow 0.4s ease',
+                      /* no box-shadow blur that could show line bleed */
+                      boxShadow: '0 0 0 5px #070C1A',
+                    }}
+                  >
+                    {/* pulse ring */}
+                    <motion.div
+                      animate={{ scale: [1, 1.22, 1], opacity: [0.2, 0, 0.2] }}
+                      transition={{
+                        duration: 3.5, repeat: Infinity,
+                        ease: 'easeInOut', delay: index * 0.6,
+                      }}
+                      style={{
+                        position: 'absolute',
+                        inset: '-12px',
+                        borderRadius: '50%',
+                        border: '1px solid rgba(201,168,76,0.18)',
+                        pointerEvents: 'none',
+                        /* also needs opaque bg gap so it doesn't reveal line */
+                        backgroundColor: 'transparent',
+                      }}
+                    />
+
+                    <span style={{
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '1rem', fontWeight: 500,
+                      color: '#E8D5A3', letterSpacing: '0.16em',
+                      lineHeight: 1,
+                    }}>
+                      {step.num}
+                    </span>
+                  </motion.div>
+
+                  {/* ── Card ── */}
+                  <DesktopCard step={step} index={index} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── MOBILE layout (<768px) ── */}
+        {isMobile && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            {steps.map((step, index) => (
               <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.12 + 0.3 }}
-                style={{
-                  position: 'absolute', top: 0, left: 0, right: 0,
-                  height: '2px',
-                  background: 'linear-gradient(90deg, #C9A84C, #E8D5A3)',
-                  transformOrigin: 'left',
-                }}
-              />
-
-              {/* Ghost number watermark */}
-              <div style={{
-                position: 'absolute', bottom: '-1.5rem', right: '0.5rem',
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: '7rem', fontWeight: 700,
-                color: 'rgba(201,168,76,0.05)',
-                lineHeight: 1, pointerEvents: 'none', userSelect: 'none',
-              }}>
-                {step.num}
-              </div>
-
-              {/* Tag */}
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: '6px',
-                padding: '3px 10px',
-                border: '1px solid rgba(201,168,76,0.25)',
-                borderRadius: '50px',
-                marginBottom: '1.5rem',
-              }}>
-                <span style={{
-                  width: '5px', height: '5px', borderRadius: '50%',
-                  backgroundColor: '#C9A84C', display: 'inline-block',
-                }} />
-                <span style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: '0.62rem', letterSpacing: '0.18em',
-                  color: 'rgba(201,168,76,0.8)', textTransform: 'uppercase',
-                }}>
-                  {step.tag}
-                </span>
-              </div>
-
-              {/* Icon + number row */}
-              <div style={{
-                display: 'flex', alignItems: 'center',
-                justifyContent: 'space-between', marginBottom: '1.2rem',
-              }}>
+                key={step.num}
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ ...T, delay: index * 0.1 }}
+                style={{ display: 'flex', gap: '1.2rem', alignItems: 'flex-start' }}
+              >
+                {/* Number badge — NO line on mobile */}
                 <div style={{
-                  width: '56px', height: '56px',
-                  borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(201,168,76,0.18), rgba(201,168,76,0.04))',
-                  border: '1px solid rgba(201,168,76,0.25)',
+                  flexShrink: 0,
+                  width: '52px', height: '52px',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(201,168,76,0.5)',
+                  backgroundColor: '#070C1A',
+                  backgroundImage: 'radial-gradient(circle at center, rgba(201,168,76,0.16) 0%, transparent 65%)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: '1.3rem', color: '#C9A84C',
-                  boxShadow: '0 4px 20px rgba(201,168,76,0.08)',
                 }}>
-                  <i className={`fas ${step.icon}`} />
+                  <span style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontSize: '0.82rem', fontWeight: 500,
+                    color: '#E8D5A3', letterSpacing: '0.12em',
+                  }}>
+                    {step.num}
+                  </span>
                 </div>
-                <span style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontSize: '3rem', fontWeight: 700,
-                  color: 'rgba(201,168,76,0.2)', lineHeight: 1,
-                }}>
-                  {step.num}
-                </span>
-              </div>
 
-              {/* Text */}
-              <h3 style={{
-                margin: '0 0 0.6rem',
-                fontFamily: "'Cormorant Garamond', serif",
-                fontSize: '1.65rem', fontWeight: 600,
-                color: '#fff', lineHeight: 1.2,
-              }}>
-                {step.title}
-              </h3>
-              <p style={{
-                margin: 0,
-                color: 'rgba(255,255,255,0.52)',
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: '0.83rem', lineHeight: 1.8,
-              }}>
-                {step.text}
-              </p>
-
-              {/* Step connector arrow — hidden on last */}
-              {index < steps.length - 1 && (
+                {/* Card */}
                 <div style={{
-                  position: 'absolute',
-                  top: '50%', right: '-1px',
-                  transform: 'translateY(-50%)',
-                  width: '0', height: '0',
-                  borderTop: '8px solid transparent',
-                  borderBottom: '8px solid transparent',
-                  borderLeft: '8px solid rgba(201,168,76,0.2)',
-                  zIndex: 2,
-                  display: 'none', // shown via className below
-                }} className="md-arrow"
-                />
-              )}
-            </motion.div>
-          ))}
-        </div>
+                  flex: 1,
+                  position: 'relative',
+                  border: '1px solid rgba(201,168,76,0.15)',
+                  background: 'linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(7,12,26,0.7) 100%)',
+                  padding: '1.4rem 1.2rem 1.6rem',
+                  overflow: 'hidden',
+                }}>
+                  <ShimmerLine delay={index * 0.1 + 0.3} />
+                  <MobileCardContent step={step} />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
 
-        {/* Bottom note */}
+        {/* ── CTA Strip ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ ...transition, delay: 0.6 }}
+          transition={{ ...T, delay: 0.4 }}
           style={{
-            marginTop: '2.5rem', textAlign: 'center',
+            marginTop: '4rem',
+            border: '1px solid rgba(201,168,76,0.12)',
+            background: 'rgba(201,168,76,0.03)',
+            padding: isMobile ? '1.5rem' : '2rem 2.5rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '1.5rem',
+          }}
+        >
+          <div>
+            <p style={{
+              margin: 0,
+              fontFamily: "'Cormorant Garamond', serif",
+              fontSize: isMobile ? '1.3rem' : '1.6rem',
+              color: '#E8D5A3', fontWeight: 400,
+            }}>
+              Ready to start your first trade?
+            </p>
+            <p style={{
+              margin: '0.3rem 0 0',
+              fontFamily: "'Montserrat', sans-serif",
+              fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)',
+              letterSpacing: '0.05em',
+            }}>
+              Our trade desk is available 24 / 5 for corporate inquiries.
+            </p>
+          </div>
+
+          <motion.button
+            whileHover={{
+              backgroundColor: '#E8D5A3',
+              boxShadow: '0 10px 30px -10px rgba(201,168,76,0.5)',
+            }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              backgroundColor: '#C9A84C',
+              border: 'none',
+              color: '#070C1A',
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 700,
+              fontSize: '0.72rem',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              padding: '0.9rem 2.2rem',
+              cursor: 'pointer',
+              flexShrink: 0,
+              transition: 'background-color 0.3s ease',
+            }}
+          >
+            Start an Enquiry
+          </motion.button>
+        </motion.div>
+
+        {/* Trust badges */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ ...T, delay: 0.6 }}
+          style={{
+            marginTop: '2rem',
             display: 'flex', alignItems: 'center',
             justifyContent: 'center', gap: '0.6rem', flexWrap: 'wrap',
           }}
         >
           {['KYC Compliant', 'Bank-Grade Security', 'Fully Insured', 'DMCC Regulated'].map((badge) => (
             <span key={badge} style={{
-              padding: '0.4rem 1rem',
-              border: '1px solid rgba(201,168,76,0.2)',
+              padding: '0.35rem 0.9rem',
+              border: '1px solid rgba(201,168,76,0.18)',
               borderRadius: '50px',
               fontFamily: "'Montserrat', sans-serif",
-              fontSize: '0.7rem', letterSpacing: '0.12em',
-              color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase',
+              fontSize: '0.65rem', letterSpacing: '0.14em',
+              color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase',
             }}>
               {badge}
             </span>
@@ -266,4 +409,109 @@ function Process() {
   )
 }
 
-export default Process
+/* ── Desktop card below circle ────────────────────────────── */
+function DesktopCard({ step, index }) {
+  const EASE = [0.22, 1, 0.36, 1]
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.7, ease: EASE, delay: index * 0.15 + 0.35 }}
+      whileHover={{ y: -6, boxShadow: '0 24px 50px -16px rgba(201,168,76,0.18)' }}
+      style={{
+        position: 'relative',
+        width: '100%',
+        border: '1px solid rgba(201,168,76,0.15)',
+        background: 'linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(7,12,26,0.6) 100%)',
+        padding: '1.8rem 1.4rem 2rem',
+        overflow: 'hidden',
+        transition: 'box-shadow 0.4s ease, transform 0.4s ease',
+        textAlign: 'center',
+      }}
+    >
+      <ShimmerLine delay={index * 0.15 + 0.5} />
+
+      {/* ghost watermark */}
+      <div style={{
+        position: 'absolute', bottom: '-1rem', right: '0.4rem',
+        fontFamily: "'Cormorant Garamond', serif",
+        fontSize: '5rem', fontWeight: 700,
+        color: 'rgba(201,168,76,0.05)',
+        lineHeight: 1, pointerEvents: 'none', userSelect: 'none',
+      }}>
+        {step.num}
+      </div>
+
+      {/* icon */}
+      <div style={{
+        width: '44px', height: '44px', borderRadius: '10px',
+        background: 'linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05))',
+        border: '1px solid rgba(201,168,76,0.3)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        fontSize: '1rem', color: '#C9A84C',
+        margin: '0 auto 1.2rem',
+        boxShadow: '0 4px 16px rgba(201,168,76,0.1)',
+      }}>
+        <i className={`fas ${step.icon}`}
+          style={{ filter: 'drop-shadow(0 0 4px rgba(201,168,76,0.35))' }} />
+      </div>
+
+      <h3 style={{
+        margin: '0 0 0.6rem',
+        fontFamily: "'Cormorant Garamond', serif",
+        fontSize: '1.5rem', fontWeight: 600,
+        color: '#fff', lineHeight: 1.2,
+      }}>
+        {step.title}
+      </h3>
+
+      <div style={{
+        width: '28px', height: '1px',
+        background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+        margin: '0 auto 0.8rem',
+      }} />
+
+      <p style={{
+        margin: 0,
+        color: 'rgba(255,255,255,0.52)',
+        fontFamily: "'Montserrat', sans-serif",
+        fontSize: '0.81rem', lineHeight: 1.8,
+      }}>
+        {step.text}
+      </p>
+    </motion.div>
+  )
+}
+
+/* ── Mobile card content ──────────────────────────────────── */
+function MobileCardContent({ step }) {
+  return (
+    <>
+      <p style={{
+        margin: '0 0 0.4rem',
+        fontFamily: "'Montserrat', sans-serif",
+        fontSize: '0.6rem', letterSpacing: '0.2em',
+        color: 'rgba(201,168,76,0.7)', textTransform: 'uppercase',
+      }}>
+        {step.tag}
+      </p>
+      <h3 style={{
+        margin: '0 0 0.5rem',
+        fontFamily: "'Cormorant Garamond', serif",
+        fontSize: '1.45rem', fontWeight: 600,
+        color: '#fff', lineHeight: 1.2,
+      }}>
+        {step.title}
+      </h3>
+      <p style={{
+        margin: 0,
+        color: 'rgba(255,255,255,0.52)',
+        fontFamily: "'Montserrat', sans-serif",
+        fontSize: '0.81rem', lineHeight: 1.8,
+      }}>
+        {step.text}
+      </p>
+    </>
+  )
+}
