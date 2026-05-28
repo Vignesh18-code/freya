@@ -60,56 +60,6 @@ const canvasVariants = {
   },
 }
 
-// ─── Visual Effects ──────────────────────────────────────────────────────────
-function NoiseOverlay() {
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        inset: 0,
-        zIndex: 5,
-        pointerEvents: 'none',
-        opacity: 0.04,
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-      }}
-    />
-  )
-}
-
-function AmbientGlow() {
-  return (
-    <>
-      <div
-        style={{
-          position: 'absolute',
-          top: '10%',
-          right: '5%',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(209,165,80,0.12) 0%, rgba(0,25,53,0) 70%)',
-          borderRadius: '50%',
-          filter: 'blur(60px)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '-10%',
-          left: '-10%',
-          width: '500px',
-          height: '500px',
-          background: 'radial-gradient(circle, rgba(209,165,80,0.08) 0%, rgba(0,25,53,0) 70%)',
-          borderRadius: '50%',
-          filter: 'blur(80px)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-    </>
-  )
-}
 
 function Particles() {
   const particles = useMemo(
@@ -204,7 +154,7 @@ function GoldBar({ mouse }) {
   )
 }
 
-// ─── FIX: resize scroll:false stops gold bar growing on scroll
+// ─── 3D Scene ────────────────────────────────────────────────────────────────
 function Model3DScene({ mouse }) {
   return (
     <Canvas
@@ -265,8 +215,6 @@ export default function Hero() {
         color: '#fff',
       }}
     >
-      <NoiseOverlay />
-      <AmbientGlow />
       <Particles />
 
       {/* Background Editorial Watermark */}
@@ -342,7 +290,7 @@ export default function Hero() {
           gap: '0',
         }}
       >
-        {/* TOP (mobile) / LEFT (desktop): Content */}
+        {/* LEFT: Content */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -474,7 +422,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* BOTTOM (mobile) / RIGHT (desktop): 3D Canvas */}
+        {/* RIGHT: 3D Canvas */}
         <motion.div
           variants={canvasVariants}
           initial="hidden"

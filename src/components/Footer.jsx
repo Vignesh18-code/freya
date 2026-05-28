@@ -57,7 +57,7 @@ function Footer() {
           <div style={{ width: '36px', height: '1px', backgroundColor: colors.gold, marginBottom: '0.6rem' }} />
           <p style={{ ...linkStyle, margin: 0 }}>+852 6375 1595</p>
           <p style={{ ...linkStyle, margin: 0 }}>sales@freyatrading.com</p>
-          <p style={{ ...linkStyle, margin: '0.2rem 0 0' }}>Freya Trading (HK) Ltd., Hong Kong</p>
+          <p style={{ ...linkStyle, margin: '0.2rem 0 0' }}>Unit F 26th Floor 8 Hart Avenue TST, Kowloon Hongkong</p>
           <p style={{ ...linkStyle, margin: '0.2rem 0 0' }}>Mon – Sat · 09:00 to 19:00 HKT</p>
         </div>
       </div>

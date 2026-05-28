@@ -10,7 +10,7 @@ const contactItems = [
   { icon: 'fa-phone',        label: 'Sales',    value: '+852 6375 1595' },
   { icon: 'fa-phone',        label: 'Director', value: '+852 6427 8999' },
   { icon: 'fa-envelope',     label: 'Email',    value: 'sales@freyatrading.com' },
-  { icon: 'fa-location-dot', label: 'Address',  value: 'Freya Trading (HK) Ltd., Hong Kong' },
+  { icon: 'fa-location-dot', label: 'Address',  value: 'Unit F 26th Floor 8 Hart Avenue TST, Kowloon Hongkong' },
   { icon: 'fa-clock',        label: 'Hours',    value: 'Mon – Sat · 09:00 to 19:00 HKT' },
 ]
 
