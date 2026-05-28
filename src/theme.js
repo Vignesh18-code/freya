@@ -1,7 +1,7 @@
 export const colors = {
   bg:          '#001935',
   bgCard:      'rgba(0,30,60,0.7)',
-  bgDeep:      '#000D1A',
+  bgDeep:      '#001935',
   gold:        '#D1A550',
   goldLight:   '#E8D5A3',
   goldMid:     'rgba(209,165,80,0.6)',
