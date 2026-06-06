@@ -7,11 +7,11 @@ const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY'
 // ────────────────────────────────────────────────────────────────────────────
 
 const contactItems = [
-  { icon: 'fa-phone',        label: 'Sales',    value: '+852 6375 1595' },
-  { icon: 'fa-phone',        label: 'Director', value: '+852 6427 8999' },
-  { icon: 'fa-envelope',     label: 'Email',    value: 'sales@freyatrading.com' },
-  { icon: 'fa-location-dot', label: 'Address',  value: 'Unit F 26th Floor 8 Hart Avenue TST, Kowloon Hongkong' },
-  { icon: 'fa-clock',        label: 'Hours',    value: 'Mon – Sat · 09:00 to 19:00 HKT' },
+  { icon: 'fa-building',     label: 'Office :',     value: '+852 3580 0930' },
+  { icon: 'fa-phone',        label: 'Sales:',       value: '+852 6375 1595' },
+  { icon: 'fa-shield-halved', label: 'Compliance:', value: '+852 6427 8999' },
+  { icon: 'fa-envelope',     label: 'Email:',       value: 'email@freyatrading.com' },
+  { icon: 'fa-location-dot', label: 'Address:',     value: 'Unit F, 26/F, 8 Hart Avenue, TST, Kowloon, Hong Kong' },
 ]
 
 const EASE = ease.smooth
@@ -70,7 +70,7 @@ export default function ContactSection() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key:  WEB3FORMS_KEY,
-          subject:     `New Enquiry — Freya Jewels: ${fields.subject}`,
+          subject:     `New Enquiry — Freya Trading (HK) Ltd: ${fields.subject}`,
           from_name:   fields.name,
           name:        fields.name,
           email:       fields.email,
@@ -159,10 +159,6 @@ export default function ContactSection() {
             <h3 style={{ margin:'0 0 0.6rem', fontFamily:fonts.serif, fontSize:'2rem', fontWeight:400 }}>
               Get In Touch
             </h3>
-            <p style={{ margin:'0 0 2rem', color:'rgba(255,255,255,0.5)', fontFamily:fonts.sans, fontSize:'0.83rem', lineHeight:1.85 }}>
-              Reach out via the form or contact us directly. Our advisory team responds within 4 business hours.
-            </p>
-
             <div style={{ display:'grid', gap:'0.85rem' }}>
               {contactItems.map((item, i) => (
                 <motion.div
@@ -244,7 +240,7 @@ export default function ContactSection() {
                     Enquiry Sent
                   </h3>
                   <p style={{ margin:'0 0 2rem', color:'rgba(255,255,255,0.5)', fontFamily:fonts.sans, fontSize:'0.82rem', lineHeight:1.8 }}>
-                    Thank you for reaching out. Our advisory team will respond within 4 business hours.
+                    Thank you for reaching out. Our team will review your enquiry and respond soon.
                   </p>
                   <button
                     onClick={() => setStatus('idle')}

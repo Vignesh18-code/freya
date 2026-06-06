@@ -77,13 +77,21 @@ export default function Navbar() {
       <nav style={navStyle}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between" style={{ height: '80px' }}>
           {/* Logo */}
-          <NavLink to="/" onClick={() => setMenuOpen(false)}>
+          <NavLink to="/" onClick={() => setMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', textDecoration: 'none' }}>
             <img
               src={logo}
-              alt="Freya Jewels"
+              alt="Freya Trading (HK) Ltd"
               className="object-contain"
               style={{ height: '60px' }}
             />
+            <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.05 }}>
+              <span style={{ fontFamily: fonts.serif, fontSize: '1rem', letterSpacing: '0.08em', color: colors.goldLight }}>
+                Freya Trading
+              </span>
+              <span style={{ fontFamily: fonts.sans, fontSize: '0.58rem', letterSpacing: '0.22em', color: 'rgba(255,255,255,0.72)', textTransform: 'uppercase' }}>
+                (HK) Ltd
+              </span>
+            </span>
           </NavLink>
 
           {/* Desktop links */}

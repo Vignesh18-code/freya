@@ -25,7 +25,7 @@ function Contact() {
           <i className="fas fa-map-location-dot" style={{ color: '#C9A84C', fontSize: '2rem' }} />
           <h2 style={{ margin: '0.7rem 0 0', fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 500 }}>Map Location</h2>
           <p style={{ margin: '0.4rem 0 0', color: 'rgba(255,255,255,0.72)', fontFamily: "'Montserrat', sans-serif", fontSize: '0.86rem' }}>
-            DMCC, Jumeirah Lakes Towers, Dubai, UAE
+            Unit F, 26/F, 8 Hart Avenue, TST, Kowloon, Hong Kong
           </p>
         </div>
       </section>

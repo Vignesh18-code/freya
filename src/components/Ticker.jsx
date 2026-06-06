@@ -2,13 +2,11 @@ import { motion } from 'framer-motion'
 import { colors, fonts } from '../theme'
 
 const TICKER_ITEMS = [
-  '24K GOLD',
-  'PLATINUM',
-  'SILVER',
-  'PALLADIUM',
-  'FREE INSURED SHIPPING WORLDWIDE',
-  'LBMA CERTIFIED',
-  'EST. 2007 · DUBAI',
+  'Gold',
+  'Silver',
+  'Diamond',
+  'Est. 2019',
+  'Hong Kong',
 ]
 
 function Ticker() {
@@ -43,13 +41,12 @@ function Ticker() {
               fontFamily: fonts.sans,
               fontSize: '0.75rem',
               letterSpacing: '0.2em',
-              textTransform: 'uppercase',
               color: colors.gold,
               paddingLeft: index === 0 ? '1.5rem' : '2.5rem',
             }}
           >
             <span>{item}</span>
-            <span style={{ marginLeft: '2.5rem', color: colors.goldLight, opacity: 0.8 }}>◆</span>
+            <span style={{ marginLeft: '1rem', color: colors.goldLight, opacity: 0.8 }}>.</span>
           </div>
         ))}
       </motion.div>

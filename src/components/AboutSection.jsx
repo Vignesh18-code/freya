@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
 
 const featureCards = [
@@ -8,30 +9,22 @@ const featureCards = [
     text: 'Guaranteed high-purity standards across all gold bars, silver bullion, and certified gems.',
   },
   {
-    icon: 'fa-shield-halved',
-    title: 'Fully Insured',
-    text: 'Secure, end-to-end transit insurance on all high-value shipments for absolute peace of mind.',
-  },
-  {
-    icon: 'fa-globe',
-    title: 'Global Hubs',
-    text: 'Direct B2B trading networks connecting the UAE, India, Singapore, Hong Kong, and Bahrain.',
-  },
-  {
     icon: 'fa-hand-holding-dollar',
     title: 'Wholesale Pricing',
     text: 'Transparent, competitive market rates straight from our manufacturing and refinery sources.',
   },
 ]
 
-const stats = [
-  { value: '17+', label: 'Years Legacy' },
-  { value: '5,000+', label: 'Clients Served' },
-  { value: '50+', label: 'Countries Network' },
-  { value: '10,000+', label: 'Designs Crafted' },
+const ABOUT_PARAGRAPHS = [
+  'Established in Hong Kong in 2019, Freya Trading (HK) Ltd. has emerged as a dynamic and trusted participant in the global bullion and precious metals market. As a proud member of the SuGandh Group, a respected business group headquartered in Dubai, UAE, we combine international market expertise with the strength, credibility, and legacy of a well-established organization.',
+  'Over the years, Freya Trading has built a strong reputation for reliability, transparency, and excellence in bullion trading. Through strategic partnerships, disciplined risk management, and an unwavering commitment to customer satisfaction, we have successfully expanded our presence across key international markets.',
+  "Backed by the SuGandh Group's business values and entrepreneurial vision, we have consistently delivered secure and efficient trading solutions while fostering long-term relationships with clients, suppliers, and financial institutions worldwide. Our growth story reflects not only our market expertise but also the trust and confidence placed in us by our stakeholders.",
+  'Today, Freya Trading (HK) Ltd. stands as a symbol of professionalism, integrity, and innovation in the precious metals industry. As we continue our journey, we remain dedicated to creating sustainable value, expanding our global footprint, and strengthening our position as a preferred partner in the international bullion market.',
+  'Driven by trust, powered by experience, and backed by the strength of the SuGandh Group, Freya Trading continues to shape the future of global bullion trading.',
 ]
 
 const transition = ease.transition
+const MotionLink = motion.create(Link)
 
 function AboutSection() {
   return (
@@ -163,7 +156,7 @@ function AboutSection() {
                   fontSize: '0.6rem', letterSpacing: '0.22em',
                   color: 'rgba(209,165,80,0.7)', textTransform: 'uppercase',
                 }}>
-                  Est. 2007
+                  Est. 2019
                 </p>
               </div>
               <div style={{
@@ -258,44 +251,34 @@ function AboutSection() {
               fontSize: 'clamp(2.2rem, 3.8vw, 3.4rem)',
               fontWeight: 400, lineHeight: 1.15, color: '#fff',
             }}>
-              Direct Global Access to{' '}
-              <span style={{ fontStyle: 'italic', color: colors.gold }}>
-                Gold, Silver & Diamonds
-              </span>
+              Freya Trading (HK) Ltd. – A Proud Member of the SuGandh Group
             </h2>
 
-            <p style={{
-              marginTop: '1.4rem',
-              color: 'rgba(255,255,255,0.62)',
-              fontFamily: fonts.sans,
-              lineHeight: 1.9, fontSize: '0.9rem',
-            }}>
-              SuGandh Group is an international trading and manufacturing powerhouse built on long-term
-              industry partnerships. We bypass traditional broker networks to connect our B2B clients
-              directly with refined physical products, maximizing margins for businesses in the UAE,
-              India, and beyond.
-            </p>
-            <p style={{
-              marginTop: '0.9rem',
-              color: 'rgba(255,255,255,0.62)',
-              fontFamily: fonts.sans,
-              lineHeight: 1.9, fontSize: '0.9rem',
-            }}>
-              Everything leaving our facilities carries independent certification and absolute proof
-              of origin. We don't just supply precious commodities — we protect your operational standards.
-            </p>
+            {ABOUT_PARAGRAPHS.map((paragraph, index) => (
+              <p
+                key={index}
+                style={{
+                  marginTop: index === 0 ? '1.4rem' : '0.9rem',
+                  color: 'rgba(255,255,255,0.62)',
+                  fontFamily: fonts.sans,
+                  lineHeight: 1.9,
+                  fontSize: '0.9rem',
+                }}
+              >
+                {paragraph}
+              </p>
+            ))}
 
-            {/* Feature cards — box 1&2 from left, 3&4 from right */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
               gap: '1rem',
               marginTop: '2rem',
             }}>
               {featureCards.map((feature, index) => (
                 <motion.div
                   key={feature.title}
-                  initial={{ opacity: 0, x: index < 2 ? -60 : 60 }}
+                  initial={{ opacity: 0, x: index === 0 ? -60 : 60 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ ...transition, delay: index * 0.08 }}
@@ -348,66 +331,34 @@ function AboutSection() {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-        </div>
 
-        {/* ── STATS ROW ── */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-          gap: '1px',
-          background: 'rgba(209,165,80,0.1)',
-          border: '1px solid rgba(209,165,80,0.12)',
-        }}>
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.value}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ ...transition, delay: index * 0.1 }}
-              whileHover={{ backgroundColor: 'rgba(209,165,80,0.06)' }}
+            <MotionLink
+              to="/about"
+              whileHover={{ scale: 1.02, backgroundColor: colors.goldLight, boxShadow: '0 10px 30px -10px rgba(209,165,80,0.5)' }}
+              whileTap={{ scale: 0.98 }}
               style={{
-                background: 'rgba(7,12,26,0.95)',
-                padding: '2rem 1.5rem',
-                textAlign: 'center',
-                position: 'relative',
-                willChange: 'transform, opacity',
-                transition: 'background 0.3s ease',
+                marginTop: '2rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: colors.gold,
+                color: colors.bg,
+                fontFamily: fonts.sans,
+                fontWeight: 600,
+                fontSize: '0.78rem',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                padding: '1rem 2.2rem',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s ease',
+                textDecoration: 'none',
               }}
             >
-              {/* top accent line */}
-              <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: index * 0.1 + 0.3 }}
-                style={{
-                  position: 'absolute', top: 0, left: 0, right: 0, height: '2px',
-                  background: 'linear-gradient(90deg, transparent, #D1A550, transparent)',
-                  transformOrigin: 'left',
-                }}
-              />
-              <p style={{
-                margin: 0,
-                fontFamily: fonts.serif,
-                fontSize: 'clamp(2rem, 3vw, 2.8rem)',
-                fontWeight: 400, color: colors.goldLight, lineHeight: 1,
-              }}>
-                {stat.value}
-              </p>
-              <p style={{
-                margin: '0.5rem 0 0',
-                fontFamily: fonts.sans,
-                fontSize: '0.65rem', letterSpacing: '0.22em',
-                color: 'rgba(255,255,255,0.45)', textTransform: 'uppercase',
-              }}>
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
+              Continue Reading
+            </MotionLink>
+          </motion.div>
         </div>
-
       </div>
     </section>
   )

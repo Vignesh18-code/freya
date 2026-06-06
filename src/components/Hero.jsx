@@ -2,16 +2,16 @@ import { useRef, Suspense, useEffect, useState, useMemo } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Environment } from '@react-three/drei'
+import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
 
 // ─── Content — edit here only ───────────────────────────────────────────────
-const HERO_TAG = 'DIRECT REFINERY SUPPLY | UAE • INDIA • SINGAPORE • HK • BAHRAIN'
-const HERO_HEADING_LINE1 = "The World's Most"
-const HERO_HEADING_LINE1_ITALIC = 'Trusted Gold, Silver &'
-const HERO_HEADING_LINE2 = 'Diamond Source'
-const HERO_SUBTEXT =
-  'Direct wholesale access to physical gold, silver, and certified diamond Jewellery. Fully insured, globally compliant, and trusted by top retail brands since 1992'
-const HERO_BTN_PRIMARY = 'Explore Collections'
+const HERO_TAG = 'DIRECT REFINERY SUPPLY | UAE • HONG KONG'
+const HERO_SUBTEXT = [
+  'Direct wholesale access to physical gold, silver, and certified diamond Jewellery.',
+  'Fully insured, globally compliant, and trusted by top retail brands since 2019',
+]
+const HERO_BTN_PRIMARY = 'Explore Category'
 const HERO_BTN_SECONDARY = 'Our Story'
 
 // ─── Gold Bar Rotation Controls ─────────────────────────────────────────────
@@ -60,6 +60,8 @@ const canvasVariants = {
   },
 }
 
+const MotionLink = motion.create(Link)
+
 
 function Particles() {
   const particles = useMemo(
@@ -72,6 +74,7 @@ function Particles() {
         opacity: Math.random() * 0.4 + 0.1,
         duration: Math.random() * 15 + 10,
         delay: Math.random() * 5,
+        driftX: Math.random() * 30 - 15,
       })),
     []
   )
@@ -94,7 +97,7 @@ function Particles() {
           }}
           animate={{
             y: [0, -100, 0],
-            x: [0, Math.random() * 30 - 15, 0],
+            x: [0, p.driftX, 0],
             opacity: [p.opacity, p.opacity * 0.3, p.opacity],
           }}
           transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: 'linear' }}
@@ -109,7 +112,7 @@ function GoldBar({ mouse }) {
   const { scene } = useGLTF('/models/goldbar.glb')
   const ref = useRef()
 
-  useMemo(() => {
+  useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
         child.material = child.material.clone()
@@ -199,7 +202,7 @@ export default function Hero() {
     return () => window.removeEventListener('mousemove', onMove)
   }, [isMobile])
 
-  const headingSize = isMobile ? '2.6rem' : 'clamp(3.5rem, 5.5vw, 6.5rem)'
+  const headingSize = isMobile ? '2.35rem' : 'clamp(3.5rem, 5.5vw, 6.5rem)'
 
   return (
     <section
@@ -345,12 +348,33 @@ export default function Hero() {
                 fontWeight: 400,
               }}
             >
-              {HERO_HEADING_LINE1}{' '}
-              <span style={{ fontStyle: 'italic', color: colors.gold, fontWeight: 300 }}>
-                {HERO_HEADING_LINE1_ITALIC}
-              </span>
-              <br />
-              {HERO_HEADING_LINE2}
+              The World&apos;s Most{' '}
+              <span style={{ color: colors.white }}>Trusted</span>{' '}
+              <span style={{ color: '#D1A550' }}>Gold</span>,{' '}
+              <span style={{ color: '#C0C0C0' }}>Silver</span> &{' '}
+              <motion.span
+                animate={{
+                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
+                  filter: [
+                    'drop-shadow(0 0 0 rgba(255,255,255,0.1))',
+                    'drop-shadow(0 0 10px rgba(255,255,255,0.45))',
+                    'drop-shadow(0 0 0 rgba(255,255,255,0.1))',
+                  ],
+                }}
+                transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+                style={{
+                  display: 'inline-block',
+                  backgroundImage: 'linear-gradient(120deg, #ffffff 0%, #c7e9ff 25%, #ffffff 50%, #a9d7ff 75%, #ffffff 100%)',
+                  backgroundSize: '200% auto',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  color: 'transparent',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                Diamond
+              </motion.span>{' '}
+              Source
             </h1>
           </motion.div>
 
@@ -367,7 +391,9 @@ export default function Hero() {
               marginBottom: '2rem',
             }}
           >
-            {HERO_SUBTEXT}
+            {HERO_SUBTEXT[0]}
+            <br />
+            {HERO_SUBTEXT[1]}
           </motion.p>
 
           {/* Buttons */}
@@ -380,7 +406,8 @@ export default function Hero() {
               justifyContent: isMobile ? 'center' : 'flex-start',
             }}
           >
-            <motion.button
+            <MotionLink
+              to="/collections"
               whileHover={{ scale: 1.02, backgroundColor: colors.goldLight, boxShadow: '0 10px 30px -10px rgba(209,165,80,0.5)' }}
               whileTap={{ scale: 0.98 }}
               style={{
@@ -395,12 +422,17 @@ export default function Hero() {
                 border: 'none',
                 cursor: 'pointer',
                 transition: 'background-color 0.3s ease',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               {HERO_BTN_PRIMARY}
-            </motion.button>
+            </MotionLink>
 
-            <motion.button
+            <MotionLink
+              to="/about"
               whileHover={{ backgroundColor: 'rgba(209,165,80,0.1)', color: colors.goldLight }}
               whileTap={{ scale: 0.98 }}
               style={{
@@ -415,10 +447,14 @@ export default function Hero() {
                 border: '1px solid rgba(209,165,80,0.4)',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               {HERO_BTN_SECONDARY}
-            </motion.button>
+            </MotionLink>
           </motion.div>
         </motion.div>
 
