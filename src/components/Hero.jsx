@@ -1,4 +1,4 @@
-import { useRef, Suspense, useEffect, useState, useMemo } from 'react'
+import { useRef, Suspense, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Environment } from '@react-three/drei'
@@ -62,22 +62,22 @@ const canvasVariants = {
 
 const MotionLink = motion.create(Link)
 
+function createParticles() {
+  return Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    size: Math.random() * 2 + 0.5,
+    opacity: Math.random() * 0.4 + 0.1,
+    duration: Math.random() * 15 + 10,
+    delay: Math.random() * 5,
+    driftX: Math.random() * 30 - 15,
+  }))
+}
+
 
 function Particles() {
-  const particles = useMemo(
-    () =>
-      Array.from({ length: 30 }, (_, i) => ({
-        id: i,
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.4 + 0.1,
-        duration: Math.random() * 15 + 10,
-        delay: Math.random() * 5,
-        driftX: Math.random() * 30 - 15,
-      })),
-    []
-  )
+  const [particles] = useState(createParticles)
 
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
