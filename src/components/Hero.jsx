@@ -206,6 +206,7 @@ export default function Hero() {
 
   return (
     <section
+      className="responsive-section"
       style={{
         position: 'relative',
         minHeight: '100vh',
@@ -285,7 +286,7 @@ export default function Hero() {
           width: '100%',
           maxWidth: '1440px',
           margin: '0 auto',
-          padding: isMobile ? '0 1.5rem' : '0 6rem',
+          padding: isMobile ? '0 clamp(1rem, 5vw, 1.5rem)' : '0 clamp(3rem, 6vw, 6rem)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -322,6 +323,7 @@ export default function Hero() {
           >
             <span style={{ display: 'block', width: '40px', height: '1px', backgroundColor: colors.gold, flexShrink: 0 }} />
             <span
+              className="hero-tag"
               style={{
                 color: colors.gold,
                 fontFamily: fonts.sans,
@@ -339,6 +341,7 @@ export default function Hero() {
           {/* Heading */}
           <motion.div variants={itemVariants} style={{ marginBottom: '1.2rem' }}>
             <h1
+              className="hero-title"
               style={{
                 fontFamily: fonts.serif,
                 color: colors.white,
@@ -354,9 +357,9 @@ export default function Hero() {
                 animate={{
                   backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   filter: [
-                    'drop-shadow(0 0 6px rgba(255,215,0,0.35))',
-                    'drop-shadow(0 0 22px rgba(255,215,0,0.95))',
-                    'drop-shadow(0 0 6px rgba(255,215,0,0.35))',
+                    'drop-shadow(0 0 3px rgba(255,215,0,0.22))',
+                    'drop-shadow(0 0 12px rgba(255,215,0,0.58))',
+                    'drop-shadow(0 0 3px rgba(255,215,0,0.22))',
                   ],
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
@@ -368,7 +371,7 @@ export default function Hero() {
                   WebkitBackgroundClip: 'text',
                   color: 'transparent',
                   WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 18px rgba(255,215,0,0.45), 0 0 36px rgba(209,165,80,0.28)',
+                  textShadow: '0 0 8px rgba(255,215,0,0.25), 0 0 18px rgba(209,165,80,0.16)',
                 }}
               >
                 Gold
@@ -378,9 +381,9 @@ export default function Hero() {
                 animate={{
                   backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   filter: [
-                    'drop-shadow(0 0 5px rgba(192,192,192,0.3))',
-                    'drop-shadow(0 0 18px rgba(255,255,255,0.85))',
-                    'drop-shadow(0 0 5px rgba(192,192,192,0.3))',
+                    'drop-shadow(0 0 3px rgba(192,192,192,0.2))',
+                    'drop-shadow(0 0 10px rgba(255,255,255,0.55))',
+                    'drop-shadow(0 0 3px rgba(192,192,192,0.2))',
                   ],
                 }}
                 transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
@@ -392,7 +395,7 @@ export default function Hero() {
                   WebkitBackgroundClip: 'text',
                   color: 'transparent',
                   WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 16px rgba(255,255,255,0.35), 0 0 28px rgba(192,192,192,0.25)',
+                  textShadow: '0 0 7px rgba(255,255,255,0.22), 0 0 16px rgba(192,192,192,0.14)',
                 }}
               >
                 Silver
@@ -402,9 +405,9 @@ export default function Hero() {
                 animate={{
                   backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
                   filter: [
-                    'drop-shadow(0 0 8px rgba(255,255,255,0.35))',
-                    'drop-shadow(0 0 28px rgba(185,230,255,1))',
-                    'drop-shadow(0 0 8px rgba(255,255,255,0.35))',
+                    'drop-shadow(0 0 4px rgba(255,255,255,0.22))',
+                    'drop-shadow(0 0 14px rgba(185,230,255,0.6))',
+                    'drop-shadow(0 0 4px rgba(255,255,255,0.22))',
                   ],
                 }}
                 transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
@@ -416,7 +419,7 @@ export default function Hero() {
                   WebkitBackgroundClip: 'text',
                   color: 'transparent',
                   WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 18px rgba(255,255,255,0.48), 0 0 36px rgba(169,215,255,0.35)',
+                  textShadow: '0 0 8px rgba(255,255,255,0.28), 0 0 18px rgba(169,215,255,0.18)',
                 }}
               >
                 Diamond
@@ -454,6 +457,7 @@ export default function Hero() {
             }}
           >
             <MotionLink
+              className="responsive-action mobile-full-width"
               to="/collections"
               whileHover={{ scale: 1.02, backgroundColor: colors.goldLight, boxShadow: '0 10px 30px -10px rgba(209,165,80,0.5)' }}
               whileTap={{ scale: 0.98 }}
@@ -479,6 +483,7 @@ export default function Hero() {
             </MotionLink>
 
             <MotionLink
+              className="responsive-action mobile-full-width"
               to="/about"
               whileHover={{ backgroundColor: 'rgba(209,165,80,0.1)', color: colors.goldLight }}
               whileTap={{ scale: 0.98 }}
@@ -514,7 +519,7 @@ export default function Hero() {
             width: isMobile ? '100%' : '45%',
             flexShrink: 0,
             zIndex: 2,
-            height: isMobile ? '320px' : '650px',
+            height: isMobile ? 'clamp(260px, 58vw, 360px)' : '650px',
             marginTop: isMobile ? '2rem' : '0',
             position: 'relative',
           }}

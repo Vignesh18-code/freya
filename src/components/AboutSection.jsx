@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
 
@@ -19,8 +19,8 @@ const featureCards = [
 const ABOUT_PARAGRAPHS = [
   'Established in Hong Kong in 2019, Freya Trading (HK) Ltd. has emerged as a dynamic and trusted participant in the global bullion and precious metals market. As a proud member of the SuGandh Group, a respected business group headquartered in Dubai, UAE, we combine international market expertise with the strength, credibility, and legacy of a well-established organization.',
   'Over the years, Freya Trading has built a strong reputation for reliability, transparency, and excellence in bullion trading. Through strategic partnerships, disciplined risk management, and an unwavering commitment to customer satisfaction, we have successfully expanded our presence across key international markets.',
-  "Backed by the SuGandh Group's business values and entrepreneurial vision, we have consistently delivered secure and efficient trading solutions while fostering long-term relationships with clients, suppliers, and financial institutions worldwide. Our growth story reflects not only our market expertise but also the trust and confidence placed in us by our stakeholders.",
-  'Today, Freya Trading (HK) Ltd. stands as a symbol of professionalism, integrity, and innovation in the precious metals industry. As we continue our journey, we remain dedicated to creating sustainable value, expanding our global footprint, and strengthening our position as a preferred partner in the international bullion market.',
+  "Backed by the SuGandh Group's business values and entrepreneurial vision, we have consistently delivered secure and efficient trading solutions while fostering long-term relationships with clients, suppliers, and financial institutions worldwide.",
+  'Today, Freya Trading (HK) Ltd. stands as a symbol of professionalism, integrity, and innovation in the precious metals industry.',
   'Driven by trust, powered by experience, and backed by the strength of the SuGandh Group, Freya Trading continues to shape the future of global bullion trading.',
 ]
 
@@ -40,7 +40,6 @@ const stats = [
 ]
 
 const transition = ease.transition
-const EASE = ease.smooth
 const MotionLink = motion(Link)
 
 function useResponsive() {
@@ -69,15 +68,14 @@ function useResponsive() {
 }
 
 function AboutSection() {
-  const [expanded, setExpanded] = useState(false)
   const { isMobile, isTablet } = useResponsive()
 
   const visibleParagraphs = ABOUT_PARAGRAPHS.slice(0, 2)
-  const hiddenParagraphs = ABOUT_PARAGRAPHS.slice(2)
 
   return (
     <section
       id="about"
+      className="responsive-section"
       style={{
         backgroundColor: colors.bg,
         padding: isMobile ? '5.5rem 1.25rem' : isTablet ? '6.5rem 2rem' : '8rem 1.5rem',
@@ -146,7 +144,6 @@ function AboutSection() {
               margin: isMobile || isTablet ? '0 auto' : '0',
             }}
           >
-            {/* Main panel */}
             <div
               style={{
                 position: 'relative',
@@ -160,7 +157,6 @@ function AboutSection() {
                 boxShadow: '0 32px 90px -45px rgba(209,165,80,0.35)',
               }}
             >
-              {/* Gold shimmer top line */}
               <motion.div
                 animate={{
                   backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
@@ -181,7 +177,6 @@ function AboutSection() {
                 }}
               />
 
-              {/* Background pattern */}
               <div
                 style={{
                   position: 'absolute',
@@ -196,7 +191,6 @@ function AboutSection() {
                 }}
               />
 
-              {/* Soft center glow */}
               <div
                 style={{
                   position: 'absolute',
@@ -208,7 +202,6 @@ function AboutSection() {
                 }}
               />
 
-              {/* Center icon */}
               <div
                 style={{
                   position: 'relative',
@@ -220,7 +213,6 @@ function AboutSection() {
                   padding: isMobile ? '0 1rem' : 0,
                 }}
               >
-                {/* Outer ring */}
                 <motion.div
                   animate={{
                     rotate: 360,
@@ -253,7 +245,6 @@ function AboutSection() {
                     }}
                   />
 
-                  {/* Inner ring */}
                   <div
                     style={{
                       width: isMobile ? '96px' : '124px',
@@ -318,7 +309,6 @@ function AboutSection() {
                 </div>
               </div>
 
-              {/* Corner badge - top left */}
               <div
                 style={{
                   position: 'absolute',
@@ -344,7 +334,6 @@ function AboutSection() {
                 </p>
               </div>
 
-              {/* Corner badge - bottom right */}
               <div
                 style={{
                   position: 'absolute',
@@ -370,7 +359,6 @@ function AboutSection() {
                 </p>
               </div>
 
-              {/* Side labels */}
               <div
                 style={{
                   position: 'absolute',
@@ -409,7 +397,6 @@ function AboutSection() {
               </div>
             </div>
 
-            {/* Floating accent card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -470,7 +457,6 @@ function AboutSection() {
               textAlign: isMobile ? 'center' : 'left',
             }}
           >
-            {/* Section label */}
             <div
               style={{
                 display: 'flex',
@@ -536,42 +522,8 @@ function AboutSection() {
                   {paragraph}
                 </p>
               ))}
-
-              <AnimatePresence initial={false}>
-                {expanded && (
-                  <motion.div
-                    key="expanded-about-content"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{
-                      duration: 0.55,
-                      ease: EASE,
-                    }}
-                    style={{
-                      overflow: 'hidden',
-                    }}
-                  >
-                    {hiddenParagraphs.map((paragraph, index) => (
-                      <p
-                        key={index}
-                        style={{
-                          margin: '0.95rem 0 0',
-                          color: 'rgba(255,255,255,0.64)',
-                          fontFamily: fonts.sans,
-                          lineHeight: 1.9,
-                          fontSize: isMobile ? '0.86rem' : '0.92rem',
-                        }}
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
-            {/* Stats row */}
             <div
               style={{
                 display: 'grid',
@@ -623,7 +575,6 @@ function AboutSection() {
               ))}
             </div>
 
-            {/* Read more and CTA */}
             <div
               style={{
                 display: 'flex',
@@ -634,49 +585,6 @@ function AboutSection() {
                 marginTop: '2rem',
               }}
             >
-              <motion.button
-                type="button"
-                onClick={() => setExpanded((prev) => !prev)}
-                whileHover={{
-                  backgroundColor: 'rgba(209,165,80,0.12)',
-                  color: colors.goldLight,
-                }}
-                whileTap={{ scale: 0.98 }}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '0.65rem',
-                  backgroundColor: 'transparent',
-                  color: colors.gold,
-                  fontFamily: fonts.sans,
-                  fontWeight: 600,
-                  fontSize: '0.72rem',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  padding: '0.95rem 1.6rem',
-                  border: '1px solid rgba(209,165,80,0.36)',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                {expanded ? 'Show Less' : 'Read More'}
-
-                <motion.i
-                  className="fas fa-chevron-down"
-                  animate={{
-                    rotate: expanded ? 180 : 0,
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    ease: EASE,
-                  }}
-                  style={{
-                    fontSize: '0.65rem',
-                  }}
-                />
-              </motion.button>
-
               <MotionLink
                 to="/about"
                 whileHover={{
@@ -739,7 +647,6 @@ function AboutSection() {
                 overflow: 'hidden',
               }}
             >
-              {/* Top shimmer */}
               <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}

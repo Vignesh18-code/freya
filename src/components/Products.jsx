@@ -40,6 +40,7 @@ function Products() {
   return (
     <section
       id="collections"
+      className="responsive-section"
       style={{
         backgroundColor: colors.bg,
         padding: '8rem 1.5rem',
@@ -167,6 +168,7 @@ function Products() {
 
         {/* Product Cards */}
         <div
+          className="responsive-card-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
@@ -220,6 +222,7 @@ function Products() {
 
               {/* Product Image */}
               <div
+                className="product-card-body"
                 style={{
                   position: 'relative',
                   width: '100%',
@@ -344,6 +347,7 @@ function Products() {
                   }}
                 >
                   <motion.button
+                    className="responsive-action"
                     whileHover={{
                       backgroundColor: colors.goldLight,
                       boxShadow: '0 8px 24px -8px rgba(209,165,80,0.5)',

@@ -28,15 +28,21 @@ function Ticker() {
         borderTop: '1px solid rgba(209,165,80,0.2)',
         borderBottom: '1px solid rgba(209,165,80,0.2)',
         overflow: 'hidden',
+        maxWidth: '100%',
+        height: '42px',
+        position: 'relative',
       }}
     >
       <motion.div
         animate={{ x: ['0%', '-50%'] }}
         transition={{ duration: 28, ease: 'linear', repeat: Infinity }}
         style={{
+          position: 'absolute',
+          inset: 0,
           display: 'flex',
           width: 'max-content',
           padding: '0.8rem 0',
+          willChange: 'transform',
         }}
       >
         {items.map((item, index) => (

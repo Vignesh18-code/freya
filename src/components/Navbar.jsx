@@ -22,7 +22,7 @@ const linkStyles = ({ isActive }) => ({
 
 function DesktopLink({ label, to }) {
   return (
-    <NavLink to={to} style={linkStyles} className="group">
+    <NavLink to={to} style={linkStyles} className="group desktop-nav-link">
       {label}
       <span
         className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full transition-all duration-300 ease-in-out"
@@ -38,7 +38,7 @@ function MobileLink({ label, to, onClick }) {
       to={to}
       onClick={onClick}
       style={linkStyles}
-      className="text-4xl tracking-widest"
+      className="mobile-menu-link text-4xl tracking-widest"
     >
       {label}
     </NavLink>
@@ -75,23 +75,20 @@ export default function Navbar() {
   return (
     <>
       <nav style={navStyle}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between" style={{ height: '80px' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between" style={{ height: '80px' }}>
           {/* Logo */}
-          <NavLink to="/" onClick={() => setMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', textDecoration: 'none' }}>
+          <NavLink
+            to="/"
+            onClick={() => setMenuOpen(false)}
+            aria-label="Freya Trading home"
+            style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
+          >
             <img
               src={logo}
               alt="Freya Trading (HK) Ltd"
-              className="object-contain"
+              className="site-logo object-contain"
               style={{ height: '60px' }}
             />
-            <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.05 }}>
-              <span style={{ fontFamily: fonts.serif, fontSize: '1rem', letterSpacing: '0.08em', color: colors.goldLight }}>
-                Freya Trading
-              </span>
-              <span style={{ fontFamily: fonts.sans, fontSize: '0.58rem', letterSpacing: '0.22em', color: 'rgba(255,255,255,0.72)', textTransform: 'uppercase' }}>
-                (HK) Ltd
-              </span>
-            </span>
           </NavLink>
 
           {/* Desktop links */}

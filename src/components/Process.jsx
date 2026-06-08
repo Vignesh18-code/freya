@@ -57,7 +57,7 @@ export default function Process() {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
+    const check = () => setIsMobile(window.innerWidth < 1024)
     check()
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
@@ -69,6 +69,7 @@ export default function Process() {
   return (
     <section
       id="process"
+      className="responsive-section"
       style={{
         backgroundColor: colors.bg,
         color: '#fff',
@@ -279,10 +280,11 @@ export default function Process() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-30px' }}
                 transition={{ ...T, delay: index * 0.1 }}
+                className="process-mobile-row"
                 style={{ display: 'flex', gap: '1.2rem', alignItems: 'flex-start' }}
               >
                 {/* Number badge — NO line on mobile */}
-                <div style={{
+                <div className="process-mobile-badge" style={{
                   flexShrink: 0,
                   width: '52px', height: '52px',
                   borderRadius: '50%',
@@ -355,6 +357,7 @@ export default function Process() {
           </div>
 
           <motion.button
+            className="responsive-action mobile-full-width"
             whileHover={{
               backgroundColor: colors.goldLight,
               boxShadow: '0 10px 30px -10px rgba(209,165,80,0.5)',
@@ -392,7 +395,7 @@ export default function Process() {
           }}
         >
           {['KYC Compliant', 'Bank-Grade Security', 'Fully Insured', 'DMCC Regulated'].map((badge) => (
-            <span key={badge} style={{
+            <span key={badge} className="trust-badge" style={{
               padding: '0.35rem 0.9rem',
               border: '1px solid rgba(209,165,80,0.18)',
               borderRadius: '50px',

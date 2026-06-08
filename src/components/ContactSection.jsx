@@ -103,6 +103,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
+      className="responsive-section"
       style={{
         backgroundColor: colors.bg,
         color: '#fff',
@@ -144,7 +145,7 @@ export default function ContactSection() {
         {/* ── Two-column ── */}
         <div style={{
           display:'grid',
-          gridTemplateColumns:'repeat(auto-fit, minmax(300px, 1fr))',
+          gridTemplateColumns:'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
           gap:'2.5rem',
           alignItems:'start',
         }}>
@@ -167,6 +168,7 @@ export default function ContactSection() {
                   whileInView={{ opacity:1, x:0 }}
                   viewport={{ once:true }}
                   transition={{ ...T, delay: i * 0.08 }}
+                  className="contact-info-item"
                   style={{
                     display:'flex', gap:'1rem', alignItems:'flex-start',
                     border:'1px solid rgba(209,165,80,0.15)',
@@ -204,6 +206,7 @@ export default function ContactSection() {
             whileInView={{ opacity:1, x:0 }}
             viewport={{ once:true, margin:'-60px' }}
             transition={{ ...T, delay:0.15 }}
+            className="contact-form-panel"
             style={{
               position:'relative',
               border:'1px solid rgba(209,165,80,0.18)',
@@ -271,7 +274,7 @@ export default function ContactSection() {
                   <input type="checkbox" name="botcheck" style={{ display:'none' }} />
 
                   {/* Name + Email */}
-                  <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
+                  <div className="responsive-form-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
                     <Field label="Full Name *"      name="name"    type="text"  placeholder="John Smith"          value={fields.name}    error={errors.name}    onChange={handleChange} onFocus={()=>setFocused('name')}    onBlur={()=>setFocused(null)} borderColor={borderColor('name')} />
                     <Field label="Email Address *"  name="email"   type="email" placeholder="you@company.com"     value={fields.email}   error={errors.email}   onChange={handleChange} onFocus={()=>setFocused('email')}   onBlur={()=>setFocused(null)} borderColor={borderColor('email')} />
                   </div>
@@ -339,6 +342,7 @@ export default function ContactSection() {
 
                   {/* Submit */}
                   <motion.button
+                    className="responsive-action"
                     type="submit"
                     disabled={status === 'sending'}
                     whileHover={status !== 'sending' ? { backgroundColor:colors.goldLight, boxShadow:'0 12px 32px -10px rgba(209,165,80,0.5)' } : {}}
@@ -355,7 +359,7 @@ export default function ContactSection() {
                     }}
                   >
                     {status === 'sending' ? (
-                      <><i className="fas fa-circle-notch fa-spin" style={{ fontSize:'0.75rem' }} /> Sending…</>
+                      <><i className="fas fa-circle-notch fa-spin" style={{ fontSize:'0.75rem' }} /> Sending...</>
                     ) : (
                       <><i className="fas fa-paper-plane" style={{ fontSize:'0.7rem' }} /> Submit Enquiry</>
                     )}

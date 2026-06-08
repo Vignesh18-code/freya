@@ -45,7 +45,7 @@ function Footer() {
       </div>
 
       <div style={{ borderTop: '1px solid rgba(209,165,80,0.2)', padding: '0.9rem 1.5rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap' }}>
+        <div className="footer-bottom" style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap' }}>
           <p style={{ margin: 0, color: 'rgba(255,255,255,0.6)', fontFamily: fonts.sans, fontSize: '0.75rem' }}>
             © {new Date().getFullYear()} Freya Trading (HK) Ltd. All rights reserved.
           </p>

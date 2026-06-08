@@ -58,6 +58,7 @@ function WhyUs() {
   return (
     <section
       id="why"
+      className="responsive-section"
       style={{
         backgroundColor: colors.bg,
         color: '#fff',
@@ -125,7 +126,7 @@ function WhyUs() {
         {/* Cards grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))',
           gap: '1.25rem',
         }}>
           {reasons.map((item, index) => (

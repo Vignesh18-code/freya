@@ -10,18 +10,170 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
- background-color: #070C1A;
+  background-color: #070C1A;
   color: #FFFFFF;
   font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
 }
 
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: clip;
+  position: relative;
+}
+
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a,
+button,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Cormorant Garamond', serif;
   color: #C9A84C;
+}
+
+.page-hero {
+  padding: clamp(6.5rem, 10vw, 8rem) clamp(1rem, 4vw, 1.5rem) clamp(3rem, 7vw, 4.5rem);
+}
+
+.page-container {
+  width: min(100%, 1100px);
+  margin: 0 auto;
+}
+
+.responsive-section {
+  padding: clamp(4.5rem, 8vw, 8rem) clamp(1rem, 4vw, 1.5rem) !important;
+}
+
+.responsive-card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)) !important;
+}
+
+.responsive-form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.responsive-action {
+  min-height: 44px;
+}
+
+.break-anywhere {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+@media (max-width: 1023px) {
+  .desktop-nav-link {
+    font-size: 1.05rem !important;
+    letter-spacing: 0.08em !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .responsive-section {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+
+  .mobile-full-width {
+    width: 100% !important;
+    max-width: 340px !important;
+  }
+
+  .mobile-center {
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .responsive-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-form-panel {
+    padding: 1.35rem !important;
+  }
+
+  .contact-info-item {
+    padding: 0.9rem !important;
+  }
+
+  .section-eyebrow-line {
+    width: 28px !important;
+  }
+
+  .footer-bottom {
+    justify-content: center !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-logo {
+    height: 48px !important;
+  }
+
+  .site-brand-primary {
+    font-size: 0.86rem !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  .site-brand-secondary {
+    font-size: 0.5rem !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .mobile-menu-link {
+    font-size: clamp(2rem, 12vw, 3rem) !important;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 13vw, 2.85rem) !important;
+    line-height: 1.03 !important;
+  }
+
+  .hero-tag {
+    max-width: 320px;
+    font-size: 0.52rem !important;
+    letter-spacing: 0.14em !important;
+  }
+
+  .product-card-body {
+    padding: 1.25rem 1.1rem 1.4rem !important;
+  }
+
+  .process-mobile-row {
+    gap: 0.85rem !important;
+  }
+
+  .process-mobile-badge {
+    width: 46px !important;
+    height: 46px !important;
+  }
+
+  .trust-badge {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 ::-webkit-scrollbar {

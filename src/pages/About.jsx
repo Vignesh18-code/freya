@@ -10,15 +10,16 @@ const ABOUT_PARAGRAPHS = [
 
 function About() {
   return (
-    <main style={{ color: '#fff', backgroundColor: '#070C1A' }}>
+    <main style={{ color: '#fff', backgroundColor: '#001935' }}>
       <section
+        className="page-hero"
         style={{
-          background: 'linear-gradient(160deg, #070C1A 0%, #101F48 100%)',
+          backgroundColor: '#001935',
           padding: '7rem 1.5rem 4rem',
           borderBottom: '1px solid rgba(201,168,76,0.25)',
         }}
       >
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div className="page-container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <p style={{ margin: 0, fontFamily: "'Montserrat', sans-serif", color: '#C9A84C', letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.72rem' }}>Home · About</p>
           <h1 style={{ margin: '0.8rem 0 0', fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.8rem, 5vw, 4.8rem)', fontWeight: 500 }}>
             About Freya
@@ -26,8 +27,8 @@ function About() {
         </div>
       </section>
 
-      <section style={{ maxWidth: '1100px', margin: '0 auto', padding: '3.2rem 1.5rem' }}>
-        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: '2.4rem', fontWeight: 500 }}>
+      <section className="page-container" style={{ maxWidth: '1100px', margin: '0 auto', padding: 'clamp(2.5rem, 6vw, 3.2rem) clamp(1rem, 4vw, 1.5rem)' }}>
+        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2rem, 6vw, 2.4rem)', fontWeight: 500, lineHeight: 1.15 }}>
           Freya Trading (HK) Ltd. – A Proud Member of the SuGandh Group
         </motion.h2>
         {ABOUT_PARAGRAPHS.map((paragraph, index) => (
