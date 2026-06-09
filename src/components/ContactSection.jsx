@@ -116,7 +116,7 @@ export default function ContactSection() {
       <div style={{ position:'absolute', top:'10%', left:'-10%', width:'500px', height:'500px', borderRadius:'50%', background:'radial-gradient(circle, rgba(209,165,80,0.05) 0%, transparent 70%)', filter:'blur(80px)', pointerEvents:'none' }} />
       <div style={{ position:'absolute', bottom:'5%', right:'-10%', width:'400px', height:'400px', borderRadius:'50%', background:'radial-gradient(circle, rgba(209,165,80,0.04) 0%, transparent 70%)', filter:'blur(80px)', pointerEvents:'none' }} />
 
-      <div style={{ maxWidth:'1280px', margin:'0 auto', position:'relative', zIndex:1 }}>
+      <div style={{ maxWidth:'1520px', margin:'0 auto', position:'relative', zIndex:1 }}>
 
         {/* ── Header ── */}
         <motion.div

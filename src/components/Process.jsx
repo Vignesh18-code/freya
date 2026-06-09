@@ -94,7 +94,7 @@ export default function Process() {
         filter: 'blur(80px)', pointerEvents: 'none',
       }} />
 
-      <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1520px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
         {/* ── Header ── */}
         <motion.div

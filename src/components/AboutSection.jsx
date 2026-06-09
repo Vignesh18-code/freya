@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
+import websiteImage from '../assets/website.png'
 
 const featureCards = [
   {
@@ -115,7 +116,7 @@ function AboutSection() {
 
       <div
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1520px',
           margin: '0 auto',
           position: 'relative',
           zIndex: 1,
@@ -148,300 +149,24 @@ function AboutSection() {
               style={{
                 position: 'relative',
                 border: '1px solid rgba(209,165,80,0.22)',
-                background: 'linear-gradient(145deg, rgba(16,31,72,0.92) 0%, rgba(7,12,26,0.98) 100%)',
-                minHeight: isMobile ? '390px' : isTablet ? '460px' : '560px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                background: 'rgba(7,12,26,0.45)',
+                aspectRatio: isMobile ? '4 / 5' : '0.88 / 1',
                 overflow: 'hidden',
                 boxShadow: '0 32px 90px -45px rgba(209,165,80,0.35)',
               }}
             >
-              <motion.div
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
+              <img
+                src={websiteImage}
+                alt="Freya Trading precious metals"
+                loading="lazy"
                 style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '2px',
-                  background: 'linear-gradient(90deg, transparent, #D1A550, #FFF2B2, #D1A550, transparent)',
-                  backgroundSize: '220% auto',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  display: 'block',
                 }}
               />
-
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  backgroundImage: `repeating-linear-gradient(
-                    45deg,
-                    rgba(209,165,80,0.025) 0px,
-                    rgba(209,165,80,0.025) 1px,
-                    transparent 1px,
-                    transparent 40px
-                  )`,
-                }}
-              />
-
-              <div
-                style={{
-                  position: 'absolute',
-                  width: isMobile ? '260px' : '380px',
-                  height: isMobile ? '260px' : '380px',
-                  borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(209,165,80,0.15), transparent 68%)',
-                  filter: 'blur(35px)',
-                }}
-              />
-
-              <div
-                style={{
-                  position: 'relative',
-                  zIndex: 2,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: isMobile ? '1.2rem' : '1.5rem',
-                  padding: isMobile ? '0 1rem' : 0,
-                }}
-              >
-                <motion.div
-                  animate={{
-                    rotate: 360,
-                  }}
-                  transition={{
-                    duration: 28,
-                    repeat: Infinity,
-                    ease: 'linear',
-                  }}
-                  style={{
-                    width: isMobile ? '128px' : '168px',
-                    height: isMobile ? '128px' : '168px',
-                    borderRadius: '50%',
-                    border: '1px solid rgba(209,165,80,0.22)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative',
-                  }}
-                >
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: '-4px',
-                      width: '8px',
-                      height: '8px',
-                      borderRadius: '50%',
-                      backgroundColor: colors.gold,
-                      boxShadow: '0 0 18px rgba(209,165,80,0.9)',
-                    }}
-                  />
-
-                  <div
-                    style={{
-                      width: isMobile ? '96px' : '124px',
-                      height: isMobile ? '96px' : '124px',
-                      borderRadius: '50%',
-                      border: '1px solid rgba(209,165,80,0.36)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      background: 'linear-gradient(135deg, rgba(209,165,80,0.14), rgba(209,165,80,0.04))',
-                    }}
-                  >
-                    <motion.i
-                      className="fas fa-gem"
-                      animate={{
-                        filter: [
-                          'drop-shadow(0 0 8px rgba(209,165,80,0.35))',
-                          'drop-shadow(0 0 20px rgba(209,165,80,0.9))',
-                          'drop-shadow(0 0 8px rgba(209,165,80,0.35))',
-                        ],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      }}
-                      style={{
-                        fontSize: isMobile ? '2.6rem' : '3.6rem',
-                        color: colors.gold,
-                      }}
-                    />
-                  </div>
-                </motion.div>
-
-                <div style={{ textAlign: 'center' }}>
-                  <p
-                    style={{
-                      margin: 0,
-                      fontFamily: fonts.serif,
-                      fontSize: isMobile ? '1.45rem' : '1.9rem',
-                      fontWeight: 400,
-                      color: colors.goldLight,
-                      letterSpacing: '0.05em',
-                    }}
-                  >
-                    SuGandh Group
-                  </p>
-
-                  <p
-                    style={{
-                      margin: '0.35rem 0 0',
-                      fontFamily: fonts.sans,
-                      fontSize: isMobile ? '0.55rem' : '0.65rem',
-                      letterSpacing: isMobile ? '0.18em' : '0.3em',
-                      color: 'rgba(209,165,80,0.65)',
-                      textTransform: 'uppercase',
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    International Trading & Manufacturing
-                  </p>
-                </div>
-              </div>
-
-              <div
-                style={{
-                  position: 'absolute',
-                  top: isMobile ? '1rem' : '1.2rem',
-                  left: isMobile ? '1rem' : '1.2rem',
-                  border: '1px solid rgba(209,165,80,0.25)',
-                  padding: isMobile ? '0.35rem 0.65rem' : '0.4rem 0.8rem',
-                  background: 'rgba(7,12,26,0.82)',
-                  backdropFilter: 'blur(10px)',
-                }}
-              >
-                <p
-                  style={{
-                    margin: 0,
-                    fontFamily: fonts.sans,
-                    fontSize: isMobile ? '0.52rem' : '0.6rem',
-                    letterSpacing: '0.22em',
-                    color: 'rgba(209,165,80,0.75)',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  Est. 2019
-                </p>
-              </div>
-
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: isMobile ? '1rem' : '1.2rem',
-                  right: isMobile ? '1rem' : '1.2rem',
-                  border: '1px solid rgba(209,165,80,0.25)',
-                  padding: isMobile ? '0.35rem 0.65rem' : '0.4rem 0.8rem',
-                  background: 'rgba(7,12,26,0.82)',
-                  backdropFilter: 'blur(10px)',
-                }}
-              >
-                <p
-                  style={{
-                    margin: 0,
-                    fontFamily: fonts.sans,
-                    fontSize: isMobile ? '0.52rem' : '0.6rem',
-                    letterSpacing: '0.22em',
-                    color: 'rgba(209,165,80,0.75)',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  DMCC Certified
-                </p>
-              </div>
-
-              <div
-                style={{
-                  position: 'absolute',
-                  left: isMobile ? '1rem' : '1.2rem',
-                  bottom: isMobile ? '1rem' : '1.2rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.4rem',
-                }}
-              >
-                {['Gold', 'Silver', 'Diamonds'].map((label) => (
-                  <div key={label} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <div
-                      style={{
-                        width: '4px',
-                        height: '4px',
-                        borderRadius: '50%',
-                        backgroundColor: colors.gold,
-                        boxShadow: '0 0 10px rgba(209,165,80,0.7)',
-                      }}
-                    />
-
-                    <span
-                      style={{
-                        fontFamily: fonts.sans,
-                        fontSize: isMobile ? '0.52rem' : '0.6rem',
-                        letterSpacing: '0.15em',
-                        color: 'rgba(255,255,255,0.48)',
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      {label}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...transition, delay: 0.35 }}
-              style={{
-                position: isMobile ? 'relative' : 'absolute',
-                bottom: isMobile ? 'auto' : '-1.5rem',
-                right: isMobile ? 'auto' : '-1.5rem',
-                margin: isMobile ? '-1.2rem auto 0' : 0,
-                width: isMobile ? 'calc(100% - 2rem)' : 'auto',
-                maxWidth: isMobile ? '280px' : 'none',
-                background: 'linear-gradient(135deg, rgba(209,165,80,0.2), rgba(209,165,80,0.06))',
-                border: '1px solid rgba(209,165,80,0.32)',
-                padding: isMobile ? '0.9rem 1.1rem' : '1rem 1.4rem',
-                backdropFilter: 'blur(12px)',
-                boxShadow: '0 18px 45px -25px rgba(209,165,80,0.55)',
-                textAlign: isMobile ? 'center' : 'left',
-              }}
-            >
-              <p
-                style={{
-                  margin: 0,
-                  fontFamily: fonts.serif,
-                  fontSize: isMobile ? '1.45rem' : '1.6rem',
-                  color: colors.goldLight,
-                  lineHeight: 1,
-                }}
-              >
-                100%
-              </p>
-
-              <p
-                style={{
-                  margin: '0.25rem 0 0',
-                  fontFamily: fonts.sans,
-                  fontSize: '0.6rem',
-                  letterSpacing: '0.18em',
-                  color: 'rgba(255,255,255,0.55)',
-                  textTransform: 'uppercase',
-                }}
-              >
-                Certified Origin
-              </p>
-            </motion.div>
           </motion.div>
 
           {/* RIGHT: Content */}

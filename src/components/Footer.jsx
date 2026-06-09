@@ -1,5 +1,5 @@
 import { colors, fonts } from '../theme'
-import logo from '../assets/logo.jpg'
+import footerLogo from '../assets/Freya Trading HK Ltd.png'
 
 const footerHeadingStyle = {
   margin: 0,
@@ -19,35 +19,18 @@ const linkStyle = {
 function Footer() {
   return (
     <footer style={{ backgroundColor: colors.bgDeep, borderTop: '1px solid rgba(209,165,80,0.35)', color: '#fff' }}>
-      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-8" style={{ maxWidth: '1200px', margin: '0 auto', padding: '2.25rem 1.5rem 1.6rem' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-8" style={{ maxWidth: '1520px', margin: '0 auto', padding: '2.25rem 1.5rem 1.6rem' }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
-            <img
-              src={logo}
-              alt="Freya"
-              style={{ display: 'block', width: 'min(180px, 100%)', height: 'auto' }}
-            />
-            <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.05 }}>
-              <span style={{ fontFamily: fonts.serif, fontSize: '1rem', letterSpacing: '0.08em', color: colors.goldLight }}>
-                Trading
-              </span>
-              <span style={{ fontFamily: fonts.sans, fontSize: '0.58rem', letterSpacing: '0.22em', color: 'rgba(255,255,255,0.72)', textTransform: 'uppercase' }}>
-                (HK) Ltd
-              </span>
-            </span>
-          </div>
+          <img
+            src={footerLogo}
+            alt="Freya Trading (HK) Ltd"
+            style={{ display: 'block', width: 'min(260px, 100%)', height: 'auto' }}
+          />
           <p style={{ margin: '0.65rem 0 1rem', fontFamily: fonts.sans, color: 'rgba(255,255,255,0.72)', fontSize: '0.84rem', lineHeight: 1.8 }}>
             Direct wholesale access to premium gold and silver bullion, coins, bars, and jewellery.
             <br />
             Fully insured, globally compliant, and trusted by leading retailers and industry partners since 2019.
           </p>
-          <div style={{ display: 'flex', gap: '0.55rem' }}>
-            {['fa-instagram', 'fa-linkedin-in', 'fa-twitter', 'fa-facebook-f'].map((icon) => (
-              <a key={icon} href="#" aria-label={icon} style={{ width: '34px', height: '34px', borderRadius: '999px', border: '1px solid rgba(209,165,80,0.4)', color: colors.gold, display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>
-                <i className={`fab ${icon}`} />
-              </a>
-            ))}
-          </div>
         </div>
 
         <div>
@@ -62,9 +45,12 @@ function Footer() {
       </div>
 
       <div style={{ borderTop: '1px solid rgba(209,165,80,0.2)', padding: '0.75rem 1.5rem' }}>
-        <div className="footer-bottom" style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap' }}>
+        <div className="footer-bottom" style={{ maxWidth: '1520px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.8rem', flexWrap: 'wrap' }}>
           <p style={{ margin: 0, color: 'rgba(255,255,255,0.6)', fontFamily: fonts.sans, fontSize: '0.75rem' }}>
             © {new Date().getFullYear()} Freya Trading (HK) Ltd. All rights reserved.
+          </p>
+          <p style={{ margin: 0, color: 'rgba(255,255,255,0.6)', fontFamily: fonts.sans, fontSize: '0.75rem' }}>
+            Developed by Elite Designs
           </p>
         </div>
       </div>

@@ -76,7 +76,7 @@ export default function Navbar() {
   return (
     <>
       <nav style={navStyle}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between" style={{ height: '80px' }}>
+        <div className="mx-auto px-4 sm:px-6 flex items-center justify-between" style={{ height: '80px', maxWidth: '1520px' }}>
           {/* Logo */}
           <NavLink
             to="/"

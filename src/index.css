@@ -57,12 +57,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-container {
-  width: min(100%, 1100px);
+  width: min(100%, 1520px);
   margin: 0 auto;
 }
 
 .responsive-section {
   padding: clamp(3rem, 5vw, 4.75rem) clamp(1rem, 4vw, 1.5rem) !important;
+}
+
+@media (min-width: 1280px) {
+  .responsive-section {
+    padding-left: clamp(1.5rem, 2vw, 2.5rem) !important;
+    padding-right: clamp(1.5rem, 2vw, 2.5rem) !important;
+  }
 }
 
 .responsive-card-grid {

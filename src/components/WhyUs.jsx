@@ -50,7 +50,7 @@ function WhyUs() {
         filter: 'blur(60px)', pointerEvents: 'none', zIndex: 0,
       }} />
 
-      <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div style={{ maxWidth: '1520px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
         {/* Heading */}
         <motion.div

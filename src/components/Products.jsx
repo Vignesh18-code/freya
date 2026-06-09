@@ -82,7 +82,7 @@ function Products() {
 
       <div
         style={{
-          maxWidth: '1280px',
+          maxWidth: '1520px',
           margin: '0 auto',
           position: 'relative',
           zIndex: 1,
@@ -122,7 +122,7 @@ function Products() {
                 textTransform: 'uppercase',
               }}
             >
-              Our Catalogue
+              Product Range
             </span>
 
             <span
@@ -144,7 +144,7 @@ function Products() {
               lineHeight: 1.1,
             }}
           >
-            Product{' '}
+            Premium Product{' '}
             <span style={{ fontStyle: 'italic', color: colors.gold }}>
               Range
             </span>

@@ -22,7 +22,7 @@ const BASE_Z = -1.05
 const GOLD_BAR_POSITION_X = 0
 const GOLD_BAR_POSITION_Y = 0
 const GOLD_BAR_POSITION_Z = 0
-const GOLD_BAR_SCALE = 1.5
+const GOLD_BAR_SCALE = 2
 
 function lerp(a, b, t) {
   return a + (b - a) * t
@@ -284,9 +284,9 @@ export default function Hero() {
           position: 'relative',
           zIndex: 2,
           width: '100%',
-          maxWidth: '1440px',
+          maxWidth: '1520px',
           margin: '0 auto',
-          padding: isMobile ? '0 clamp(1rem, 5vw, 1.5rem)' : '0 clamp(3rem, 6vw, 6rem)',
+          padding: isMobile ? '0 clamp(1rem, 5vw, 1.5rem)' : '0 clamp(1.5rem, 2vw, 2.5rem)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
