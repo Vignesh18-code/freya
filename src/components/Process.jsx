@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { colors, fonts, ease } from '../theme'
 
@@ -35,6 +36,7 @@ const steps = [
 
 const EASE = ease.smooth
 const T = ease.transition
+const MotionLink = motion(Link)
 
 /* ─── reusable shimmer bar ─────────────────────────────────── */
 function ShimmerLine({ delay = 0 }) {
@@ -356,7 +358,8 @@ export default function Process() {
             </p>
           </div>
 
-          <motion.button
+          <MotionLink
+            to="/contact"
             className="responsive-action mobile-full-width"
             whileHover={{
               backgroundColor: colors.goldLight,
@@ -376,10 +379,14 @@ export default function Process() {
               cursor: 'pointer',
               flexShrink: 0,
               transition: 'background-color 0.3s ease',
+              textDecoration: 'none',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
             Start an Enquiry
-          </motion.button>
+          </MotionLink>
         </motion.div>
 
         {/* Trust badges */}

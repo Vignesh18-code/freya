@@ -104,7 +104,15 @@ export default function Navbar() {
             className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 relative z-50"
             onClick={() => setMenuOpen(prev => !prev)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              position: menuOpen ? 'fixed' : 'relative',
+              top: menuOpen ? '24px' : 'auto',
+              right: menuOpen ? '24px' : 'auto',
+              zIndex: 60,
+            }}
           >
             <motion.span
               animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
