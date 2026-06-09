@@ -7,7 +7,7 @@ function Contact() {
         className="page-hero"
         style={{
           backgroundColor: '#001935',
-          padding: '7rem 1.5rem 4rem',
+          padding: 'clamp(5.5rem, 8vw, 6.5rem) clamp(1rem, 4vw, 1.5rem) clamp(2.25rem, 5vw, 3rem)',
           borderBottom: '1px solid rgba(201,168,76,0.25)',
         }}
       >
@@ -21,7 +21,7 @@ function Contact() {
 
       <ContactSection />
 
-      <section style={{ padding: '0 clamp(1rem, 4vw, 1.5rem) 4rem' }}>
+      <section style={{ padding: '0 clamp(1rem, 4vw, 1.5rem) 3rem' }}>
         <div className="page-container" style={{ maxWidth: '1100px', margin: '0 auto', border: '1px solid rgba(201,168,76,0.25)', backgroundColor: 'rgba(16,31,72,0.35)', minHeight: '280px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '1.25rem' }}>
           <i className="fas fa-map-location-dot" style={{ color: '#C9A84C', fontSize: '2rem' }} />
           <h2 style={{ margin: '0.7rem 0 0', fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 500 }}>Map Location</h2>

@@ -94,7 +94,7 @@ function Products() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={transition}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
+          style={{ textAlign: 'center', marginBottom: 'clamp(2.25rem, 4vw, 3rem)' }}
         >
           <div
             style={{
@@ -144,9 +144,9 @@ function Products() {
               lineHeight: 1.1,
             }}
           >
-            Premium{' '}
+            Product{' '}
             <span style={{ fontStyle: 'italic', color: colors.gold }}>
-              Wholesale Products
+              Range
             </span>
           </h2>
 
@@ -172,7 +172,7 @@ function Products() {
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '1.5rem',
+            gap: 'clamp(1rem, 2vw, 1.35rem)',
           }}
         >
           {products.map((item, index) => (
@@ -285,7 +285,7 @@ function Products() {
               {/* Card Body */}
               <div
                 style={{
-                  padding: '1.6rem 1.5rem 1.8rem',
+                  padding: '1.35rem 1.25rem 1.5rem',
                   display: 'flex',
                   flexDirection: 'column',
                   flex: 1,

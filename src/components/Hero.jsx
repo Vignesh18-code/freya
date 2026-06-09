@@ -8,8 +8,8 @@ import { colors, fonts, ease } from '../theme'
 // ─── Content — edit here only ───────────────────────────────────────────────
 const HERO_TAG = 'DIRECT REFINERY SUPPLY | UAE • HONG KONG'
 const HERO_SUBTEXT = [
-  'Direct wholesale access to physical gold, silver, and certified diamond Jewellery.',
-  'Fully insured, globally compliant, and trusted by top retail brands since 2019',
+  'Direct wholesale access to premium gold and silver bullion, coins, bars, and jewellery.',
+  'Fully insured, globally compliant, and trusted by leading retailers and industry partners since 2019.',
 ]
 const HERO_BTN_PRIMARY = 'Explore Category'
 const HERO_BTN_SECONDARY = 'Our Story'
@@ -206,15 +206,15 @@ export default function Hero() {
 
   return (
     <section
-      className="responsive-section"
+      className="responsive-section hero-section"
       style={{
         position: 'relative',
-        minHeight: '100vh',
+        minHeight: isMobile ? 'auto' : 'min(100vh, 820px)',
         backgroundColor: colors.bg,
         display: 'flex',
         alignItems: 'center',
-        paddingTop: isMobile ? '90px' : '0',
-        paddingBottom: isMobile ? '60px' : '0',
+        paddingTop: isMobile ? '100px' : '24px',
+        paddingBottom: isMobile ? '36px' : '0',
         overflow: 'hidden',
         color: '#fff',
       }}
@@ -438,7 +438,7 @@ export default function Hero() {
               lineHeight: 1.8,
               fontSize: isMobile ? '0.88rem' : '1rem',
               maxWidth: '500px',
-              marginBottom: '2rem',
+              marginBottom: '1.5rem',
             }}
           >
             {HERO_SUBTEXT[0]}
@@ -519,8 +519,8 @@ export default function Hero() {
             width: isMobile ? '100%' : '45%',
             flexShrink: 0,
             zIndex: 2,
-            height: isMobile ? 'clamp(260px, 58vw, 360px)' : '650px',
-            marginTop: isMobile ? '2rem' : '0',
+            height: isMobile ? 'clamp(220px, 54vw, 320px)' : '600px',
+            marginTop: isMobile ? '1.25rem' : '0',
             position: 'relative',
           }}
         >

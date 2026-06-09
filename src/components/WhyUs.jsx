@@ -10,45 +10,15 @@ const reasons = [
   },
   {
     num: '02',
-    icon: 'fa-shield-halved',
-    title: 'Insured Global Shipping',
-    text: 'Every delivery is fully insured from refinery to vault. Safe, monitored logistics across our 5-country trading network.',
-  },
-  {
-    num: '03',
     icon: 'fa-microscope',
     title: 'Certified Purity',
     text: 'All gold, silver, and diamonds are strictly verified. Official certification and clear grading reports accompany every single order.',
   },
   {
-    num: '04',
+    num: '03',
     icon: 'fa-clock',
     title: 'Efficient Settlement',
     text: 'Industry-leading transaction speeds. Direct secure bank transfers processed swiftly to ensure timely allocation and dispatch.',
-  },
-  {
-    num: '05',
-    icon: 'fa-file-contract',
-    title: 'Strict Chain of Custody',
-    text: 'Source-to-buyer accountability. Conflict-free gold and ethically sourced diamond tracks with reliable provenance records.',
-  },
-  {
-    num: '06',
-    icon: 'fa-headset',
-    title: 'B2B Support Desk',
-    text: 'Every partner receives dedicated corporate account assistance. Expert corporate guidance tailored for major retail jewelry brands.',
-  },
-  {
-    num: '07',
-    icon: 'fa-building-columns',
-    title: 'Global Compliance',
-    text: 'Fully licensed and regulated across the UAE and key international hubs. Strictly compliant with local AML/KYC guidelines.',
-  },
-  {
-    num: '08',
-    icon: 'fa-arrow-rotate-left',
-    title: 'Liquid Buy-Back',
-    text: 'Guaranteed liquidity option to trade back assets at live spot market rates with zero friction when you need it.',
   },
 ]
 
@@ -88,7 +58,7 @@ function WhyUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.9, ease: EASE }}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
+          style={{ textAlign: 'center', margin: '0 auto clamp(2.25rem, 4vw, 3rem)', maxWidth: '760px' }}
         >
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: '0.75rem',
@@ -113,7 +83,7 @@ function WhyUs() {
             <span style={{ fontStyle: 'italic', color: colors.gold }}>Trust & Quality</span>
           </h2>
           <p style={{
-            margin: '1rem auto 0', maxWidth: '560px',
+            margin: '1rem auto 0', maxWidth: '620px',
             color: 'rgba(255,255,255,0.55)',
             fontFamily: fonts.sans,
             fontSize: '0.9rem', lineHeight: 1.8,
@@ -124,10 +94,10 @@ function WhyUs() {
         </motion.div>
 
         {/* Cards grid */}
-        <div style={{
+        <div className="why-us-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))',
-          gap: '1.25rem',
+          gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+          gap: 'clamp(1rem, 2vw, 1.25rem)',
         }}>
           {reasons.map((item, index) => (
             <motion.article
@@ -142,7 +112,7 @@ function WhyUs() {
                 background: 'linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%)',
                 border: '1px solid rgba(209,165,80,0.15)',
                 borderRadius: '2px',
-                padding: '2rem 1.5rem',
+                padding: '1.6rem 1.3rem',
                 willChange: 'transform, opacity',
                 cursor: 'default',
               }}
@@ -180,7 +150,7 @@ function WhyUs() {
                 border: '1px solid rgba(209,165,80,0.3)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '1.2rem', color: colors.gold,
-                marginBottom: '1.4rem',
+                marginBottom: '1.1rem',
                 boxShadow: '0 4px 20px rgba(209,165,80,0.1)',
               }}>
                 <i className={`fas ${item.icon}`} />

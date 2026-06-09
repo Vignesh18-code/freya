@@ -15,19 +15,19 @@ function About() {
         className="page-hero"
         style={{
           backgroundColor: '#001935',
-          padding: '7rem 1.5rem 4rem',
+          padding: 'clamp(5.5rem, 8vw, 6.5rem) clamp(1rem, 4vw, 1.5rem) clamp(2.25rem, 5vw, 3rem)',
           borderBottom: '1px solid rgba(201,168,76,0.25)',
         }}
       >
         <div className="page-container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <p style={{ margin: 0, fontFamily: "'Montserrat', sans-serif", color: '#C9A84C', letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.72rem' }}>Home · About</p>
           <h1 style={{ margin: '0.8rem 0 0', fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.8rem, 5vw, 4.8rem)', fontWeight: 500 }}>
-            About Freya
+            About Us
           </h1>
         </div>
       </section>
 
-      <section className="page-container" style={{ maxWidth: '1100px', margin: '0 auto', padding: 'clamp(2.5rem, 6vw, 3.2rem) clamp(1rem, 4vw, 1.5rem)' }}>
+      <section className="page-container" style={{ maxWidth: '1100px', margin: '0 auto', padding: 'clamp(2rem, 5vw, 2.6rem) clamp(1rem, 4vw, 1.5rem)' }}>
         <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ margin: 0, fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2rem, 6vw, 2.4rem)', fontWeight: 500, lineHeight: 1.15 }}>
           Freya Trading (HK) Ltd. – A Proud Member of the SuGandh Group
         </motion.h2>

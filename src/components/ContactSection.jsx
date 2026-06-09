@@ -124,7 +124,7 @@ export default function ContactSection() {
           whileInView={{ opacity:1, y:0 }}
           viewport={{ once:true, margin:'-60px' }}
           transition={T}
-          style={{ textAlign:'center', marginBottom:'4rem' }}
+          style={{ textAlign:'center', marginBottom:'clamp(2.25rem, 4vw, 3rem)' }}
         >
           <div style={{ display:'inline-flex', alignItems:'center', gap:'0.75rem', marginBottom:'1.2rem' }}>
             <span style={{ width:'40px', height:'1px', backgroundColor:colors.gold }} />
@@ -146,7 +146,7 @@ export default function ContactSection() {
         <div style={{
           display:'grid',
           gridTemplateColumns:'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
-          gap:'2.5rem',
+          gap:'clamp(1.5rem, 3vw, 2rem)',
           alignItems:'start',
         }}>
 
@@ -211,7 +211,7 @@ export default function ContactSection() {
               position:'relative',
               border:'1px solid rgba(209,165,80,0.18)',
               background:'linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(7,12,26,0.7) 100%)',
-              padding:'2.2rem',
+              padding:'clamp(1.35rem, 3vw, 1.9rem)',
               overflow:'hidden',
             }}
           >

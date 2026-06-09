@@ -7,7 +7,7 @@ function Collections() {
         className="page-hero"
         style={{
           backgroundColor: '#001935',
-          padding: '7rem 1.5rem 4rem',
+          padding: 'clamp(5.5rem, 8vw, 6.5rem) clamp(1rem, 4vw, 1.5rem) clamp(2.25rem, 5vw, 3rem)',
           borderBottom: '1px solid rgba(201,168,76,0.25)',
         }}
       >
@@ -21,7 +21,7 @@ function Collections() {
 
       <Products defaultFilter="All" />
 
-      <section style={{ padding: '0 clamp(1rem, 4vw, 1.5rem) 4rem' }}>
+      <section style={{ padding: '0 clamp(1rem, 4vw, 1.5rem) 3rem' }}>
         <div className="page-container" style={{ maxWidth: '1100px', margin: '0 auto', border: '1px solid rgba(201,168,76,0.25)', background: 'linear-gradient(95deg, rgba(201,168,76,0.12), rgba(201,168,76,0.05))', padding: 'clamp(1rem, 4vw, 1.3rem)' }}>
           <p style={{ margin: 0, color: '#C9A84C', fontFamily: "'Montserrat', sans-serif", fontSize: '0.74rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Featured Collection</p>
           <h2 style={{ margin: '0.4rem 0 0', fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 500 }}>Signature Bridal Heirloom Series</h2>

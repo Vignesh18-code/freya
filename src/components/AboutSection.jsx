@@ -126,7 +126,7 @@ function AboutSection() {
           style={{
             display: 'grid',
             gridTemplateColumns: isMobile || isTablet ? '1fr' : '0.92fr 1.08fr',
-            gap: isMobile ? '3rem' : isTablet ? '4rem' : '5rem',
+            gap: isMobile ? '2.25rem' : isTablet ? '3rem' : '3.75rem',
             alignItems: 'center',
           }}
         >
@@ -485,6 +485,14 @@ function AboutSection() {
               >
                 Who We Are
               </span>
+
+              <span
+                style={{
+                  width: '44px',
+                  height: '1px',
+                  backgroundColor: colors.gold,
+                }}
+              />
             </div>
 
             <h2
@@ -499,12 +507,12 @@ function AboutSection() {
               }}
             >
               Freya Trading (HK) Ltd. – A Proud Member of the{' '}
-              <span style={{ color: colors.goldLight }}>SuGandh Group</span>
+              <span style={{ fontStyle: 'italic', color: colors.gold }}>SuGandh Group</span>
             </h2>
 
             <div
               style={{
-                marginTop: '1.45rem',
+                marginTop: '1.15rem',
                 maxWidth: '720px',
               }}
             >
@@ -529,7 +537,7 @@ function AboutSection() {
                 display: 'grid',
                 gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
                 gap: '0.8rem',
-                marginTop: '1.8rem',
+                marginTop: '1.35rem',
                 maxWidth: '620px',
               }}
             >
@@ -582,7 +590,7 @@ function AboutSection() {
                 justifyContent: isMobile ? 'center' : 'flex-start',
                 gap: '1rem',
                 flexWrap: 'wrap',
-                marginTop: '2rem',
+                marginTop: '1.5rem',
               }}
             >
               <MotionLink
@@ -623,7 +631,7 @@ function AboutSection() {
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, minmax(0, 1fr))',
             gap: '1rem',
-            marginTop: isMobile ? '4rem' : '5rem',
+            marginTop: isMobile ? '2.75rem' : '3.5rem',
           }}
         >
           {featureCards.map((feature, index) => (
@@ -642,7 +650,7 @@ function AboutSection() {
                 position: 'relative',
                 border: '1px solid rgba(209,165,80,0.16)',
                 background: 'linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012))',
-                padding: isMobile ? '1.35rem 1.1rem' : '1.6rem 1.45rem',
+                padding: isMobile ? '1.15rem 1rem' : '1.35rem 1.25rem',
                 willChange: 'transform, opacity',
                 overflow: 'hidden',
               }}

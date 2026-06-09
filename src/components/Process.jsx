@@ -100,7 +100,7 @@ export default function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={T}
-          style={{ textAlign: 'center', marginBottom: '5rem' }}
+          style={{ textAlign: 'center', marginBottom: 'clamp(2.75rem, 5vw, 3.75rem)' }}
         >
           <div style={{
             display: 'inline-flex', alignItems: 'center',
@@ -182,7 +182,7 @@ export default function Process() {
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '1.5rem',
+              gap: 'clamp(1rem, 2vw, 1.35rem)',
             }}>
               {steps.map((step, index) => (
                 <motion.div
@@ -326,10 +326,10 @@ export default function Process() {
           viewport={{ once: true }}
           transition={{ ...T, delay: 0.4 }}
           style={{
-            marginTop: '4rem',
+            marginTop: 'clamp(2.5rem, 5vw, 3.25rem)',
             border: '1px solid rgba(209,165,80,0.12)',
             background: 'rgba(209,165,80,0.03)',
-            padding: isMobile ? '1.5rem' : '2rem 2.5rem',
+            padding: isMobile ? '1.25rem' : '1.6rem 2rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -389,7 +389,7 @@ export default function Process() {
           viewport={{ once: true }}
           transition={{ ...T, delay: 0.6 }}
           style={{
-            marginTop: '2rem',
+            marginTop: '1.5rem',
             display: 'flex', alignItems: 'center',
             justifyContent: 'center', gap: '0.6rem', flexWrap: 'wrap',
           }}
@@ -427,7 +427,7 @@ function DesktopCard({ step, index }) {
         width: '100%',
         border: '1px solid rgba(209,165,80,0.15)',
         background: 'linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(7,12,26,0.6) 100%)',
-        padding: '1.8rem 1.4rem 2rem',
+        padding: '1.45rem 1.2rem 1.65rem',
         overflow: 'hidden',
         transition: 'box-shadow 0.4s ease, transform 0.4s ease',
         textAlign: 'center',

@@ -15,6 +15,7 @@ const linkStyles = ({ isActive }) => ({
   color: isActive ? colors.goldLight : colors.gold,
   fontFamily: fonts.serif,
   fontSize: '1.2rem',
+  fontWeight: 700,
   letterSpacing: '0.12em',
   textDecoration: 'none',
   position: 'relative',
