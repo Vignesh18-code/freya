@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
-import websiteImage from '../assets/website.png'
+import websiteImage from '../assets/Website.png'
 
 const featureCards = [
   {
