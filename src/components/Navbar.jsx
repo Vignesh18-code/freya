@@ -7,7 +7,7 @@ import { colors, fonts } from '../theme'
 const NAV_LINKS = [
   { label: 'Home', to: '/' },
   { label: 'About', to: '/about' },
-  { label: 'Collections', to: '/collections' },
+  { label: 'Product Range', to: '/collections' },
   { label: 'Contact', to: '/contact' },
 ]
 

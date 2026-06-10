@@ -89,6 +89,32 @@ h1, h2, h3, h4, h5, h6 {
   word-break: normal;
 }
 
+.product-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.product-section-header {
+  text-align: center;
+}
+
+.product-section-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: center;
+}
+
+.product-title-row {
+  width: 100%;
+}
+
+.product-title-balance {
+  width: calc(84px + 0.65rem);
+}
+
+.product-carousel-controls {
+  flex-shrink: 0;
+}
+
 .hero-section {
   padding-top: clamp(6.25rem, 8vw, 7rem) !important;
 }
@@ -144,6 +170,38 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr !important;
   }
 
+  .product-title-row {
+    gap: 0.85rem !important;
+  }
+
+  .product-title-balance {
+    width: calc(76px + 0.5rem);
+  }
+
+  .product-section-eyebrow {
+    gap: 0.75rem !important;
+    margin-bottom: 0.9rem !important;
+  }
+
+  .product-section-eyebrow span:first-child,
+  .product-section-eyebrow span:last-child {
+    width: 32px !important;
+  }
+
+  .product-section-title {
+    font-size: 2.05rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .product-carousel-controls {
+    gap: 0.5rem !important;
+  }
+
+  .product-carousel-button {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
   .footer-bottom {
     justify-content: center !important;
     text-align: center;
@@ -186,6 +244,27 @@ h1, h2, h3, h4, h5, h6 {
 
   .product-card-body {
     padding: 1.25rem 1.1rem 1.4rem !important;
+  }
+
+  .product-section-title {
+    font-size: 1.85rem !important;
+  }
+
+  .product-title-row {
+    gap: 0.5rem !important;
+  }
+
+  .product-title-balance {
+    width: calc(72px + 0.5rem);
+  }
+
+  .product-section-subtitle {
+    font-size: 0.82rem !important;
+  }
+
+  .product-carousel-button {
+    width: 36px !important;
+    height: 36px !important;
   }
 
   .process-mobile-row {

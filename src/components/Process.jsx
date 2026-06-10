@@ -36,7 +36,7 @@ const steps = [
 
 const EASE = ease.smooth
 const T = ease.transition
-const MotionLink = motion(Link)
+const MotionLink = motion.create(Link)
 
 /* ─── reusable shimmer bar ─────────────────────────────────── */
 function ShimmerLine({ delay = 0 }) {

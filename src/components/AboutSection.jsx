@@ -41,7 +41,7 @@ const stats = [
 ]
 
 const transition = ease.transition
-const MotionLink = motion(Link)
+const MotionLink = motion.create(Link)
 
 function useResponsive() {
   const [screen, setScreen] = useState({
@@ -141,8 +141,8 @@ function AboutSection() {
               position: 'relative',
               willChange: 'transform, opacity',
               width: '100%',
-              maxWidth: isMobile || isTablet ? '620px' : '100%',
-              margin: isMobile || isTablet ? '0 auto' : '0',
+              maxWidth: isMobile || isTablet ? '560px' : '88%',
+              margin: isMobile || isTablet ? '0 auto' : '0 auto 0 0',
             }}
           >
             <div
