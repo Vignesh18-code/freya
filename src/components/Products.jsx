@@ -1,40 +1,42 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
 
 import Panel1 from '../assets/Panel1.jpg'
 import Panel2 from '../assets/Panel2.jpg'
+import SilverBars from '../assets/SilverBars.png'
+import goldbarimage from '../assets/GoldBars.png'
 
 const products = [
   {
     id: 1,
-    tag: 'BESTSELLER',
-    purity: '24K — 999.9 FINE GOLD',
-    name: '1 Kilogram Gold Bar',
-    image: Panel1,
-    description:
-      'Minted and casting bars meeting international delivery standards. Stamped with refinery hallmark and serial number.',
+    purity: '999 Fine Silver Investment Bars',
+    name: 'Silver Bars',
+    image: SilverBars,
+    description: `High-purity silver bars crafted to international standards, ideal for investment, trading,
+and long-term value preservation.`,
   },
   {
     id: 2,
-    tag: 'POPULAR',
-    purity: '999 FINE SILVER',
-    name: '1000g Silver Bullion',
-    image: Panel2,
+    purity: '24K Certified Gold Bars',
+    name: 'Gold Bars',
+    image: goldbarimage,
+    detailsPath: '/gold-bars',
     description:
-      'Fine silver trading bars and cast bricks optimized for high-volume B2B investments and enterprise portfolios.',
+    'Refined gold bars with assured purity, precision hallmarking, and trusted quality for investment and wealth security.',
   },
   {
     id: 3,
-    tag: 'NEW EXCLUSIVE',
     purity: '18K & 22K CERTIFIED',
     name: 'Wholesale Diamond Jewellery',
     image: Panel1,
-    description:
+      description:
       'Meticulously crafted design layouts and loose diamond parcels sourced directly for global retail jewellery houses.',
   },
 ]
 
 const transition = ease.transition
+const MotionLink = motion(Link)
 
 function Products() {
   return (
@@ -256,30 +258,6 @@ function Products() {
                   }}
                 />
 
-                {/* Tag badge */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '1rem',
-                    left: '1rem',
-                    border: '1px solid rgba(209,165,80,0.4)',
-                    background: 'rgba(7,12,26,0.85)',
-                    padding: '0.3rem 0.7rem',
-                    backdropFilter: 'blur(6px)',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: fonts.sans,
-                      fontSize: '0.6rem',
-                      letterSpacing: '0.18em',
-                      color: colors.goldLight,
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {item.tag}
-                  </span>
-                </div>
               </div>
 
               {/* Card Body */}
@@ -346,31 +324,64 @@ function Products() {
                     paddingTop: '1.2rem',
                   }}
                 >
-                  <motion.button
-                    className="responsive-action"
-                    whileHover={{
-                      backgroundColor: colors.goldLight,
-                      boxShadow: '0 8px 24px -8px rgba(209,165,80,0.5)',
-                    }}
-                    whileTap={{ scale: 0.97 }}
-                    style={{
-                      width: '100%',
-                      backgroundColor: colors.gold,
-                      border: 'none',
-                      color: colors.bg,
-                      fontFamily: fonts.sans,
-                      fontWeight: 700,
-                      letterSpacing: '0.16em',
-                      textTransform: 'uppercase',
-                      fontSize: '0.68rem',
-                      padding: '0.85rem 1.4rem',
-                      cursor: 'pointer',
-                      transition:
-                        'background-color 0.3s ease, box-shadow 0.3s ease',
-                    }}
-                  >
-                    Enquire
-                  </motion.button>
+                  {item.detailsPath ? (
+                    <MotionLink
+                      to={item.detailsPath}
+                      className="responsive-action"
+                      whileHover={{
+                        backgroundColor: colors.goldLight,
+                        boxShadow: '0 8px 24px -8px rgba(209,165,80,0.5)',
+                      }}
+                      whileTap={{ scale: 0.97 }}
+                      style={{
+                        width: '100%',
+                        backgroundColor: colors.gold,
+                        border: 'none',
+                        color: colors.bg,
+                        fontFamily: fonts.sans,
+                        fontWeight: 700,
+                        letterSpacing: '0.16em',
+                        textTransform: 'uppercase',
+                        fontSize: '0.68rem',
+                        padding: '0.85rem 1.4rem',
+                        cursor: 'pointer',
+                        transition:
+                          'background-color 0.3s ease, box-shadow 0.3s ease',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      Know More
+                    </MotionLink>
+                  ) : (
+                    <motion.button
+                      className="responsive-action"
+                      whileHover={{
+                        backgroundColor: colors.goldLight,
+                        boxShadow: '0 8px 24px -8px rgba(209,165,80,0.5)',
+                      }}
+                      whileTap={{ scale: 0.97 }}
+                      style={{
+                        width: '100%',
+                        backgroundColor: colors.gold,
+                        border: 'none',
+                        color: colors.bg,
+                        fontFamily: fonts.sans,
+                        fontWeight: 700,
+                        letterSpacing: '0.16em',
+                        textTransform: 'uppercase',
+                        fontSize: '0.68rem',
+                        padding: '0.85rem 1.4rem',
+                        cursor: 'pointer',
+                        transition:
+                          'background-color 0.3s ease, box-shadow 0.3s ease',
+                      }}
+                    >
+                      Enquire
+                    </motion.button>
+                  )}
                 </div>
               </div>
             </motion.article>
