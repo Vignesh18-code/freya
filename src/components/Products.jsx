@@ -14,6 +14,7 @@ const productCards = [
     purity: '999 Fine Silver Investment Bars',
     name: 'Silver Bars',
     image: SilverBars,
+    detailsPath: '/silver-bars',
     description: `High-purity silver bars crafted to international standards, ideal for investment, trading,
 and long-term value preservation.`,
   },
@@ -31,16 +32,18 @@ and long-term value preservation.`,
     purity: 'Exquisite Gold Jewellery Collection',
     name: 'Gold Jewellery',
     image: Panel1,
+    detailsPath: '/gold-jewellery',
     description:
-      'Beautifully crafted gold jewellery combining timeless elegance, superior craftsmanship, and certified purity for every occasion.'
+      'Beautifully crafted gold jewellery combining timeless elegance, superior craftsmanship, and certified purity for every occasion.',
   },
   {
     id: 4,
-    purity: '18K & 22K CERTIFIED',
-    name: 'Wholesale Diamond Jewellery',
+    purity: 'Certified Loose Diamonds',
+    name: 'Diamonds',
     image: DiamondJewellery,
+    detailsPath: '/diamonds',
     description:
-      'Meticulously crafted design layouts and loose diamond parcels sourced directly for global retail jewellery houses.',
+      'Ethically sourced loose diamonds with certified grading, exceptional brilliance, and trusted quality for the global jewellery industry.',
   },
 ]
 

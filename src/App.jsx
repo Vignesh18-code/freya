@@ -7,6 +7,9 @@ import About from './pages/About'
 import Collections from './pages/Collections'
 import Contact from './pages/Contact'
 import GoldBars from './pages/GoldBars'
+import SilverBars from './pages/SilverBars'
+import GoldJewellery from './pages/GoldJewellery'
+import Diamonds from './pages/Diamonds'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -29,6 +32,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/gold-bars" element={<GoldBars />} />
+          <Route path="/silver-bars" element={<SilverBars />} />
+          <Route path="/gold-jewellery" element={<GoldJewellery />} />
+          <Route path="/diamonds" element={<Diamonds />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
