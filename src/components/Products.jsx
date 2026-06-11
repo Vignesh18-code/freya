@@ -11,21 +11,21 @@ import DiamondJewellery from '../assets/Diamond.png'
 const productCards = [
   {
     id: 1,
-    purity: '999 Fine Silver Investment Bars',
-    name: 'Silver Bars',
-    image: SilverBars,
-    detailsPath: '/silver-bars',
-    description: `High-purity silver bars crafted to international standards, ideal for investment, trading,
-and long-term value preservation.`,
-  },
-  {
-    id: 2,
-    purity: '24K Certified Gold Bars',
+    purity: '999.9 Certified Gold Bars',
     name: 'Gold Bars',
     image: goldbarimage,
     detailsPath: '/gold-bars',
     description:
       'Refined gold bars with assured purity, precision hallmarking, and trusted quality for investment and wealth security.',
+  },
+  {
+    id: 2,
+    purity: '999.9 Fine Silver Investment Bars',
+    name: 'Silver Bars',
+    image: SilverBars,
+    detailsPath: '/silver-bars',
+    description: `High-purity silver bars crafted to international standards, ideal for investment, trading,
+and long-term value preservation.`,
   },
   {
     id: 3,
