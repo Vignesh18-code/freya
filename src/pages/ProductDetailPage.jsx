@@ -14,7 +14,13 @@ function ProductDetailPage({
   image,
   imageAlt,
   highlights,
+  shapeGallery = [],
+  shapeGalleryLabel = 'Diamond Shapes',
+  shapeGalleryTitle = 'Diamond Shape Selection',
+  shapeGalleryDescription = 'Explore diamond shape options crafted for certified brilliance, clean proportions, and refined jewellery applications.',
 }) {
+  const hasShapeGallery = shapeGallery.length > 0
+
   return (
     <main style={{ backgroundColor: colors.bg, color: '#fff' }}>
       <section
@@ -258,6 +264,235 @@ function ProductDetailPage({
               </div>
             </motion.div>
           </div>
+
+          {hasShapeGallery && (
+            <motion.section
+              className="diamond-shape-section"
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={transition}
+              style={{
+                marginTop: 'clamp(2rem, 5vw, 3.75rem)',
+                borderTop: '1px solid rgba(209,165,80,0.16)',
+                borderBottom: '1px solid rgba(209,165,80,0.12)',
+                padding: 'clamp(1.5rem, 4vw, 2.5rem) 0',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'clamp(1.35rem, 3vw, 2.5rem)',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                style={{
+                  width: '100%',
+                  maxWidth: '720px',
+                  textAlign: 'center',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.75rem',
+                    marginBottom: '0.9rem',
+                  }}
+                >
+                  <span
+                    className="section-eyebrow-line"
+                    style={{
+                      width: '42px',
+                      height: '1px',
+                      backgroundColor: colors.gold,
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontFamily: fonts.sans,
+                      color: colors.gold,
+                      fontSize: '0.7rem',
+                      letterSpacing: '0.22em',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {shapeGalleryLabel}
+                  </span>
+                  <span
+                    className="section-eyebrow-line"
+                    style={{
+                      width: '42px',
+                      height: '1px',
+                      backgroundColor: colors.gold,
+                    }}
+                  />
+                </div>
+
+                <h2
+                  style={{
+                    margin: 0,
+                    fontFamily: fonts.serif,
+                    fontSize: 'clamp(2rem, 3.3vw, 3.1rem)',
+                    fontWeight: 400,
+                    color: '#fff',
+                    lineHeight: 1.06,
+                  }}
+                >
+                  {shapeGalleryTitle}
+                </h2>
+
+                <p
+                  style={{
+                    margin: '0.85rem auto 0',
+                    maxWidth: '620px',
+                    color: 'rgba(255,255,255,0.64)',
+                    fontFamily: fonts.sans,
+                    fontSize: '0.92rem',
+                    lineHeight: 1.85,
+                  }}
+                >
+                  {shapeGalleryDescription}
+                </p>
+              </div>
+
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns:
+                    'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
+                  gap: 'clamp(1rem, 2vw, 1.25rem)',
+                  width: '100%',
+                  maxWidth: shapeGallery.length === 1 ? '520px' : '100%',
+                  margin: '0 auto',
+                }}
+              >
+                {shapeGallery.map((shape, index) => (
+                  <motion.article
+                    key={`${shape.title}-${index}`}
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -6, scale: 1.015 }}
+                    whileTap={{ scale: 0.99 }}
+                    transition={{
+                      duration: 0.72,
+                      ease: smooth,
+                      delay: index * 0.08,
+                    }}
+                    style={{
+                      position: 'relative',
+                      overflow: 'hidden',
+                      border: `1px solid ${colors.border}`,
+                      background:
+                        'linear-gradient(145deg, rgba(16,31,72,0.72), rgba(7,12,26,0.95))',
+                      boxShadow: '0 24px 70px -46px rgba(209,165,80,0.65)',
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background:
+                          'linear-gradient(135deg, rgba(209,165,80,0.14), transparent 36%, rgba(255,255,255,0.045))',
+                        pointerEvents: 'none',
+                      }}
+                    />
+
+                    <div
+                      style={{
+                        position: 'relative',
+                        padding: 'clamp(1rem, 3vw, 1.35rem)',
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: 'grid',
+                          placeItems: 'center',
+                          aspectRatio: '1 / 1',
+                          background:
+                            'linear-gradient(145deg, rgba(0,25,53,0.42), rgba(255,255,255,0.04))',
+                          border: '1px solid rgba(209,165,80,0.12)',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        <motion.img
+                          src={shape.image}
+                          alt={shape.alt}
+                          initial={{ scale: 0.94, rotate: -2 }}
+                          whileInView={{ scale: 1, rotate: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, ease: smooth }}
+                          style={{
+                            width: '86%',
+                            height: '86%',
+                            objectFit: 'contain',
+                            filter:
+                              'drop-shadow(0 18px 32px rgba(209,165,80,0.28))',
+                          }}
+                        />
+                      </div>
+
+                      <div
+                        style={{
+                          marginTop: '1rem',
+                          display: 'flex',
+                          alignItems: 'flex-end',
+                          justifyContent: 'space-between',
+                          gap: '1rem',
+                        }}
+                      >
+                        <div>
+                          <p
+                            style={{
+                              margin: 0,
+                              fontFamily: fonts.sans,
+                              color: colors.gold,
+                              fontSize: '0.66rem',
+                              letterSpacing: '0.18em',
+                              textTransform: 'uppercase',
+                            }}
+                          >
+                            {shape.label}
+                          </p>
+                          <h3
+                            style={{
+                              margin: '0.35rem 0 0',
+                              fontFamily: fonts.serif,
+                              color: colors.goldLight,
+                              fontSize: '1.45rem',
+                              fontWeight: 400,
+                              lineHeight: 1,
+                            }}
+                          >
+                            {shape.title}
+                          </h3>
+                        </div>
+
+                        <span
+                          aria-hidden="true"
+                          style={{
+                            width: '36px',
+                            height: '36px',
+                            borderRadius: '999px',
+                            border: '1px solid rgba(209,165,80,0.36)',
+                            display: 'grid',
+                            placeItems: 'center',
+                            color: colors.gold,
+                            fontFamily: fonts.serif,
+                            fontSize: '1.25rem',
+                            lineHeight: 1,
+                            flexShrink: 0,
+                          }}
+                        >
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+            </motion.section>
+          )}
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}

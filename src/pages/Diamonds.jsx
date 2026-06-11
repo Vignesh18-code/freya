@@ -1,5 +1,6 @@
 import ProductDetailPage from './ProductDetailPage'
 import diamondsImage from '../assets/Diamond.png'
+import shapeOneImage from '../assets/Shape1.png'
 
 function Diamonds() {
   return (
@@ -15,6 +16,17 @@ function Diamonds() {
         'Ethically sourced loose diamonds',
         'Certified grading',
         'Exceptional brilliance',
+      ]}
+      shapeGalleryLabel="Diamond Shapes"
+      shapeGalleryTitle="Diamond Shape Preview"
+      shapeGalleryDescription="A refined preview of diamond shape options for certified loose diamonds and fine jewellery selections."
+      shapeGallery={[
+        {
+          title: 'Shape 01',
+          label: 'Preview Shape',
+          image: shapeOneImage,
+          alt: 'Diamond shape preview',
+        },
       ]}
     />
   )

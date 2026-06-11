@@ -282,6 +282,20 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@media (max-width: 900px) {
+  .diamond-shape-section {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .diamond-shape-section {
+    margin-top: 2rem !important;
+    padding-top: 1.6rem !important;
+    padding-bottom: 1.7rem !important;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
