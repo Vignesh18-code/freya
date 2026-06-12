@@ -62,6 +62,56 @@ const canvasVariants = {
 
 const MotionLink = motion.create(Link)
 
+// ─── Heading sparkles — positions are % of each word's box, sizes in em ─────
+const HEADING_SPARKLES = {
+  gold: [
+    { top: '-12%', left: '6%', size: '0.11em', delay: '0s', duration: '2.8s', star: true },
+    { top: '14%', left: '97%', size: '0.06em', delay: '0.9s', duration: '3.4s', star: false },
+    { top: '-8%', left: '58%', size: '0.05em', delay: '1.5s', duration: '2.6s', star: false },
+    { top: '88%', left: '74%', size: '0.09em', delay: '2.1s', duration: '3.2s', star: true },
+    { top: '72%', left: '-3%', size: '0.05em', delay: '1.1s', duration: '3.6s', star: false },
+  ],
+  silver: [
+    { top: '-10%', left: '88%', size: '0.1em', delay: '0.5s', duration: '3.1s', star: true },
+    { top: '6%', left: '24%', size: '0.05em', delay: '1.7s', duration: '2.7s', star: false },
+    { top: '90%', left: '10%', size: '0.08em', delay: '2.4s', duration: '3.5s', star: true },
+    { top: '50%', left: '101%', size: '0.05em', delay: '0.2s', duration: '3.3s', star: false },
+    { top: '82%', left: '56%', size: '0.05em', delay: '1.3s', duration: '2.9s', star: false },
+  ],
+  diamond: [
+    { top: '-14%', left: '14%', size: '0.1em', delay: '0.3s', duration: '2.9s', star: true },
+    { top: '-6%', left: '70%', size: '0.06em', delay: '1.4s', duration: '3.3s', star: false },
+    { top: '34%', left: '99%', size: '0.09em', delay: '2s', duration: '3s', star: true },
+    { top: '92%', left: '38%', size: '0.05em', delay: '0.8s', duration: '3.6s', star: false },
+    { top: '76%', left: '90%', size: '0.05em', delay: '2.7s', duration: '2.7s', star: false },
+    { top: '64%', left: '-2%', size: '0.07em', delay: '1.8s', duration: '3.2s', star: true },
+  ],
+}
+
+// Metallic shimmer word with tiny twinkling accents (CSS-only, see index.css)
+function SparkleWord({ variant, children }) {
+  return (
+    <span className={`sparkleText ${variant}Text`}>
+      {children}
+      {HEADING_SPARKLES[variant].map((s, i) => (
+        <span
+          key={i}
+          aria-hidden="true"
+          className={`sparkle ${s.star ? 'sparkle--star' : 'sparkle--dot'}`}
+          style={{
+            top: s.top,
+            left: s.left,
+            width: s.size,
+            height: s.size,
+            animationDelay: s.delay,
+            animationDuration: s.duration,
+          }}
+        />
+      ))}
+    </span>
+  )
+}
+
 function createParticles() {
   return Array.from({ length: 30 }, (_, i) => ({
     id: i,
@@ -353,77 +403,9 @@ export default function Hero() {
             >
               Thes Most{' '}
               <span style={{ color: colors.white }}>Trusted</span>{' '}
-              <motion.span
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  filter: [
-                    'drop-shadow(0 0 3px rgba(255,215,0,0.22))',
-                    'drop-shadow(0 0 12px rgba(255,215,0,0.58))',
-                    'drop-shadow(0 0 3px rgba(255,215,0,0.22))',
-                  ],
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                style={{
-                  display: 'inline-block',
-                  backgroundImage: 'linear-gradient(120deg, #B8860B 0%, #FFD700 22%, #FFF2A8 48%, #FFD700 72%, #B8860B 100%)',
-                  backgroundSize: '220% auto',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                  WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 8px rgba(255,215,0,0.25), 0 0 18px rgba(209,165,80,0.16)',
-                }}
-              >
-                Gold
-              </motion.span>
-              ,{' '}
-              <motion.span
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  filter: [
-                    'drop-shadow(0 0 3px rgba(192,192,192,0.2))',
-                    'drop-shadow(0 0 10px rgba(255,255,255,0.55))',
-                    'drop-shadow(0 0 3px rgba(192,192,192,0.2))',
-                  ],
-                }}
-                transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
-                style={{
-                  display: 'inline-block',
-                  backgroundImage: 'linear-gradient(120deg, #9A9A9A 0%, #F5F5F5 28%, #FFFFFF 50%, #C0C0C0 75%, #8F8F8F 100%)',
-                  backgroundSize: '220% auto',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                  WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 7px rgba(255,255,255,0.22), 0 0 16px rgba(192,192,192,0.14)',
-                }}
-              >
-                Silver
-              </motion.span>{' '}
-              &{' '}
-              <motion.span
-                animate={{
-                  backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  filter: [
-                    'drop-shadow(0 0 4px rgba(255,255,255,0.22))',
-                    'drop-shadow(0 0 14px rgba(185,230,255,0.6))',
-                    'drop-shadow(0 0 4px rgba(255,255,255,0.22))',
-                  ],
-                }}
-                transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-                style={{
-                  display: 'inline-block',
-                  backgroundImage: 'linear-gradient(120deg, #ffffff 0%, #b9ecff 20%, #ffffff 42%, #8fdcff 65%, #ffffff 82%, #dff7ff 100%)',
-                  backgroundSize: '240% auto',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                  WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 8px rgba(255,255,255,0.28), 0 0 18px rgba(169,215,255,0.18)',
-                }}
-              >
-                Diamond
-              </motion.span>{' '}
+              <SparkleWord variant="gold">Gold</SparkleWord>,{' '}
+              <SparkleWord variant="silver">Silver</SparkleWord> &{' '}
+              <SparkleWord variant="diamond">Diamond</SparkleWord>{' '}
               Source
             </h1>
           </motion.div>

@@ -280,3 +280,132 @@ h1, h2, h3, h4, h5, h6 {
   background: #C9A84C;
   border-radius: 3px;
 }
+
+/* ─── Premium Metallic Sparkle Heading ──────────────────────────────────────
+   .sparkleText  — base shimmer wrapper (gradient clipped to the glyphs)
+   .goldText / .silverText / .diamondText — metallic gradient variants
+   .sparkle (.sparkle--dot / .sparkle--star) — tiny twinkling accents */
+
+.sparkleText {
+  position: relative;
+  display: inline-block;
+  background-size: 220% auto;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: sparkleShimmer 5s ease-in-out infinite;
+}
+
+.goldText {
+  background-image: linear-gradient(
+    115deg,
+    #8a5a00 0%,
+    #c8920a 18%,
+    #ffd700 38%,
+    #fff3b0 50%,
+    #ffd700 62%,
+    #c8920a 82%,
+    #8a5a00 100%
+  );
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.18), 0 0 26px rgba(209, 165, 80, 0.12);
+  --sparkle-color: #ffe9a8;
+  --sparkle-glow: rgba(255, 215, 0, 0.85);
+  animation-duration: 5s;
+}
+
+.silverText {
+  background-image: linear-gradient(
+    115deg,
+    #6e7479 0%,
+    #aeb4ba 20%,
+    #f8fafc 42%,
+    #ffffff 50%,
+    #e3e7ea 60%,
+    #9aa0a6 80%,
+    #75797e 100%
+  );
+  text-shadow: 0 0 9px rgba(255, 255, 255, 0.16), 0 0 22px rgba(192, 198, 204, 0.1);
+  --sparkle-color: #ffffff;
+  --sparkle-glow: rgba(235, 240, 245, 0.85);
+  animation-duration: 5.6s;
+}
+
+.diamondText {
+  background-image: linear-gradient(
+    115deg,
+    #cfeefe 0%,
+    #ffffff 18%,
+    #9fdcff 36%,
+    #ffffff 50%,
+    #bfeaff 64%,
+    #ffffff 82%,
+    #d8f4ff 100%
+  );
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 26px rgba(159, 220, 255, 0.14);
+  --sparkle-color: #eafaff;
+  --sparkle-glow: rgba(159, 220, 255, 0.9);
+  animation-duration: 5.3s;
+}
+
+.sparkle {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  animation: sparkleTwinkle 3s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.sparkle--dot {
+  border-radius: 50%;
+  background: var(--sparkle-color, #ffffff);
+  box-shadow: 0 0 6px var(--sparkle-glow, rgba(255, 255, 255, 0.8));
+}
+
+/* Star shape lives on ::before so the parent's drop-shadow isn't clipped away */
+.sparkle--star {
+  filter: drop-shadow(0 0 4px var(--sparkle-glow, rgba(255, 255, 255, 0.8)));
+}
+
+.sparkle--star::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--sparkle-color, #ffffff);
+  clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+}
+
+@keyframes sparkleShimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes sparkleTwinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.25) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1) rotate(90deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkleText {
+    animation: none;
+    background-position: 50% 50%;
+  }
+
+  .sparkle {
+    animation: none;
+    opacity: 0;
+  }
+}
