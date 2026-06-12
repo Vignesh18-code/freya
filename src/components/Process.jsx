@@ -7,28 +7,28 @@ const steps = [
   {
     num: '01',
     title: 'Connect & Verify',
-    text: 'Submit your business inquiry online. Our trade desk will contact you promptly to complete your account setup.',
+    text: 'Complete a simple online enquiry and our trade desk will contact you to verify your business, set up your account, and provide access to our wholesale marketplace.',
     icon: 'fa-handshake',
     tag: 'Getting Started',
   },
   {
     num: '02',
     title: 'Lock Market Rates',
-    text: 'Receive a live market-linked price quotation tailored to your volume with complete invoice transparency.',
+    text: 'Secure competitive live market pricing tailored to your order volume, backed by transparent quotations and clear invoicing.',
     icon: 'fa-chart-line',
     tag: 'Live Quote',
   },
   {
     num: '03',
     title: 'Secure Settlement',
-    text: 'Finalize your trade via secure bank wire or SWIFT transfer to instantly lock in your inventory allocation.',
+    text: 'Complete payment via secure bank wire or SWIFT transfer. Once funds are confirmed, your inventory is allocated and your order is prepared for fulfillment.',
     icon: 'fa-lock',
     tag: 'Safe & Fast',
   },
   {
     num: '04',
     title: 'Insured Delivery',
-    text: 'Your certified precious metals or jewellery order is securely shipped and delivered directly to your facility.',
+    text: 'Your bullion, diamonds, or jewellery order is securely packed, fully insured, and delivered through trusted global logistics partners with end-to-end tracking and protection.',
     icon: 'fa-truck-fast',
     tag: 'Final Step',
   },
@@ -354,7 +354,7 @@ export default function Process() {
               fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)',
               letterSpacing: '0.05em',
             }}>
-              Our trade desk is available 24 / 5 for corporate inquiries.
+              Our Trade Desk is available from Monday to Friday for your inquiries.
             </p>
           </div>
 

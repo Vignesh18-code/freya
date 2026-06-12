@@ -280,7 +280,7 @@ export default function ContactSection() {
                   </div>
 
                   {/* Phone */}
-                  <Field label="Phone Number" name="phone" type="tel" placeholder="+971 50 000 0000" value={fields.phone} error={errors.phone} onChange={handleChange} onFocus={()=>setFocused('phone')} onBlur={()=>setFocused(null)} borderColor={borderColor('phone')} />
+                  <Field label="Phone Number" name="phone" type="tel" placeholder="+852 0000 0000" value={fields.phone} error={errors.phone} onChange={handleChange} onFocus={()=>setFocused('phone')} onBlur={()=>setFocused(null)} borderColor={borderColor('phone')} />
 
                   {/* Subject */}
                   <div>

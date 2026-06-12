@@ -21,7 +21,7 @@ const ABOUT_PARAGRAPHS = [
   'Established in Hong Kong in 2019, Freya Trading (HK) Ltd. has emerged as a dynamic and trusted participant in the global bullion and precious metals market. As a proud member of the SuGandh Group, a respected business group headquartered in Dubai, UAE, we combine international market expertise with the strength, credibility, and legacy of a well-established organization.',
   'Over the years, Freya Trading has built a strong reputation for reliability, transparency, and excellence in bullion trading. Through strategic partnerships, disciplined risk management, and an unwavering commitment to customer satisfaction, we have successfully expanded our presence across key international markets.',
   "Backed by the SuGandh Group's business values and entrepreneurial vision, we have consistently delivered secure and efficient trading solutions while fostering long-term relationships with clients, suppliers, and financial institutions worldwide.",
-  'Today, Freya Trading (HK) Ltd. stands as a symbol of professionalism, integrity, and innovation in the precious metals industry.',
+  'Today, Freya Trading stands as a symbol of professionalism, integrity, and innovation in the precious metals industry.',
   'Driven by trust, powered by experience, and backed by the strength of the SuGandh Group, Freya Trading continues to shape the future of global bullion trading.',
 ]
 

@@ -8,8 +8,8 @@ import { colors, fonts, ease } from '../theme'
 // ─── Content — edit here only ───────────────────────────────────────────────
 const HERO_TAG = 'Direct Refinery Supply l Hong Kong - China - UAE'
 const HERO_SUBTEXT = [
-  'Direct wholesale access to premium gold and silver bullion, coins, bars, and jewellery.',
-  'Fully insured, globally compliant, and trusted by leading retailers and industry partners since 2019.',
+  'Your trusted wholesale source for premium gold and silver bullion, investment bars and coins, certified diamonds, and exquisite gold jewellery.',
+  'Backed by comprehensive insurance, global compliance standards, and the confidence of leading retailers and industry partners since 2019.',
 ]
 const HERO_BTN_PRIMARY = 'Explore Category'
 const HERO_BTN_SECONDARY = 'Our Story'
@@ -351,7 +351,7 @@ export default function Hero() {
                 fontWeight: 400,
               }}
             >
-              The World&apos;s Most{' '}
+              Thes Most{' '}
               <span style={{ color: colors.white }}>Trusted</span>{' '}
               <motion.span
                 animate={{

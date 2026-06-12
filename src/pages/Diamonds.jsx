@@ -1,6 +1,26 @@
 import ProductDetailPage from './ProductDetailPage'
 import diamondsImage from '../assets/Diamond.png'
-import shapeOneImage from '../assets/Shape1.png'
+
+const diamondShapeImages = import.meta.glob(
+  '../assets/DiamondShapes/*.{png,jpg,jpeg,webp,avif}',
+  {
+    eager: true,
+    import: 'default',
+  },
+)
+
+const diamondShapes = Object.entries(diamondShapeImages)
+  .map(([path, image]) => {
+    const fileName = path.split('/').pop().replace(/\.[^.]+$/, '')
+
+    return {
+      title: fileName,
+      label: 'Diamond Shape',
+      image,
+      alt: `${fileName} diamond shape`,
+    }
+  })
+  .sort((a, b) => a.title.localeCompare(b.title))
 
 function Diamonds() {
   return (
@@ -20,14 +40,7 @@ function Diamonds() {
       shapeGalleryLabel="Diamond Shapes"
       shapeGalleryTitle="Diamond Shape Preview"
       shapeGalleryDescription="A refined preview of diamond shape options for certified loose diamonds and fine jewellery selections."
-      shapeGallery={[
-        {
-          title: 'Shape 01',
-          label: 'Preview Shape',
-          image: shapeOneImage,
-          alt: 'Diamond shape preview',
-        },
-      ]}
+      shapeGallery={diamondShapes}
     />
   )
 }

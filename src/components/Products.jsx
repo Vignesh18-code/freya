@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
@@ -49,24 +48,8 @@ and long-term value preservation.`,
 
 const transition = ease.transition
 const MotionLink = motion.create(Link)
-const CARD_GAP = 'clamp(1rem, 2vw, 1.35rem)'
 
-function getCardsPerView() {
-  if (window.innerWidth >= 1024) return 3
-  if (window.innerWidth >= 768) return 2
-  return 1
-}
-
-function getCardBasis(cardsPerView) {
-  if (cardsPerView === 3) {
-    return `calc((100% - ${CARD_GAP} - ${CARD_GAP}) / 3)`
-  }
-
-  if (cardsPerView === 2) return `calc((100% - ${CARD_GAP}) / 2)`
-  return '100%'
-}
-
-function ProductCard({ item, index, cardBasis }) {
+function ProductCard({ item, index }) {
   return (
     <motion.article
       data-product-card
@@ -80,8 +63,8 @@ function ProductCard({ item, index, cardBasis }) {
       }}
       style={{
         position: 'relative',
-        flex: `0 0 ${cardBasis}`,
         minWidth: 0,
+        height: '100%',
         border: '1px solid rgba(209,165,80,0.18)',
         background:
           'linear-gradient(160deg, rgba(16,31,72,0.7) 0%, rgba(7,12,26,0.9) 100%)',
@@ -275,56 +258,6 @@ function ProductCard({ item, index, cardBasis }) {
 }
 
 function Products() {
-  const viewportRef = useRef(null)
-  const trackRef = useRef(null)
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [cardsPerView, setCardsPerView] = useState(3)
-
-  const maxIndex = Math.max(productCards.length - cardsPerView, 0)
-  const atStart = activeIndex === 0
-  const atEnd = activeIndex === maxIndex
-  const cardBasis = getCardBasis(cardsPerView)
-
-  useEffect(() => {
-    const updateCardsPerView = () => {
-      const nextCardsPerView = getCardsPerView()
-
-      setCardsPerView(nextCardsPerView)
-      setActiveIndex((current) =>
-        Math.min(current, Math.max(productCards.length - nextCardsPerView, 0)),
-      )
-    }
-
-    updateCardsPerView()
-    window.addEventListener('resize', updateCardsPerView)
-
-    return () => window.removeEventListener('resize', updateCardsPerView)
-  }, [])
-
-  useEffect(() => {
-    const viewport = viewportRef.current
-    const track = trackRef.current
-    const firstCard = track?.querySelector('[data-product-card]')
-
-    if (!viewport || !track || !firstCard) return
-
-    const gap = parseFloat(window.getComputedStyle(track).columnGap || '0')
-    const step = firstCard.getBoundingClientRect().width + gap
-
-    viewport.scrollTo({
-      left: activeIndex * step,
-      behavior: 'smooth',
-    })
-  }, [activeIndex, cardsPerView])
-
-  const handlePrevious = () => {
-    setActiveIndex((current) => Math.max(current - 1, 0))
-  }
-
-  const handleNext = () => {
-    setActiveIndex((current) => Math.min(current + 1, maxIndex))
-  }
-
   return (
     <section
       id="collections"
@@ -425,122 +358,24 @@ function Products() {
             />
           </div>
 
-          <div
-            className="product-title-row"
+          <h2
+            className="product-section-title"
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'auto minmax(0, 1fr) auto',
-              alignItems: 'center',
-              gap: '1.25rem',
+              margin: 0,
+              width: '100%',
+              fontFamily: fonts.serif,
+              fontSize: 'clamp(2.4rem, 4vw, 3.7rem)',
+              fontWeight: 400,
+              color: '#fff',
+              lineHeight: 1.1,
+              textAlign: 'center',
             }}
           >
-            <div className="product-title-balance" aria-hidden="true" />
-
-            <h2
-              className="product-section-title"
-              style={{
-                margin: 0,
-                width: '100%',
-                fontFamily: fonts.serif,
-                fontSize: 'clamp(2.4rem, 4vw, 3.7rem)',
-                fontWeight: 400,
-                color: '#fff',
-                lineHeight: 1.1,
-                textAlign: 'center',
-              }}
-            >
-              Premium Product{' '}
-              <span style={{ fontStyle: 'italic', color: colors.gold }}>
-                Range
-              </span>
-            </h2>
-
-            <div
-              className="product-carousel-controls"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.65rem',
-                flexShrink: 0,
-              }}
-            >
-              <motion.button
-                type="button"
-                className="product-carousel-button"
-                onClick={handlePrevious}
-                disabled={atStart}
-                aria-label="Previous product"
-                whileHover={
-                  !atStart
-                    ? { scale: 1.06, backgroundColor: 'rgba(209,165,80,0.16)' }
-                    : {}
-                }
-                whileTap={!atStart ? { scale: 0.94 } : {}}
-                style={{
-                  width: '42px',
-                  height: '42px',
-                  borderRadius: '50%',
-                  border: '1px solid rgba(209,165,80,0.42)',
-                  background: atStart
-                    ? 'rgba(209,165,80,0.05)'
-                    : 'rgba(7,12,26,0.72)',
-                  color: atStart ? 'rgba(209,165,80,0.28)' : colors.goldLight,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: atStart ? 'not-allowed' : 'pointer',
-                  boxShadow: atStart
-                    ? 'none'
-                    : '0 12px 28px -18px rgba(209,165,80,0.9)',
-                  transition:
-                    'background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease',
-                }}
-              >
-                <i
-                  className="fas fa-chevron-left"
-                  style={{ fontSize: '0.78rem' }}
-                />
-              </motion.button>
-
-              <motion.button
-                type="button"
-                className="product-carousel-button"
-                onClick={handleNext}
-                disabled={atEnd}
-                aria-label="Next product"
-                whileHover={
-                  !atEnd
-                    ? { scale: 1.06, backgroundColor: 'rgba(209,165,80,0.16)' }
-                    : {}
-                }
-                whileTap={!atEnd ? { scale: 0.94 } : {}}
-                style={{
-                  width: '42px',
-                  height: '42px',
-                  borderRadius: '50%',
-                  border: '1px solid rgba(209,165,80,0.42)',
-                  background: atEnd
-                    ? 'rgba(209,165,80,0.05)'
-                    : 'rgba(7,12,26,0.72)',
-                  color: atEnd ? 'rgba(209,165,80,0.28)' : colors.goldLight,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: atEnd ? 'not-allowed' : 'pointer',
-                  boxShadow: atEnd
-                    ? 'none'
-                    : '0 12px 28px -18px rgba(209,165,80,0.9)',
-                  transition:
-                    'background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease',
-                }}
-              >
-                <i
-                  className="fas fa-chevron-right"
-                  style={{ fontSize: '0.78rem' }}
-                />
-              </motion.button>
-            </div>
-          </div>
+            Premium Product{' '}
+            <span style={{ fontStyle: 'italic', color: colors.gold }}>
+              Range
+            </span>
+          </h2>
 
           <p
             className="product-section-subtitle"
@@ -561,32 +396,17 @@ function Products() {
         </motion.div>
 
         <div
-          className="product-carousel-viewport"
-          ref={viewportRef}
+          className="product-range-grid"
           style={{
-            overflow: 'hidden',
-            width: '100%',
-            scrollBehavior: 'smooth',
-            scrollbarWidth: 'none',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+            gap: 'clamp(1rem, 2vw, 1.35rem)',
+            alignItems: 'stretch',
           }}
         >
-          <div
-            ref={trackRef}
-            style={{
-              display: 'flex',
-              gap: CARD_GAP,
-              alignItems: 'stretch',
-            }}
-          >
-            {productCards.map((item, index) => (
-              <ProductCard
-                key={item.id}
-                item={item}
-                index={index}
-                cardBasis={cardBasis}
-              />
-            ))}
-          </div>
+          {productCards.map((item, index) => (
+            <ProductCard key={item.id} item={item} index={index} />
+          ))}
         </div>
       </div>
     </section>

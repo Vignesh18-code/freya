@@ -377,7 +377,7 @@ function ProductDetailPage({
                     transition={{
                       duration: 0.72,
                       ease: smooth,
-                      delay: index * 0.08,
+                      delay: Math.min(index * 0.035, 0.28),
                     }}
                     style={{
                       position: 'relative',
