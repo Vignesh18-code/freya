@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
 
 // ─── Content — edit here only ───────────────────────────────────────────────
-const HERO_TAG = 'Direct Refinery Supply Hong Kong - China - UAE'
+const HERO_TAG = 'Direct Refinery Supply | Hong Kong - China - UAE'
 const HERO_SUBTEXT = [
   'Your trusted wholesale source for premium gold and silver bullion, investment bars and coins, certified diamonds, and exquisite gold jewellery.',
   'Backed by comprehensive insurance, global compliance standards, and the confidence of leading retailers and industry partners since 2019.',
