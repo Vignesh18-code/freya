@@ -1,6 +1,5 @@
 import ProductDetailPage from './ProductDetailPage'
-import diamondsImage from '../assets/Diamond.png'
-
+import diamondsImage from '../assets/Product Range/Diamond.png'
 const diamondShapeImages = import.meta.glob(
   '../assets/DiamondShapes/*.{png,jpg,jpeg,webp,avif}',
   {
