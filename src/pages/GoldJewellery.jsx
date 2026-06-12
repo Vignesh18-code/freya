@@ -1,15 +1,15 @@
 import { motion } from 'framer-motion'
 import { colors, fonts, ease } from '../theme'
 
-const productRangeImages = import.meta.glob(
-  '../assets/Product Range/*.{png,jpg,jpeg,webp,avif}',
+const jewelleryCollectionImages = import.meta.glob(
+  '../assets/Gold Jewellery - Freya/*.{png,jpg,jpeg,webp,avif}',
   {
     eager: true,
     import: 'default',
   },
 )
 
-const jewelleryImages = Object.entries(productRangeImages)
+const jewelleryImages = Object.entries(jewelleryCollectionImages)
   .map(([path, image]) => {
     const name = path.split('/').pop().replace(/\.[^.]+$/, '')
 
@@ -19,8 +19,7 @@ const jewelleryImages = Object.entries(productRangeImages)
       alt: `${name} product image`,
     }
   })
-  .filter((item) => item.name.toLowerCase().includes('gold jewellery'))
-  .sort((a, b) => a.name.localeCompare(b.name))
+  .sort((a, b) => Number(a.name) - Number(b.name))
 
 const transition = ease.transition
 const smooth = ease.smooth
@@ -33,7 +32,7 @@ function GoldJewellery() {
         style={{
           backgroundColor: colors.bg,
           padding:
-            'clamp(5.5rem, 8vw, 6.5rem) clamp(1rem, 4vw, 1.5rem) 0',
+            'clamp(5.5rem, 8vw, 6.5rem) clamp(1rem, 4vw, 1.5rem) clamp(2.25rem, 5vw, 3.25rem)',
           borderBottom: '1px solid rgba(201,168,76,0.25)',
           textAlign: 'center',
         }}
@@ -45,21 +44,9 @@ function GoldJewellery() {
           transition={transition}
           style={{ maxWidth: '1520px', margin: '0 auto' }}
         >
-          <p
-            style={{
-              margin: 0,
-              fontFamily: fonts.sans,
-              color: colors.gold,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              fontSize: '0.72rem',
-            }}
-          >
-            Home · Collections · Gold Jewellery
-          </p>
           <h1
             style={{
-              margin: '0.8rem 0 0',
+              margin: 0,
               fontFamily: fonts.serif,
               fontSize: 'clamp(2.8rem, 5vw, 4.8rem)',
               fontWeight: 500,
@@ -119,54 +106,157 @@ function GoldJewellery() {
             margin: '0 auto',
             position: 'relative',
             zIndex: 1,
-            display: 'grid',
-            gridTemplateColumns:
-              'repeat(auto-fit, minmax(min(100%, 360px), 1fr))',
-            gap: 'clamp(1rem, 2.6vw, 1.75rem)',
-            alignItems: 'stretch',
           }}
         >
-          {jewelleryImages.map((item, index) => (
-            <motion.figure
-              key={item.name}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{
-                y: -8,
-                boxShadow: '0 32px 80px -42px rgba(209,165,80,0.55)',
-              }}
-              transition={{
-                duration: 0.75,
-                ease: smooth,
-                delay: index * 0.08,
-              }}
+          <div
+            style={{
+              maxWidth: '760px',
+              margin: '0 auto clamp(2rem, 4vw, 3rem)',
+              textAlign: 'center',
+            }}
+          >
+            <div
               style={{
-                margin: 0,
-                border: `1px solid ${colors.border}`,
-                background:
-                  'linear-gradient(145deg, rgba(16,31,72,0.72), rgba(7,12,26,0.95))',
-                overflow: 'hidden',
-                minWidth: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexWrap: 'wrap',
+                gap: '1.15rem',
+                marginBottom: '1rem',
               }}
             >
-              <motion.img
-                src={item.image}
-                alt={item.alt}
-                initial={{ scale: 1.03 }}
-                whileInView={{ scale: 1 }}
-                whileHover={{ scale: 1.045 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.85, ease: smooth }}
+              <span
+                className="section-eyebrow-line"
                 style={{
-                  display: 'block',
-                  width: '100%',
-                  aspectRatio: '4 / 5',
-                  objectFit: 'cover',
+                  width: '42px',
+                  height: '1px',
+                  backgroundColor: colors.gold,
                 }}
               />
-            </motion.figure>
-          ))}
+              <span
+                style={{
+                  fontFamily: fonts.sans,
+                  color: colors.gold,
+                  fontSize: '0.7rem',
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                Exquisite Gold Jewellery Collection
+              </span>
+              <span
+                className="section-eyebrow-line"
+                style={{
+                  width: '42px',
+                  height: '1px',
+                  backgroundColor: colors.gold,
+                }}
+              />
+            </div>
+
+            <h2
+              style={{
+                margin: 0,
+                fontFamily: fonts.serif,
+                fontSize: 'clamp(2.25rem, 4vw, 3.7rem)',
+                fontWeight: 400,
+                color: '#fff',
+                lineHeight: 1.05,
+              }}
+            >
+              Gold Jewellery
+            </h2>
+
+            <p
+              style={{
+                margin: '1rem auto 0',
+                maxWidth: '650px',
+                color: 'rgba(255,255,255,0.64)',
+                fontFamily: fonts.sans,
+                fontSize: '0.94rem',
+                lineHeight: 1.85,
+              }}
+            >
+              Beautifully crafted gold jewellery combining timeless elegance,
+              superior craftsmanship, and certified purity for every occasion.
+            </p>
+          </div>
+
+          <div
+            className="gold-jewellery-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+              gap: 'clamp(1rem, 2.6vw, 1.75rem)',
+              alignItems: 'stretch',
+            }}
+          >
+            {jewelleryImages.map((item, index) => (
+              <motion.figure
+                key={item.name}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -8,
+                  boxShadow: '0 32px 80px -42px rgba(209,165,80,0.55)',
+                }}
+                transition={{
+                  duration: 0.75,
+                  ease: smooth,
+                  delay: index * 0.08,
+                }}
+                style={{
+                  position: 'relative',
+                  margin: 0,
+                  border: `1px solid ${colors.border}`,
+                  background:
+                    'linear-gradient(145deg, rgba(16,31,72,0.72), rgba(7,12,26,0.95))',
+                  overflow: 'hidden',
+                  minWidth: 0,
+                  boxShadow: '0 26px 80px -54px rgba(209,165,80,0.58)',
+                }}
+              >
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.8,
+                    ease: smooth,
+                    delay: index * 0.05,
+                  }}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '2px',
+                    background:
+                      'linear-gradient(90deg, transparent, #D1A550, transparent)',
+                    transformOrigin: 'left',
+                    zIndex: 2,
+                  }}
+                />
+
+                <motion.img
+                  src={item.image}
+                  alt={item.alt}
+                  initial={{ scale: 1.03 }}
+                  whileInView={{ scale: 1 }}
+                  whileHover={{ scale: 1.045 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.85, ease: smooth }}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    aspectRatio: '4 / 5',
+                    objectFit: 'cover',
+                  }}
+                />
+              </motion.figure>
+            ))}
+          </div>
         </motion.div>
       </section>
     </main>

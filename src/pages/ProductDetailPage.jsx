@@ -359,8 +359,8 @@ function ProductDetailPage({
                 style={{
                   display: 'grid',
                   gridTemplateColumns:
-                    'repeat(auto-fit, minmax(min(100%, 220px), 1fr))',
-                  gap: 'clamp(1rem, 2vw, 1.25rem)',
+                    'repeat(auto-fit, minmax(min(100%, 180px), 1fr))',
+                  gap: 'clamp(0.55rem, 1.1vw, 0.75rem)',
                   width: '100%',
                   maxWidth: shapeGallery.length === 1 ? '520px' : '100%',
                   margin: '0 auto',
@@ -401,7 +401,7 @@ function ProductDetailPage({
                     <div
                       style={{
                         position: 'relative',
-                        padding: 'clamp(1rem, 3vw, 1.35rem)',
+                        padding: 'clamp(0.4rem, 1.1vw, 0.65rem)',
                       }}
                     >
                       <div
@@ -418,13 +418,13 @@ function ProductDetailPage({
                         <motion.img
                           src={shape.image}
                           alt={shape.alt}
-                          initial={{ scale: 0.94, rotate: -2 }}
-                          whileInView={{ scale: 1, rotate: 0 }}
+                          initial={{ scale: 1.04, rotate: -2 }}
+                          whileInView={{ scale: 1.1, rotate: 0 }}
                           viewport={{ once: true }}
                           transition={{ duration: 1, ease: smooth }}
                           style={{
-                            width: '86%',
-                            height: '86%',
+                            width: '110%',
+                            height: '110%',
                             objectFit: 'contain',
                             filter:
                               'drop-shadow(0 18px 32px rgba(209,165,80,0.28))',
@@ -434,11 +434,11 @@ function ProductDetailPage({
 
                       <div
                         style={{
-                          marginTop: '1rem',
+                          marginTop: '0.65rem',
                           display: 'flex',
                           alignItems: 'flex-end',
                           justifyContent: 'space-between',
-                          gap: '1rem',
+                          gap: '0.75rem',
                         }}
                       >
                         <div>

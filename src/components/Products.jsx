@@ -2,17 +2,17 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
 
-import Panel1 from '../assets/Panel1.jpg'
-import SilverBars from '../assets/SilverBars.png'
-import goldbarimage from '../assets/GoldBars.png'
-import DiamondJewellery from '../assets/Diamond.png'
+import productGoldBars from '../assets/Product Range/Gold Bars.png'
+import productSilverBars from '../assets/Product Range/Silver Bars.png'
+import productGoldJewellery from '../assets/Product Range/Gold Jewellery 1.png'
+import productDiamond from '../assets/Product Range/Diamond.png'
 
 const productCards = [
   {
     id: 1,
     purity: '999.9 Certified Gold Bars',
     name: 'Gold Bars',
-    image: goldbarimage,
+    image: productGoldBars,
     detailsPath: '/gold-bars',
     description:
       'Refined gold bars with assured purity, precision hallmarking, and trusted quality for investment and wealth security.',
@@ -21,7 +21,7 @@ const productCards = [
     id: 2,
     purity: '999.9 Fine Silver Investment Bars',
     name: 'Silver Bars',
-    image: SilverBars,
+    image: productSilverBars,
     detailsPath: '/silver-bars',
     description: `High-purity silver bars crafted to international standards, ideal for investment, trading,
 and long-term value preservation.`,
@@ -30,7 +30,7 @@ and long-term value preservation.`,
     id: 3,
     purity: 'Exquisite Gold Jewellery Collection',
     name: 'Gold Jewellery',
-    image: Panel1,
+    image: productGoldJewellery,
     detailsPath: '/gold-jewellery',
     description:
       'Beautifully crafted gold jewellery combining timeless elegance, superior craftsmanship, and certified purity for every occasion.',
@@ -39,7 +39,7 @@ and long-term value preservation.`,
     id: 4,
     purity: 'Certified Loose Diamonds',
     name: 'Diamonds',
-    image: DiamondJewellery,
+    image: productDiamond,
     detailsPath: '/diamonds',
     description:
       'Ethically sourced loose diamonds with certified grading, exceptional brilliance, and trusted quality for the global jewellery industry.',
