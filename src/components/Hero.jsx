@@ -8,7 +8,7 @@ import { colors, fonts, ease } from '../theme'
 // ─── Content — edit here only ───────────────────────────────────────────────
 const HERO_TAG = 'Direct Refinery Supply | Hong Kong - China - UAE'
 const HERO_SUBTEXT = [
-  'Your trusted wholesale source for premium gold and silver bullion, investment bars and coins, certified diamonds, and exquisite gold jewellery.',
+  'Your trusted wholesale source for premium gold and silver, investment bars and coins, certified diamonds, and exquisite gold jewellery.',
   'Backed by comprehensive insurance, global compliance standards, and the confidence of leading retailers and industry partners since 2019.',
 ]
 const HERO_BTN_PRIMARY = 'Explore Category'
@@ -418,7 +418,7 @@ export default function Hero() {
                 fontWeight: 400,
               }}
             >
-              Thes Most{' '}
+              Thes{' '}
               <span style={{ color: colors.white }}>Trusted</span>{' '}
               <SparkleWord variant="gold">Gold</SparkleWord>,{' '}
               <SparkleWord variant="silver">Silver</SparkleWord> &{' '}

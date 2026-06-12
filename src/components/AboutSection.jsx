@@ -231,7 +231,7 @@ function AboutSection() {
                 maxWidth: '760px',
               }}
             >
-              Freya Trading (HK) Ltd. – A Proud Member of the{' '}
+              Freya Trading (HK) Ltd. – A Member of the{' '}
               <span style={{ fontStyle: 'italic', color: colors.gold }}>SuGandh Group</span>
             </h2>
 
