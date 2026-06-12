@@ -344,8 +344,8 @@ h1, h2, h3, h4, h5, h6 {
     #d8f4ff 100%
   );
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.2), 0 0 26px rgba(159, 220, 255, 0.14);
-  --sparkle-color: #eafaff;
-  --sparkle-glow: rgba(159, 220, 255, 0.9);
+  --sparkle-color: #d6f3ff;
+  --sparkle-glow: rgba(108, 198, 255, 1);
   animation-duration: 5.3s;
 }
 
@@ -360,12 +360,13 @@ h1, h2, h3, h4, h5, h6 {
 .sparkle--dot {
   border-radius: 50%;
   background: var(--sparkle-color, #ffffff);
-  box-shadow: 0 0 6px var(--sparkle-glow, rgba(255, 255, 255, 0.8));
+  box-shadow: 0 0 8px var(--sparkle-glow, rgba(255, 255, 255, 0.8)),
+    0 0 18px var(--sparkle-glow, rgba(255, 255, 255, 0.5));
 }
 
 /* Star shape lives on ::before so the parent's drop-shadow isn't clipped away */
 .sparkle--star {
-  filter: drop-shadow(0 0 4px var(--sparkle-glow, rgba(255, 255, 255, 0.8)));
+  filter: drop-shadow(0 0 6px var(--sparkle-glow, rgba(255, 255, 255, 0.8)));
 }
 
 .sparkle--star::before {
@@ -390,11 +391,11 @@ h1, h2, h3, h4, h5, h6 {
   0%,
   100% {
     opacity: 0;
-    transform: scale(0.25) rotate(0deg);
+    transform: scale(0.2) rotate(0deg);
   }
   50% {
-    opacity: 0.9;
-    transform: scale(1) rotate(90deg);
+    opacity: 1;
+    transform: scale(1.18) rotate(90deg);
   }
 }
 
