@@ -50,6 +50,94 @@ const transition = ease.transition
 const MotionLink = motion.create(Link)
 
 function ProductCard({ item, index }) {
+  const imagePanel = (
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+        aspectRatio: '4 / 3',
+        borderBottom: '1px solid rgba(209,165,80,0.12)',
+        overflow: 'hidden',
+        backgroundColor: '#070C1A',
+      }}
+    >
+      <motion.img
+        src={item.image}
+        alt={item.name}
+        whileHover={{ scale: 1.06 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          display: 'block',
+        }}
+      />
+
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(180deg, rgba(7,12,26,0.05) 0%, rgba(7,12,26,0.45) 100%)',
+          pointerEvents: 'none',
+        }}
+      />
+    </div>
+  )
+
+  const contentPanel = (
+    <>
+      <p
+        style={{
+          margin: '0 0 0.6rem',
+          fontFamily: fonts.sans,
+          fontSize: '0.65rem',
+          letterSpacing: '0.2em',
+          color: colors.gold,
+          textTransform: 'uppercase',
+        }}
+      >
+        {item.purity}
+      </p>
+
+      <h3
+        style={{
+          margin: '0 0 0.7rem',
+          fontFamily: fonts.serif,
+          fontSize: '1.75rem',
+          fontWeight: 500,
+          color: '#fff',
+          lineHeight: 1.15,
+        }}
+      >
+        {item.name}
+      </h3>
+
+      <div
+        style={{
+          width: '40px',
+          height: '1px',
+          background: 'linear-gradient(90deg, #D1A550, transparent)',
+          marginBottom: '0.9rem',
+        }}
+      />
+
+      <p
+        style={{
+          margin: '0 0 1.5rem',
+          color: 'rgba(255,255,255,0.52)',
+          fontFamily: fonts.sans,
+          fontSize: '0.82rem',
+          lineHeight: 1.8,
+          flex: 1,
+        }}
+      >
+        {item.description}
+      </p>
+    </>
+  )
+
   return (
     <motion.article
       data-product-card
@@ -96,39 +184,22 @@ function ProductCard({ item, index }) {
         }}
       />
 
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          aspectRatio: '4 / 3',
-          borderBottom: '1px solid rgba(209,165,80,0.12)',
-          overflow: 'hidden',
-          backgroundColor: '#070C1A',
-        }}
-      >
-        <motion.img
-          src={item.image}
-          alt={item.name}
-          whileHover={{ scale: 1.06 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+      {item.detailsPath ? (
+        <Link
+          to={item.detailsPath}
+          aria-label={`Know more about ${item.name}`}
           style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
             display: 'block',
+            color: 'inherit',
+            textDecoration: 'none',
+            cursor: 'pointer',
           }}
-        />
-
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(180deg, rgba(7,12,26,0.05) 0%, rgba(7,12,26,0.45) 100%)',
-            pointerEvents: 'none',
-          }}
-        />
-      </div>
+        >
+          {imagePanel}
+        </Link>
+      ) : (
+        imagePanel
+      )}
 
       <div
         className="product-card-body"
@@ -139,53 +210,24 @@ function ProductCard({ item, index }) {
           flex: 1,
         }}
       >
-        <p
-          style={{
-            margin: '0 0 0.6rem',
-            fontFamily: fonts.sans,
-            fontSize: '0.65rem',
-            letterSpacing: '0.2em',
-            color: colors.gold,
-            textTransform: 'uppercase',
-          }}
-        >
-          {item.purity}
-        </p>
-
-        <h3
-          style={{
-            margin: '0 0 0.7rem',
-            fontFamily: fonts.serif,
-            fontSize: '1.75rem',
-            fontWeight: 500,
-            color: '#fff',
-            lineHeight: 1.15,
-          }}
-        >
-          {item.name}
-        </h3>
-
-        <div
-          style={{
-            width: '40px',
-            height: '1px',
-            background: 'linear-gradient(90deg, #D1A550, transparent)',
-            marginBottom: '0.9rem',
-          }}
-        />
-
-        <p
-          style={{
-            margin: '0 0 1.5rem',
-            color: 'rgba(255,255,255,0.52)',
-            fontFamily: fonts.sans,
-            fontSize: '0.82rem',
-            lineHeight: 1.8,
-            flex: 1,
-          }}
-        >
-          {item.description}
-        </p>
+        {item.detailsPath ? (
+          <Link
+            to={item.detailsPath}
+            aria-label={`Know more about ${item.name}`}
+            style={{
+              color: 'inherit',
+              display: 'flex',
+              flex: 1,
+              flexDirection: 'column',
+              minHeight: 0,
+              textDecoration: 'none',
+            }}
+          >
+            {contentPanel}
+          </Link>
+        ) : (
+          contentPanel
+        )}
 
         <div
           style={{

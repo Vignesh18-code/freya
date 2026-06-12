@@ -50,7 +50,9 @@ function Footer() {
             © {new Date().getFullYear()} Freya Trading (HK) Ltd. All rights reserved.
           </p>
           <p style={{ margin: 0, color: 'rgba(255,255,255,0.6)', fontFamily: fonts.sans, fontSize: '0.75rem' }}>
-            Developed by Elite Designs
+            <a href="https://www.instagram.com/theelitedesigns.in" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.6)', fontFamily: fonts.sans, fontSize: '0.75rem' }}>
+              Designed & Developed by Elite Designs
+            </a>
           </p>
         </div>
       </div>
