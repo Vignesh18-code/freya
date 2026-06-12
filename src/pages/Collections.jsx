@@ -12,7 +12,7 @@ function Collections() {
         }}
       >
         <div className="page-container" style={{ maxWidth: '1520px', margin: '0 auto' }}>
-          <p style={{ margin: 0, fontFamily: "'Montserrat', sans-serif", color: '#C9A84C', letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.72rem' }}>Home · Collections</p>
+          <p style={{ margin: 0, fontFamily: "'Montserrat', sans-serif", color: '#C9A84C', letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.72rem' }}>Home · Product Range</p>
           <h1 style={{ margin: '0.8rem 0 0', fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.8rem, 5vw, 4.8rem)', fontWeight: 500, lineHeight: 1 }}>
             Our Collections
           </h1>
