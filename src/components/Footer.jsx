@@ -27,9 +27,9 @@ function Footer() {
             style={{ display: 'block', width: 'min(260px, 100%)', height: 'auto' }}
           />
           <p style={{ margin: '0.65rem 0 1rem', fontFamily: fonts.sans, color: 'rgba(255,255,255,0.72)', fontSize: '0.84rem', lineHeight: 1.8 }}>
-            Direct wholesale access to premium gold and silver bullion, coins, bars, and jewellery.
+            Your trusted wholesale source for premium gold and silver bullion, investment bars and coins, certified diamonds, and exquisite gold jewellery.
             <br />
-            Fully insured, globally compliant, and trusted by leading retailers and industry partners since 2019.
+            Backed by comprehensive insurance, global compliance standards, and the confidence of leading retailers and industry partners since 2019.
           </p>
         </div>
 

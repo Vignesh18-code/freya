@@ -14,7 +14,6 @@ const diamondShapes = Object.entries(diamondShapeImages)
 
     return {
       title: fileName,
-      label: 'Diamond Shape',
       image,
       alt: `${fileName} diamond shape`,
     }

@@ -442,21 +442,23 @@ function ProductDetailPage({
                         }}
                       >
                         <div>
-                          <p
-                            style={{
-                              margin: 0,
-                              fontFamily: fonts.sans,
-                              color: colors.gold,
-                              fontSize: '0.66rem',
-                              letterSpacing: '0.18em',
-                              textTransform: 'uppercase',
-                            }}
-                          >
-                            {shape.label}
-                          </p>
+                          {shape.label && (
+                            <p
+                              style={{
+                                margin: 0,
+                                fontFamily: fonts.sans,
+                                color: colors.gold,
+                                fontSize: '0.66rem',
+                                letterSpacing: '0.18em',
+                                textTransform: 'uppercase',
+                              }}
+                            >
+                              {shape.label}
+                            </p>
+                          )}
                           <h3
                             style={{
-                              margin: '0.35rem 0 0',
+                              margin: shape.label ? '0.35rem 0 0' : 0,
                               fontFamily: fonts.serif,
                               color: colors.goldLight,
                               fontSize: '1.45rem',
