@@ -7,14 +7,15 @@ function Collections() {
         className="page-hero"
         style={{
           backgroundColor: '#001935',
-          padding: 'clamp(5.5rem, 8vw, 6.5rem) clamp(1rem, 4vw, 1.5rem) 0',
+          padding:
+            'clamp(5.5rem, 8vw, 6.5rem) clamp(1rem, 4vw, 1.5rem) clamp(0.55rem, 1.4vw, 0.9rem)',
           borderBottom: '1px solid rgba(201,168,76,0.25)',
         }}
       >
         <div className="page-container" style={{ maxWidth: '1520px', margin: '0 auto' }}>
           <p style={{ margin: 0, fontFamily: "'Montserrat', sans-serif", color: '#C9A84C', letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.72rem' }}>Home · Product Range</p>
           <h1 style={{ margin: '0.8rem 0 0', fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.8rem, 5vw, 4.8rem)', fontWeight: 500, lineHeight: 1 }}>
-            Our Collections
+            Our Product Range
           </h1>
         </div>
       </section>

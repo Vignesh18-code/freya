@@ -418,7 +418,7 @@ export default function Hero() {
                 fontWeight: 400,
               }}
             >
-              Thes{' '}
+              The{' '}
               <span style={{ color: colors.white }}>Trusted</span>{' '}
               <SparkleWord variant="gold">Gold</SparkleWord>,{' '}
               <SparkleWord variant="silver">Silver</SparkleWord> &{' '}
