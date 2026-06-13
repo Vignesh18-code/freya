@@ -23,7 +23,7 @@ const diamondShapes = Object.entries(diamondShapeImages)
 function Diamonds() {
   return (
     <ProductDetailPage
-      breadcrumb="Home · Collections · Diamonds"
+      breadcrumb="Home · Product Range · Diamonds"
       label="Certified Loose Diamonds"
       title="Diamonds"
       accentTitle="Diamonds"
