@@ -145,27 +145,45 @@ function AboutSection() {
               margin: isMobile || isTablet ? '0 auto' : '0 auto 0 0',
             }}
           >
-            <div
-              style={{
-                position: 'relative',
-                border: '1px solid rgba(209,165,80,0.22)',
-                background: 'rgba(7,12,26,0.45)',
-                aspectRatio: isMobile ? '4 / 5' : '0.88 / 1',
-                overflow: 'hidden',
-                boxShadow: '0 32px 90px -45px rgba(209,165,80,0.35)',
-              }}
-            >
-              <img
-                src={websiteImage}
-                alt="Freya Trading precious metals"
-                loading="lazy"
+            <div className="about-image-frame">
+              <div
                 style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block',
+                  position: 'relative',
+                  background: 'rgba(7,12,26,0.45)',
+                  aspectRatio: isMobile ? '4 / 5' : '0.88 / 1',
+                  overflow: 'hidden',
+                }}
+              >
+                <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.25 }}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background:
+                    'linear-gradient(90deg, transparent, #D1A550, transparent)',
+                  transformOrigin: 'left',
+                  zIndex: 3,
                 }}
               />
+
+                <img
+                  src={websiteImage}
+                  alt="Freya Trading precious metals"
+                  loading="lazy"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block',
+                  }}
+                />
+              </div>
             </div>
           </motion.div>
 

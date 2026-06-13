@@ -469,3 +469,51 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
   }
 }
+
+/* Animated gold border that travels around the About image */
+@keyframes aboutFrameSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-image-frame {
+  position: relative;
+  padding: 1.5px;
+  overflow: hidden;
+  background: rgba(209, 165, 80, 0.16);
+  box-shadow: 0 32px 90px -45px rgba(209, 165, 80, 0.35);
+}
+
+.about-image-frame::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220%;
+  height: 220%;
+  translate: -50% -50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 80deg,
+    rgba(240, 208, 138, 0.95) 120deg,
+    #d1a550 140deg,
+    transparent 195deg,
+    transparent 360deg
+  );
+  animation: aboutFrameSpin 4.5s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-image-frame > * {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-image-frame::before {
+    animation: none;
+  }
+}

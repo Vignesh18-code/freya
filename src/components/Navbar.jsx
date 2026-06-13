@@ -209,20 +209,6 @@ export default function Navbar() {
                 padding: '0.95rem clamp(1rem, 5vw, 1.55rem) 1.35rem',
               }}
             >
-              <span
-                aria-hidden="true"
-                style={{
-                  position: 'absolute',
-                  left: '1rem',
-                  right: '1rem',
-                  bottom: '1rem',
-                  height: '1px',
-                  background:
-                    'linear-gradient(90deg, transparent, rgba(209,165,80,0.42), transparent)',
-                  pointerEvents: 'none',
-                }}
-              />
-
               <motion.button
                 type="button"
                 aria-label="Close menu"
