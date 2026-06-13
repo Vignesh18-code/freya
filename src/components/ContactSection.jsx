@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { colors, fonts, ease } from '../theme'
 
 // ── Paste your Web3Forms key here (web3forms.com → enter email → get key) ──
-const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY'
+const WEB3FORMS_KEY = 'c3d119a8-4424-4054-ad46-b915004f3aa1'
 // ────────────────────────────────────────────────────────────────────────────
 
 const contactItems = [
@@ -116,6 +116,127 @@ export default function ContactSection() {
       <div style={{ position:'absolute', top:'10%', left:'-10%', width:'500px', height:'500px', borderRadius:'50%', background:'radial-gradient(circle, rgba(209,165,80,0.05) 0%, transparent 70%)', filter:'blur(80px)', pointerEvents:'none' }} />
       <div style={{ position:'absolute', bottom:'5%', right:'-10%', width:'400px', height:'400px', borderRadius:'50%', background:'radial-gradient(circle, rgba(209,165,80,0.04) 0%, transparent 70%)', filter:'blur(80px)', pointerEvents:'none' }} />
 
+      <AnimatePresence>
+        {status === 'success' && (
+          <motion.div
+            key="success-notification"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28, ease: EASE }}
+            onClick={() => setStatus('idle')}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 1000,
+              display: 'grid',
+              placeItems: 'center',
+              padding: '1rem',
+              backgroundColor: 'rgba(3,8,18,0.64)',
+              backdropFilter: 'blur(10px)',
+              WebkitBackdropFilter: 'blur(10px)',
+            }}
+          >
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="contact-success-title"
+              initial={{ opacity: 0, y: 22, scale: 0.94 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 18, scale: 0.96 }}
+              transition={{ duration: 0.45, ease: EASE }}
+              onClick={(event) => event.stopPropagation()}
+              style={{
+                width: 'min(100%, 430px)',
+                border: '1px solid rgba(209,165,80,0.34)',
+                background:
+                  'linear-gradient(160deg, rgba(16,31,72,0.96), rgba(7,12,26,0.98))',
+                boxShadow:
+                  '0 32px 90px -34px rgba(209,165,80,0.55), 0 0 0 1px rgba(255,255,255,0.04)',
+                padding: 'clamp(1.5rem, 5vw, 2.2rem)',
+                textAlign: 'center',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: '0 0 auto',
+                  height: '2px',
+                  background:
+                    'linear-gradient(90deg, transparent, #D1A550, transparent)',
+                }}
+              />
+              <motion.div
+                initial={{ scale: 0.72, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.45, ease: EASE, delay: 0.08 }}
+                style={{
+                  width: '70px',
+                  height: '70px',
+                  borderRadius: '999px',
+                  border: '1px solid rgba(209,165,80,0.5)',
+                  background:
+                    'linear-gradient(135deg, rgba(209,165,80,0.2), rgba(209,165,80,0.05))',
+                  display: 'grid',
+                  placeItems: 'center',
+                  margin: '0 auto 1.1rem',
+                  color: colors.gold,
+                  boxShadow: '0 0 32px rgba(209,165,80,0.22)',
+                }}
+              >
+                <i className="fas fa-check" style={{ fontSize: '1.55rem' }} />
+              </motion.div>
+              <h3
+                id="contact-success-title"
+                style={{
+                  margin: 0,
+                  fontFamily: fonts.serif,
+                  color: '#fff',
+                  fontSize: 'clamp(1.85rem, 5vw, 2.35rem)',
+                  fontWeight: 400,
+                  lineHeight: 1.1,
+                }}
+              >
+                Enquiry Received
+              </h3>
+              <p
+                style={{
+                  margin: '0.8rem auto 1.45rem',
+                  maxWidth: '330px',
+                  color: 'rgba(255,255,255,0.68)',
+                  fontFamily: fonts.sans,
+                  fontSize: '0.88rem',
+                  lineHeight: 1.8,
+                }}
+              >
+                Thank you for reaching out. Our trade desk will review your
+                enquiry and connect with you soon.
+              </p>
+              <button
+                type="button"
+                onClick={() => setStatus('idle')}
+                style={{
+                  border: '1px solid rgba(209,165,80,0.46)',
+                  backgroundColor: 'rgba(209,165,80,0.1)',
+                  color: colors.goldLight,
+                  fontFamily: fonts.sans,
+                  fontSize: '0.68rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  padding: '0.78rem 1.7rem',
+                  cursor: 'pointer',
+                }}
+              >
+                Continue
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div style={{ maxWidth:'1520px', margin:'0 auto', position:'relative', zIndex:1 }}>
 
         {/* ── Header ── */}
@@ -218,58 +339,14 @@ export default function ContactSection() {
             {/* shimmer top */}
             <div style={{ position:'absolute', top:0, left:0, right:0, height:'2px', background:'linear-gradient(90deg, transparent, #D1A550, transparent)' }} />
 
-            <AnimatePresence mode="wait">
-
-              {/* ── Success ── */}
-              {status === 'success' && (
-                <motion.div
-                  key="success"
-                  initial={{ opacity:0, scale:0.95 }}
-                  animate={{ opacity:1, scale:1 }}
-                  exit={{ opacity:0 }}
-                  transition={{ duration:0.5, ease:EASE }}
-                  style={{ textAlign:'center', padding:'3rem 1rem' }}
-                >
-                  <div style={{
-                    width:'64px', height:'64px', borderRadius:'50%',
-                    border:'1px solid rgba(209,165,80,0.5)',
-                    background:'rgba(209,165,80,0.1)',
-                    display:'flex', alignItems:'center', justifyContent:'center',
-                    margin:'0 auto 1.5rem', fontSize:'1.4rem', color:colors.gold,
-                  }}>
-                    <i className="fas fa-check" />
-                  </div>
-                  <h3 style={{ margin:'0 0 0.6rem', fontFamily:fonts.serif, fontSize:'1.9rem', fontWeight:400 }}>
-                    Enquiry Sent
-                  </h3>
-                  <p style={{ margin:'0 0 2rem', color:'rgba(255,255,255,0.5)', fontFamily:fonts.sans, fontSize:'0.82rem', lineHeight:1.8 }}>
-                    Thank you for reaching out. Our team will review your enquiry and respond soon.
-                  </p>
-                  <button
-                    onClick={() => setStatus('idle')}
-                    style={{
-                      border:'1px solid rgba(209,165,80,0.4)', background:'transparent',
-                      color:colors.gold, fontFamily:fonts.sans,
-                      fontSize:'0.68rem', letterSpacing:'0.16em', textTransform:'uppercase',
-                      padding:'0.7rem 1.8rem', cursor:'pointer',
-                    }}
-                  >
-                    Send Another
-                  </button>
-                </motion.div>
-              )}
-
-              {/* ── Form ── */}
-              {status !== 'success' && (
-                <motion.form
-                  key="form"
-                  onSubmit={handleSubmit}
-                  initial={{ opacity:0 }}
-                  animate={{ opacity:1 }}
-                  exit={{ opacity:0 }}
-                  style={{ display:'grid', gap:'1rem' }}
-                  noValidate
-                >
+            <motion.form
+              key="form"
+              onSubmit={handleSubmit}
+              initial={{ opacity:0 }}
+              animate={{ opacity:1 }}
+              style={{ display:'grid', gap:'1rem' }}
+              noValidate
+            >
                   {/* honeypot — keeps spam out */}
                   <input type="checkbox" name="botcheck" style={{ display:'none' }} />
 
@@ -368,9 +445,7 @@ export default function ContactSection() {
                   <p style={{ margin:0, textAlign:'center', fontFamily:fonts.sans, fontSize:'0.62rem', color:'rgba(255,255,255,0.28)', letterSpacing:'0.08em' }}>
                     Your information is encrypted and never shared with third parties.
                   </p>
-                </motion.form>
-              )}
-            </AnimatePresence>
+            </motion.form>
           </motion.div>
         </div>
       </div>
