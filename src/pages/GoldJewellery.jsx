@@ -194,12 +194,24 @@ function GoldJewellery() {
             {jewelleryImages.map((item, index) => (
               <motion.figure
                 key={item.name}
+                className="gold-jewellery-card"
+                tabIndex={0}
                 initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 whileHover={{
-                  y: -8,
-                  boxShadow: '0 32px 80px -42px rgba(209,165,80,0.55)',
+                  y: -10,
+                  scale: 1.01,
+                  borderColor: 'rgba(209,165,80,0.48)',
+                  boxShadow:
+                    '0 34px 90px -44px rgba(209,165,80,0.72), 0 0 0 1px rgba(209,165,80,0.18)',
+                }}
+                whileFocus={{
+                  y: -10,
+                  scale: 1.01,
+                  borderColor: 'rgba(209,165,80,0.48)',
+                  boxShadow:
+                    '0 34px 90px -44px rgba(209,165,80,0.72), 0 0 0 1px rgba(209,165,80,0.18)',
                 }}
                 transition={{
                   duration: 0.75,
@@ -215,6 +227,8 @@ function GoldJewellery() {
                   overflow: 'hidden',
                   minWidth: 0,
                   boxShadow: '0 26px 80px -54px rgba(209,165,80,0.58)',
+                  cursor: 'zoom-in',
+                  outline: 'none',
                 }}
               >
                 <motion.div
@@ -239,21 +253,63 @@ function GoldJewellery() {
                   }}
                 />
 
-                <motion.img
-                  src={item.image}
-                  alt={item.alt}
-                  initial={{ scale: 1.03 }}
-                  whileInView={{ scale: 1 }}
-                  whileHover={{ scale: 1.045 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.85, ease: smooth }}
+                <div
                   style={{
-                    display: 'block',
-                    width: '100%',
                     aspectRatio: '4 / 5',
-                    objectFit: 'cover',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    background:
+                      'linear-gradient(145deg, rgba(7,12,26,0.95), rgba(16,31,72,0.72))',
                   }}
-                />
+                >
+                  <motion.img
+                    src={item.image}
+                    alt={item.alt}
+                    initial={{ scale: 1.04 }}
+                    whileInView={{ scale: 1 }}
+                    whileHover={{ scale: 1.13 }}
+                    whileFocus={{ scale: 1.13 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.05, ease: smooth }}
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transformOrigin: 'center',
+                      willChange: 'transform',
+                    }}
+                  />
+
+                  <motion.div
+                    className="gold-jewellery-card-overlay"
+                    initial={false}
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background:
+                        'linear-gradient(180deg, rgba(7,12,26,0.02) 0%, rgba(7,12,26,0.24) 62%, rgba(7,12,26,0.72) 100%)',
+                      pointerEvents: 'none',
+                    }}
+                  />
+
+                  <motion.div
+                    aria-hidden="true"
+                    className="gold-jewellery-card-sheen"
+                    style={{
+                      position: 'absolute',
+                      top: '-20%',
+                      bottom: '-20%',
+                      left: '-65%',
+                      width: '44%',
+                      transform: 'skewX(-18deg)',
+                      background:
+                        'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), rgba(232,213,163,0.22), transparent)',
+                      pointerEvents: 'none',
+                    }}
+                  />
+
+                </div>
               </motion.figure>
             ))}
           </div>

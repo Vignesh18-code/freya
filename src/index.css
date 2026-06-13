@@ -103,6 +103,11 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: clamp(6.25rem, 8vw, 7rem) !important;
 }
 
+.gold-jewellery-card:hover .gold-jewellery-card-sheen,
+.gold-jewellery-card:focus-visible .gold-jewellery-card-sheen {
+  animation: jewellerySheen 1.1s ease forwards;
+}
+
 @media (max-width: 1180px) {
   .product-range-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -190,6 +195,16 @@ h1, h2, h3, h4, h5, h6 {
   .footer-bottom {
     justify-content: center !important;
     text-align: center;
+  }
+}
+
+@keyframes jewellerySheen {
+  from {
+    left: -65%;
+  }
+
+  to {
+    left: 125%;
   }
 }
 
