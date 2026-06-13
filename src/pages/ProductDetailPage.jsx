@@ -157,7 +157,7 @@ function ProductDetailPage({
                   gap: '0.75rem',
                   marginBottom: '1rem',
                 }}
-                >
+              >
                 <span
                   className="section-eyebrow-line"
                   style={{
@@ -282,7 +282,7 @@ function ProductDetailPage({
               className="diamond-shape-section"
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.05 }}
+              viewport={{ once: true, amount: 0.01 }}
               transition={transition}
               style={{
                 marginTop: 'clamp(2rem, 5vw, 3.75rem)',
