@@ -61,7 +61,7 @@ function GoldBars() {
       >
         <div className="page-container" style={{ maxWidth: '1520px', margin: '0 auto' }}>
           <p style={{ margin: 0, fontFamily: fonts.sans, color: colors.gold, letterSpacing: '0.2em', textTransform: 'uppercase', fontSize: '0.72rem' }}>
-            Home · Collections · Gold Bars
+            Home · Product Range · Gold Bars
           </p>
           <h1 style={{ margin: '0.8rem 0 0', fontFamily: fonts.serif, fontSize: 'clamp(2.8rem, 5vw, 4.8rem)', fontWeight: 500, lineHeight: 1 }}>
             Gold Bars

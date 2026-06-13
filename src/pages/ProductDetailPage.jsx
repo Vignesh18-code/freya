@@ -150,18 +150,21 @@ function ProductDetailPage({
               transition={transition}
             >
               <div
+                className="detail-eyebrow"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.75rem',
                   marginBottom: '1rem',
                 }}
-              >
+                >
                 <span
+                  className="section-eyebrow-line"
                   style={{
                     width: '42px',
                     height: '1px',
                     backgroundColor: colors.gold,
+                    flexShrink: 0,
                   }}
                 />
                 <span
@@ -175,6 +178,15 @@ function ProductDetailPage({
                 >
                   {label}
                 </span>
+                <span
+                  className="section-eyebrow-line"
+                  style={{
+                    width: '42px',
+                    height: '1px',
+                    backgroundColor: colors.gold,
+                    flexShrink: 0,
+                  }}
+                />
               </div>
 
               <h2
@@ -270,7 +282,7 @@ function ProductDetailPage({
               className="diamond-shape-section"
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
+              viewport={{ once: true, amount: 0.05 }}
               transition={transition}
               style={{
                 marginTop: 'clamp(2rem, 5vw, 3.75rem)',

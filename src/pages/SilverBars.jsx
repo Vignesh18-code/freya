@@ -4,7 +4,7 @@ import silverBarsImage from '../assets/SilverBars.png'
 function SilverBars() {
   return (
     <ProductDetailPage
-      breadcrumb="Home · Collections · Silver Bars"
+      breadcrumb="Home · Product Range · Silver Bars"
       label="999 Fine Silver Investment Bars"
       title="Silver Bars"
       accentTitle="Silver Bars"
