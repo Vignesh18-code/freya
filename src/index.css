@@ -89,6 +89,37 @@ h1, h2, h3, h4, h5, h6 {
   word-break: normal;
 }
 
+.mobile-menu-link {
+  padding: 0.85rem 0.35rem 0.85rem 1.05rem;
+  border-bottom: 1px solid rgba(209, 165, 80, 0.18);
+  transition:
+    color 0.24s ease,
+    transform 0.24s ease,
+    border-color 0.24s ease;
+}
+
+.mobile-menu-link:hover,
+.mobile-menu-link:focus-visible {
+  color: #E8D5A3 !important;
+  border-color: rgba(209, 165, 80, 0.48);
+  transform: translateX(-4px);
+  outline: none;
+}
+
+.mobile-menu-link::before {
+  content: "";
+  width: 20px;
+  height: 1px;
+  margin-right: 0.8rem;
+  flex: 0 0 auto;
+  background: rgba(209, 165, 80, 0.72);
+  box-shadow: 0 0 14px rgba(209, 165, 80, 0.34);
+}
+
+.mobile-menu-logo {
+  max-width: min(180px, 58vw);
+}
+
 .product-section-header {
   text-align: center;
 }
@@ -224,7 +255,20 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .mobile-menu-link {
-    font-size: clamp(2rem, 12vw, 3rem) !important;
+    min-height: 48px !important;
+    padding-left: 0.8rem !important;
+    font-size: clamp(1.02rem, 5vw, 1.32rem) !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  .mobile-menu-link::before {
+    width: 16px;
+    margin-right: 0.65rem;
+  }
+
+  .mobile-menu-logo {
+    height: 46px !important;
+    max-width: 172px;
   }
 
   .hero-title {

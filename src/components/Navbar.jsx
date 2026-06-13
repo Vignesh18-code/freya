@@ -21,6 +21,11 @@ const linkStyles = ({ isActive }) => ({
   position: 'relative',
 })
 
+const mobilePanelTransition = {
+  duration: 0.55,
+  ease: [0.22, 1, 0.36, 1],
+}
+
 function DesktopLink({ label, to }) {
   return (
     <NavLink to={to} style={linkStyles} className="group desktop-nav-link">
@@ -38,8 +43,17 @@ function MobileLink({ label, to, onClick }) {
     <NavLink
       to={to}
       onClick={onClick}
-      style={linkStyles}
-      className="mobile-menu-link text-4xl tracking-widest"
+      style={({ isActive }) => ({
+        ...linkStyles({ isActive }),
+        display: 'flex',
+        alignItems: 'center',
+        width: '100%',
+        minHeight: 'clamp(44px, 6.5dvh, 50px)',
+        fontSize: 'clamp(1.08rem, 4.8vw, 1.55rem)',
+        lineHeight: 1,
+        whiteSpace: 'nowrap',
+      })}
+      className="mobile-menu-link"
     >
       {label}
     </NavLink>
@@ -60,6 +74,19 @@ export default function Navbar() {
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
+
+  useEffect(() => {
+    if (!menuOpen) return undefined
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
   }, [menuOpen])
 
   const navStyle = {
@@ -103,14 +130,16 @@ export default function Navbar() {
           <button
             className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5 relative z-50"
             onClick={() => setMenuOpen(prev => !prev)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-label="Open menu"
+            aria-hidden={menuOpen}
+            aria-controls="mobile-navigation-drawer"
+            aria-expanded={menuOpen}
+            tabIndex={menuOpen ? -1 : 0}
             style={{
               background: 'none',
               border: 'none',
               cursor: 'pointer',
-              position: menuOpen ? 'fixed' : 'relative',
-              top: menuOpen ? '24px' : 'auto',
-              right: menuOpen ? '24px' : 'auto',
+              position: 'relative',
               zIndex: 60,
             }}
           >
@@ -133,37 +162,166 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile fullscreen overlay */}
+      {/* Mobile theme dropdown */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0, y: '-100%' }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '-100%' }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.28, ease: 'easeOut' }}
+            onClick={() => setMenuOpen(false)}
             style={{
               position: 'fixed',
               inset: 0,
-              zIndex: 40,
-              backgroundColor: colors.bg,
+              zIndex: 70,
+              backgroundColor: 'transparent',
               display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
               justifyContent: 'center',
-              gap: '2.5rem',
+              alignItems: 'flex-start',
+              padding: '0 0.5rem 0.5rem',
             }}
           >
-            {NAV_LINKS.map(({ label, to }, i) => (
-              <motion.div
-                key={to}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15 + i * 0.08 }}
+            <motion.aside
+              id="mobile-navigation-drawer"
+              role="dialog"
+              aria-modal="true"
+              initial={{ y: '-108%', opacity: 0.72, scaleY: 0.96 }}
+              animate={{ y: 0, opacity: 1, scaleY: 1 }}
+              exit={{ y: '-108%', opacity: 0.72, scaleY: 0.96 }}
+              transition={mobilePanelTransition}
+              onClick={(event) => event.stopPropagation()}
+              style={{
+                width: 'min(calc(100vw - 1rem), 560px)',
+                minHeight: 'min(44dvh, 350px)',
+                borderRadius: '0 0 24px 24px',
+                border: `1px solid ${colors.borderHover}`,
+                borderTop: 'none',
+                backgroundColor: colors.bg,
+                boxShadow:
+                  '0 24px 58px rgba(0, 0, 0, 0.42), inset 0 -1px 0 rgba(209,165,80,0.16)',
+                overflow: 'hidden',
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'flex-start',
+                padding: '0.95rem clamp(1rem, 5vw, 1.55rem) 1.35rem',
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  left: '1rem',
+                  right: '1rem',
+                  bottom: '1rem',
+                  height: '1px',
+                  background:
+                    'linear-gradient(90deg, transparent, rgba(209,165,80,0.42), transparent)',
+                  pointerEvents: 'none',
+                }}
+              />
+
+              <motion.button
+                type="button"
+                aria-label="Close menu"
+                onClick={() => setMenuOpen(false)}
+                initial={{ opacity: 0, scale: 0.88 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.28, delay: 0.18 }}
+                style={{
+                  position: 'absolute',
+                  top: '1.18rem',
+                  right: 'clamp(1rem, 5vw, 1.55rem)',
+                  zIndex: 3,
+                  width: '42px',
+                  height: '42px',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(209,165,80,0.42)',
+                  backgroundColor: colors.bg,
+                  boxShadow: '0 12px 28px rgba(0,0,0,0.28)',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
               >
-                <MobileLink label={label} to={to} onClick={() => setMenuOpen(false)} />
-              </motion.div>
-            ))}
+                <span
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    width: '18px',
+                    height: '2px',
+                    backgroundColor: colors.gold,
+                    transform: 'rotate(45deg)',
+                    borderRadius: '999px',
+                  }}
+                />
+                <span
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    width: '18px',
+                    height: '2px',
+                    backgroundColor: colors.gold,
+                    transform: 'rotate(-45deg)',
+                    borderRadius: '999px',
+                  }}
+                />
+              </motion.button>
+
+              <NavLink
+                to="/"
+                onClick={() => setMenuOpen(false)}
+                aria-label="Freya Trading home"
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  minHeight: '64px',
+                  padding: '0 3.2rem 0.85rem 0',
+                  borderBottom: '1px solid rgba(209,165,80,0.18)',
+                  textDecoration: 'none',
+                }}
+              >
+                <img
+                  src={logo}
+                  alt="Freya Trading (HK) Ltd"
+                  className="mobile-menu-logo object-contain"
+                  style={{ height: '52px', width: 'auto' }}
+                />
+              </NavLink>
+
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.48rem',
+                  width: '100%',
+                  marginTop: '0.8rem',
+                }}
+              >
+                {NAV_LINKS.map(({ label, to }, i) => (
+                  <motion.div
+                    key={to}
+                    initial={{ opacity: 0, y: -14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{
+                      duration: 0.48,
+                      ease: [0.22, 1, 0.36, 1],
+                      delay: 0.12 + i * 0.06,
+                    }}
+                  >
+                    <MobileLink label={label} to={to} onClick={() => setMenuOpen(false)} />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.aside>
           </motion.div>
         )}
       </AnimatePresence>
