@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
 import goldBarImage from '../assets/models/goldbar.png'
+import silverBarImage from '../assets/models/silver.png'
 
 // ─── Content — edit here only ───────────────────────────────────────────────
 const HERO_TAG = 'Direct Refinery Supply | Hong Kong - China - UAE'
@@ -158,35 +159,69 @@ function Particles() {
   )
 }
 
-// ─── Animated Gold Bar Image ─────────────────────────────────────────────────
+// ─── Animated Bar Image (gold ↔ silver every 10s) ────────────────────────────
+const BAR_SWAP_INTERVAL = 3000 // ms each metal stays on screen
+
+const BAR_VARIANTS = [
+  {
+    src: goldBarImage,
+    alt: 'Premium gold bar',
+    glow: 'drop-shadow(0 30px 60px rgba(209,165,80,0.35))',
+  },
+  {
+    src: silverBarImage,
+    alt: 'Premium silver bar',
+    glow: 'drop-shadow(0 30px 60px rgba(190,200,215,0.35))',
+  },
+]
+
 function GoldBarImage() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((prev) => (prev + 1) % BAR_VARIANTS.length)
+    }, BAR_SWAP_INTERVAL)
+    return () => clearInterval(id)
+  }, [])
+
+  const bar = BAR_VARIANTS[index]
+
   return (
-    <motion.img
-      src={goldBarImage}
-      alt="Premium gold bar"
-      loading="eager"
-      draggable={false}
-      // Smooth floating drift in all four directions — different keyframe
-      // counts on x and y trace a gentle loop (left, right, up, down).
-      animate={{
-        x: [0, 22, 0, -22, 0],
-        y: [0, -16, 0, 16, 0],
-        rotate: [0, 1.5, 0, -1.5, 0],
-      }}
-      transition={{
-        duration: 9,
-        ease: 'easeInOut',
-        repeat: Infinity,
-        repeatType: 'loop',
-      }}
-      style={{
-        width: '100%',
-        height: '100%',
-        objectFit: 'contain',
-        filter: 'drop-shadow(0 30px 60px rgba(209,165,80,0.35))',
-        willChange: 'transform',
-      }}
-    />
+    <AnimatePresence mode="sync">
+      <motion.img
+        key={index}
+        src={bar.src}
+        alt={bar.alt}
+        loading="eager"
+        draggable={false}
+        // Fade between metals while a continuous floating drift in all four
+        // directions (left, right, up, down) plays on a loop.
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          x: [0, 22, 0, -22, 0],
+          y: [0, -16, 0, 16, 0],
+          rotate: [0, 1.5, 0, -1.5, 0],
+        }}
+        exit={{ opacity: 0 }}
+        transition={{
+          opacity: { duration: 1.2, ease: 'easeInOut' },
+          x: { duration: 9, ease: 'easeInOut', repeat: Infinity, repeatType: 'loop' },
+          y: { duration: 9, ease: 'easeInOut', repeat: Infinity, repeatType: 'loop' },
+          rotate: { duration: 9, ease: 'easeInOut', repeat: Infinity, repeatType: 'loop' },
+        }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'contain',
+          filter: bar.glow,
+          willChange: 'transform, opacity',
+        }}
+      />
+    </AnimatePresence>
   )
 }
 
