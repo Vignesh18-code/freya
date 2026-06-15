@@ -1,9 +1,8 @@
-import { useRef, Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, Environment } from '@react-three/drei'
 import { Link } from 'react-router-dom'
 import { colors, fonts, ease } from '../theme'
+import goldBarImage from '../assets/models/goldbar.png'
 
 // ─── Content — edit here only ───────────────────────────────────────────────
 const HERO_TAG = 'Direct Refinery Supply | Hong Kong - China - UAE'
@@ -13,20 +12,6 @@ const HERO_SUBTEXT = [
 ]
 const HERO_BTN_PRIMARY = 'Explore Category'
 const HERO_BTN_SECONDARY = 'Our Story'
-
-// ─── Gold Bar Rotation Controls ─────────────────────────────────────────────
-const BASE_X = 2.2
-const BASE_Y = 1.1
-const BASE_Z = -1.05
-
-const GOLD_BAR_POSITION_X = 0
-const GOLD_BAR_POSITION_Y = 0
-const GOLD_BAR_POSITION_Z = 0
-const GOLD_BAR_SCALE = 2
-
-function lerp(a, b, t) {
-  return a + (b - a) * t
-}
 
 const EASE = ease.smooth
 
@@ -173,82 +158,41 @@ function Particles() {
   )
 }
 
-// ─── 3D Gold Bar ─────────────────────────────────────────────────────────────
-function GoldBar({ mouse }) {
-  const { scene } = useGLTF('/models/goldbar.glb')
-  const ref = useRef()
-
-  useEffect(() => {
-    scene.traverse((child) => {
-      if (child.isMesh) {
-        child.material = child.material.clone()
-        child.material.metalness = 1.0
-        child.material.roughness = 0.025
-        child.material.color.set('#FFD700')
-        child.material.emissive.set('#7A5200')
-        child.material.emissiveIntensity = 0.75
-        child.material.envMapIntensity = 5.5
-        if (child.material.map) child.material.map = null
-        child.material.needsUpdate = true
-      }
-    })
-  }, [scene])
-
-  useFrame((state) => {
-    if (!ref.current) return
-    const t = state.clock.elapsedTime
-    const targetX = BASE_X + (mouse ? mouse.current.y * 0.12 : 0)
-    const targetY = BASE_Y + Math.sin(t * 0.5) * 0.25 + (mouse ? mouse.current.x * 0.15 : 0)
-
-    const clampedX = Math.max(BASE_X - 0.2, Math.min(BASE_X + 0.2, targetX))
-    const clampedY = Math.max(0.7, Math.min(1.5, targetY))
-
-    ref.current.rotation.x = lerp(ref.current.rotation.x, clampedX, 0.04)
-    ref.current.rotation.y = lerp(ref.current.rotation.y, clampedY, 0.04)
-    ref.current.rotation.z = BASE_Z
-
-    ref.current.position.x = GOLD_BAR_POSITION_X
-    ref.current.position.y = GOLD_BAR_POSITION_Y + Math.sin(t * 0.7) * 0.08
-    ref.current.position.z = GOLD_BAR_POSITION_Z
-  })
-
+// ─── Animated Gold Bar Image ─────────────────────────────────────────────────
+function GoldBarImage() {
   return (
-    <primitive
-      ref={ref}
-      object={scene}
-      scale={GOLD_BAR_SCALE}
-      position={[GOLD_BAR_POSITION_X, GOLD_BAR_POSITION_Y, GOLD_BAR_POSITION_Z]}
-      rotation={[BASE_X, BASE_Y, BASE_Z]}
+    <motion.img
+      src={goldBarImage}
+      alt="Premium gold bar"
+      loading="eager"
+      draggable={false}
+      // Smooth floating drift in all four directions — different keyframe
+      // counts on x and y trace a gentle loop (left, right, up, down).
+      animate={{
+        x: [0, 22, 0, -22, 0],
+        y: [0, -16, 0, 16, 0],
+        rotate: [0, 1.5, 0, -1.5, 0],
+      }}
+      transition={{
+        duration: 9,
+        ease: 'easeInOut',
+        repeat: Infinity,
+        repeatType: 'loop',
+      }}
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'contain',
+        filter: 'drop-shadow(0 30px 60px rgba(209,165,80,0.35))',
+        willChange: 'transform',
+      }}
     />
-  )
-}
-
-// ─── 3D Scene ────────────────────────────────────────────────────────────────
-function Model3DScene({ mouse }) {
-  return (
-    <Canvas
-      camera={{ position: [0, 1.2, 4.5], fov: 38 }}
-      gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}
-      style={{ background: 'transparent', touchAction: 'none' }}
-      resize={{ scroll: false, debounce: { scroll: 0, resize: 200 } }}
-    >
-      <Suspense fallback={null}>
-        <ambientLight intensity={2.1} />
-        <directionalLight position={[3, 5, 2]} intensity={8.5} color="#FFD700" />
-        <directionalLight position={[-3, 2, -2]} intensity={3.5} color="#FFC200" />
-        <spotLight position={[0, 6, 5]} intensity={7.5} color="#FFF2B2" angle={0.5} penumbra={1} />
-        <pointLight position={[0, 1.5, 3]} intensity={3.5} color="#FFD700" />
-        <Environment preset="warehouse" />
-        <GoldBar mouse={mouse} />
-      </Suspense>
-    </Canvas>
   )
 }
 
 // ─── Hero ────────────────────────────────────────────────────────────────────
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false)
-  const mouse = useRef({ x: 0, y: 0 })
   const { scrollY } = useScroll()
   const yParallax = useTransform(scrollY, [0, 1000], [0, 200])
 
@@ -258,16 +202,6 @@ export default function Hero() {
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
   }, [])
-
-  useEffect(() => {
-    if (isMobile) return
-    const onMove = (e) => {
-      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1
-      mouse.current.y = (e.clientY / window.innerHeight) * 2 - 1
-    }
-    window.addEventListener('mousemove', onMove)
-    return () => window.removeEventListener('mousemove', onMove)
-  }, [isMobile])
 
   const headingSize = isMobile ? '2.35rem' : 'clamp(3.5rem, 5.5vw, 6.5rem)'
 
@@ -509,7 +443,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* RIGHT: 3D Canvas */}
+        {/* RIGHT: Gold Bar Image */}
         <motion.div
           variants={canvasVariants}
           initial="hidden"
@@ -524,7 +458,7 @@ export default function Hero() {
           }}
         >
           <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
-            <Model3DScene mouse={isMobile ? null : mouse} />
+            <GoldBarImage />
           </div>
         </motion.div>
       </div>
