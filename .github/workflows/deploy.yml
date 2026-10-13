@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       - run: npx vite build --base=/freya/
       # SPA fallback so deep links like /freya/about load the app
       - run: cp dist/index.html dist/404.html
