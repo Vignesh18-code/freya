@@ -16,7 +16,7 @@ const contactItems = [
 
 const credentialItems = [
   { icon: 'fa-certificate',   label: 'Business Registration No.', href: 'https://drive.google.com/file/d/16RGPIcVM_Yjj7aDgFB7aujV_wTuznkPT/view?usp=sharing' },
-  { icon: 'fa-file-contract', label: 'Registration No.',          href: 'https://drive.google.com/file/d/1QUFTA0g2JPAaal1-U_PKtNiKT4fMsLBo/view?usp=sharing' },
+  { icon: 'fa-file-contract', label: 'DPMS Registration No.',     href: 'https://drive.google.com/file/d/1QUFTA0g2JPAaal1-U_PKtNiKT4fMsLBo/view?usp=sharing' },
 ]
 
 const EASE = ease.smooth
