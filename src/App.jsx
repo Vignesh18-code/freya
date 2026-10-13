@@ -23,7 +23,7 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div style={{ backgroundColor: '#101F48', minHeight: '100vh' }}>
         <ScrollToTop />
         <Navbar />
