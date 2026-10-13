@@ -15,7 +15,7 @@ const contactItems = [
 ]
 
 const credentialItems = [
-  { icon: 'fa-certificate',   label: 'Business Registration No.', href: 'https://drive.google.com/file/d/16RGPIcVM_Yjj7aDgFB7aujV_wTuznkPT/view?usp=sharing' },
+  { icon: 'fa-certificate',   label: 'Business Registration No.', number: 'B-B-23-10-02141', href: 'https://drive.google.com/file/d/16RGPIcVM_Yjj7aDgFB7aujV_wTuznkPT/view?usp=sharing' },
   { icon: 'fa-file-contract', label: 'DPMS Registration No.',     href: 'https://drive.google.com/file/d/1QUFTA0g2JPAaal1-U_PKtNiKT4fMsLBo/view?usp=sharing' },
 ]
 
@@ -372,7 +372,7 @@ export default function ContactSection() {
                         {item.label}
                       </p>
                       <p style={{ margin:0, color:'rgba(255,255,255,0.8)', fontFamily:fonts.sans, fontSize:'0.78rem', display:'flex', alignItems:'center', gap:'0.4rem' }}>
-                        View Document
+                        {item.number || 'View Document'}
                         <i className="fas fa-arrow-up-right-from-square" style={{ fontSize:'0.62rem', color:colors.gold }} />
                       </p>
                     </div>
