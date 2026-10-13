@@ -4,7 +4,7 @@ import { colors, fonts, ease } from '../theme'
 
 import productGoldBars from '../assets/Product Range/Gold Bars.png'
 import productSilverBars from '../assets/Product Range/Silver Bars.png'
-import productGoldJewellery from '../assets/Product Range/Gold Jewellery 1.png'
+import productGoldJewellery from '../assets/Gold Jewellery 2.png'
 import productDiamond from '../assets/Product Range/Diamond.png'
 
 const productCards = [

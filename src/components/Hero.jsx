@@ -9,7 +9,7 @@ import silverBarImage from '../assets/models/silver.png'
 const HERO_TAG = 'Direct Refinery Supply | Hong Kong - China - UAE'
 const HERO_SUBTEXT = [
   'Your trusted wholesale source for premium gold and silver, investment bars and coins, certified diamonds, and exquisite gold jewellery.',
-  'Backed by comprehensive insurance, global compliance standards, and the confidence of leading retailers and industry partners since 2019.',
+  'Backed by comprehensive insurance, global compliance standards, and the confidence of leading retailers and industry partners since 2018.',
 ]
 const HERO_BTN_PRIMARY = 'Explore Category'
 const HERO_BTN_SECONDARY = 'Our Story'

@@ -5,7 +5,7 @@ const TICKER_ITEMS = [
   'Gold',
   'Silver',
   'Diamond',
-  'Est. 2019',
+  'Est. 2018',
   'Hong Kong',
 ]
 

@@ -14,6 +14,11 @@ const contactItems = [
   { icon: 'fa-location-dot', label: 'Address:',     value: 'Unit F, 26/F, 8 Hart Avenue, TST, Kowloon, Hong Kong' },
 ]
 
+const credentialItems = [
+  { icon: 'fa-file-contract', label: 'Registration No.', href: 'https://drive.google.com/file/d/1QUFTA0g2JPAaal1-U_PKtNiKT4fMsLBo/view?usp=sharing' },
+  { icon: 'fa-certificate',   label: 'Certificate No.',  href: 'https://drive.google.com/file/d/16RGPIcVM_Yjj7aDgFB7aujV_wTuznkPT/view?usp=sharing' },
+]
+
 const EASE = ease.smooth
 const T    = ease.transition
 
@@ -319,6 +324,62 @@ export default function ContactSection() {
                 </motion.div>
               ))}
             </div>
+
+            {/* ── Registration / Certificate ── */}
+            <motion.div
+              initial={{ opacity:0, y:20 }}
+              whileInView={{ opacity:1, y:0 }}
+              viewport={{ once:true }}
+              transition={{ ...T, delay: contactItems.length * 0.08 }}
+              style={{
+                marginTop:'0.85rem',
+                position:'relative',
+                border:'1px solid rgba(209,165,80,0.18)',
+                background:'linear-gradient(160deg, rgba(255,255,255,0.04) 0%, rgba(7,12,26,0.7) 100%)',
+                padding:'1rem',
+                overflow:'hidden',
+              }}
+            >
+              <div style={{ position:'absolute', top:0, left:0, right:0, height:'2px', background:'linear-gradient(90deg, transparent, #D1A550, transparent)' }} />
+              <div className="responsive-form-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' }}>
+                {credentialItems.map((item) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ borderColor:'rgba(209,165,80,0.6)', y:-2 }}
+                    style={{
+                      display:'flex', alignItems:'center', gap:'0.85rem',
+                      border:'1px solid rgba(209,165,80,0.2)',
+                      backgroundColor:'rgba(7,12,26,0.9)',
+                      padding:'0.9rem 1rem',
+                      textDecoration:'none',
+                      transition:'border-color 0.3s ease',
+                    }}
+                  >
+                    <div style={{
+                      width:'38px', height:'38px', flexShrink:0,
+                      border:'1px solid rgba(209,165,80,0.3)',
+                      background:'linear-gradient(135deg, rgba(209,165,80,0.15), rgba(209,165,80,0.03))',
+                      display:'flex', alignItems:'center', justifyContent:'center',
+                      color:colors.gold, fontSize:'0.85rem',
+                    }}>
+                      <i className={`fas ${item.icon}`} />
+                    </div>
+                    <div style={{ minWidth:0 }}>
+                      <p style={{ margin:0, fontFamily:fonts.sans, letterSpacing:'0.16em', textTransform:'uppercase', fontSize:'0.6rem', color:'rgba(209,165,80,0.8)', marginBottom:'0.25rem' }}>
+                        {item.label}
+                      </p>
+                      <p style={{ margin:0, color:'rgba(255,255,255,0.8)', fontFamily:fonts.sans, fontSize:'0.78rem', display:'flex', alignItems:'center', gap:'0.4rem' }}>
+                        View Document
+                        <i className="fas fa-arrow-up-right-from-square" style={{ fontSize:'0.62rem', color:colors.gold }} />
+                      </p>
+                    </div>
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
 
           {/* ── RIGHT: Form ── */}
